@@ -19,6 +19,8 @@ class UsersFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+
+        
         $user = new Users();
         $user->setNom('Doe');
         $user->setPrenom('John');
