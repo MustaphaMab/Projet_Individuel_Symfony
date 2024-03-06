@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livraisons{% endblock %}
+
+{% block body %}
+    <h1>Livraisons</h1>
+
+    <table class="example-wrapper table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero_Suivi</th>
+                <th>Frais_Livraison</th>
+                <th>Transporteur</th>
+                <th>Pods_En_Gramme</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livraison in livraisons %}
+            <tr>
+                <td>{{ livraison.id }}</td>
+                <td>{{ livraison.NumeroSuivi }}</td>
+                <td>{{ livraison.FraisLivraison }}</td>
+                <td>{{ livraison.Transporteur }}</td>
+                <td>{{ livraison.PodsEnGramme }}</td>
+                <td>
+                    <a href="{{ path('app_livraison_show', {'id': livraison.id}) }}">show</a>
+                    <a href="{{ path('app_livraison_edit', {'id': livraison.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_livraison_new') }}">Create new</a>
+{% endblock %}

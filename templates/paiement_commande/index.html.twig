@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement des Commandes{% endblock %}
+
+{% block body %}
+    <h1>Paiements des commandes</h1>
+
+    <table class="example-wrapper table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Montant</th>
+                <th>Methode</th>
+                <th>Statut</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paiement_commande in paiement_commandes %}
+            <tr>
+                <td>{{ paiement_commande.id }}</td>
+                <td>{{ paiement_commande.Montant }}</td>
+                <td>{{ paiement_commande.Methode }}</td>
+                <td>{{ paiement_commande.Statut }}</td>
+                <td>{{ paiement_commande.Date }}</td>
+                <td>
+                    <a href="{{ path('app_paiement_commande_show', {'id': paiement_commande.id}) }}">show</a>
+                    <a href="{{ path('app_paiement_commande_edit', {'id': paiement_commande.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_paiement_commande_new') }}">Create new</a>
+{% endblock %}
