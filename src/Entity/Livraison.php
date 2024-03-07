@@ -24,7 +24,13 @@ class Livraison
     private ?string $Transporteur = null;
 
     #[ORM\Column(type: Types::BIGINT)]
-    private ?string $Pods_En_Gramme = null;
+    private ?string $Poids_En_Gramme = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Commande $Commande = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?PaiementCommande $Paiement_Commande = null;
 
     public function getId(): ?int
     {
@@ -69,12 +75,36 @@ class Livraison
 
     public function getPodsEnGramme(): ?string
     {
-        return $this->Pods_En_Gramme;
+        return $this->Poids_En_Gramme;
     }
 
-    public function setPodsEnGramme(string $Pods_En_Gramme): static
+    public function setPodsEnGramme(string $Poids_En_Gramme): static
     {
-        $this->Pods_En_Gramme = $Pods_En_Gramme;
+        $this->Poids_En_Gramme = $Poids_En_Gramme;  
+
+        return $this;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->Commande;
+    }
+
+    public function setCommande(?Commande $Commande): static
+    {
+        $this->Commande = $Commande;
+
+        return $this;
+    }
+
+    public function getPaiementCommande(): ?PaiementCommande
+    {
+        return $this->Paiement_Commande;
+    }
+
+    public function setPaiementCommande(?PaiementCommande $Paiement_Commande): static
+    {
+        $this->Paiement_Commande = $Paiement_Commande;
 
         return $this;
     }
