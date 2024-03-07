@@ -22,6 +22,8 @@ class CommandeController extends AbstractController
         ]);
     }
 
+    // CREER
+
     #[Route('/new', name: 'app_commande_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +44,8 @@ class CommandeController extends AbstractController
         ]);
     }
 
+// READ 
+
     #[Route('/{id}', name: 'app_commande_show', methods: ['GET'])]
     public function show(Commande $commande): Response
     {
@@ -49,6 +53,8 @@ class CommandeController extends AbstractController
             'commande' => $commande,
         ]);
     }
+
+// MODIFIER
 
     #[Route('/{id}/edit', name: 'app_commande_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response
@@ -67,6 +73,8 @@ class CommandeController extends AbstractController
             'form' => $form,
         ]);
     }
+
+// SUPPRIMER
 
     #[Route('/{id}', name: 'app_commande_delete', methods: ['POST'])]
     public function delete(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response

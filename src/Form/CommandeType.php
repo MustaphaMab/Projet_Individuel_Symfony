@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Commande;
-use App\Entity\Panier;
+use App\Entity\Users;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,13 +14,10 @@ class CommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Validation')
-            ->add('Statut')
             ->add('Date')
-            ->add('Suivi')
-            ->add('Montant')
-            ->add('panier', EntityType::class, [
-                'class' => Panier::class,
+            ->add('Commentaire')
+            ->add('user', EntityType::class, [
+                'class' => Users::class,
 'choice_label' => 'id',
             ])
         ;

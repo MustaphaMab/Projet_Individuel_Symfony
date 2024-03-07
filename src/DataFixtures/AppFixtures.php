@@ -21,27 +21,29 @@ class AppFixtures extends Fixture
 
         // CATEGORIE 
 
+        $categories = [];
         for ($i = 0; $i < 10; $i++) {
             $categorie = new Categorie();
             $categorie->setNom($faker->word)
-                ->setDescription($faker->paragraph); // Génère un paragraphe pour la description
+                      ->setDescription($faker->paragraph);
 
             $manager->persist($categorie);
+            $categories[] = $categorie; // Stocke les catégories pour une utilisation ultérieure
         }
 
+
         // PRODUIT
-        $produits = [];
-for ($i = 0; $i <= 30; $i++) {
-    $produit = new Produit();
-    $produit->setNom($faker->word)
-            ->setDescription($faker->sentence)
-            ->setPhoto($faker->imageUrl(640, 480, 'food', true))
-            ->setPrix($faker->randomFloat(2, 10, 300))
-            ->setStock($faker->numberBetween(10, 100))
-            ->setCategorie($faker->randomElement($categorie)); // Associe une catégorie aléatoire
+        $produits = []; // Optionnel, seulement si tu as besoin de garder une référence des produits
+        for ($i = 0; $i <= 30; $i++) {
+            $produit = new Produit();
+            $produit->setNom($faker->word)
+                    ->setDescription($faker->sentence)
+                    ->setPhoto($faker->imageUrl(640, 480, 'food', true))
+                    ->setPrix($faker->randomFloat(2, 10, 300))
+                    ->setStock($faker->numberBetween(10, 100))
+                    ->setCategorie($faker->randomElement($categories)); // Attribue une catégorie aléatoirement
+        
             $manager->persist($produit);
-            $produits[] = $produit;
-        }
 
         //USERS
 
@@ -117,5 +119,7 @@ for ($i = 0; $i <= 30; $i++) {
         }
 
         $manager->flush();
+    }
+
     }
 }
