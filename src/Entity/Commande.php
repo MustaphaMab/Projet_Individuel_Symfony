@@ -31,21 +31,24 @@ class Commande
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $Montant = null;
 
-    
 
-    
+
+
     #[ORM\OneToMany(targetEntity: PaiementCommande::class, mappedBy: 'Commande')]
     private Collection $paiementCommandes;
 
     #[ORM\OneToMany(targetEntity: LigneCommande::class, mappedBy: 'Id_commmande')]
     private Collection $ligneCommandes;
 
-   
+    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'commandes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $user = null;
+
+
     public function __construct()
     {
         $this->paiementCommandes = new ArrayCollection();
         $this->ligneCommandes = new ArrayCollection();
-      
     }
 
     public function getId(): ?int
@@ -113,7 +116,7 @@ class Commande
         return $this;
     }
 
-    
+
 
     /**
      * @return Collection<int, PaiementCommande>
@@ -157,7 +160,7 @@ class Commande
     {
         if (!$this->ligneCommandes->contains($ligneCommande)) {
             $this->ligneCommandes->add($ligneCommande);
-            $ligneCommande->setIdCommmande($this);
+            $ligneCommande->setCommande($this);
         }
 
         return $this;
@@ -167,13 +170,23 @@ class Commande
     {
         if ($this->ligneCommandes->removeElement($ligneCommande)) {
             // set the owning side to null (unless already changed)
-            if ($ligneCommande->getIdCommmande() === $this) {
-                $ligneCommande->setIdCommmande(null);
+            if ($ligneCommande->getCommande() === $this) {
+                $ligneCommande->setCommande(null);
             }
         }
 
         return $this;
     }
 
-    
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 }
