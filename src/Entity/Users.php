@@ -39,6 +39,15 @@ class Users implements PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $Adresse = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $Email = null;
+
+    #[ORM\Column(type: Types::BIGINT)]
+    private ?string $Code_Postale = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $Pays = null;
+
     
 
     public function getId(): ?int
@@ -131,6 +140,42 @@ class Users implements PasswordAuthenticatedUserInterface
     public function setAdresse(string $Adresse): static
     {
         $this->Adresse = $Adresse;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->Email;
+    }
+
+    public function setEmail(string $Email): static
+    {
+        $this->Email = $Email;
+
+        return $this;
+    }
+
+    public function getCodePostale(): ?string
+    {
+        return $this->Code_Postale;
+    }
+
+    public function setCodePostale(string $Code_Postale): static
+    {
+        $this->Code_Postale = $Code_Postale;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->Pays;
+    }
+
+    public function setPays(string $Pays): static
+    {
+        $this->Pays = $Pays;
 
         return $this;
     }

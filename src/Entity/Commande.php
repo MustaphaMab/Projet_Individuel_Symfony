@@ -24,6 +24,9 @@ class Commande
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Commentaire = null;
+
 
     public function getId(): ?int
     {
@@ -52,6 +55,18 @@ class Commande
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?string
+    {
+        return $this->Commentaire;
+    }
+
+    public function setCommentaire(string $Commentaire): static
+    {
+        $this->Commentaire = $Commentaire;
 
         return $this;
     }

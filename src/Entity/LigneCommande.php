@@ -28,6 +28,15 @@ class LigneCommande
     #[ORM\JoinColumn(nullable: false)]
     private ?Produit $Produit = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $Methode = null;
+
+    #[ORM\Column(type: Types::BIGINT)]
+    private ?string $Quantite = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $Commentaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +86,42 @@ class LigneCommande
     public function setProduit(?Produit $Produit): static
     {
         $this->Produit = $Produit;
+
+        return $this;
+    }
+
+    public function getMethode(): ?string
+    {
+        return $this->Methode;
+    }
+
+    public function setMethode(string $Methode): static
+    {
+        $this->Methode = $Methode;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?string
+    {
+        return $this->Quantite;
+    }
+
+    public function setQuantite(string $Quantite): static
+    {
+        $this->Quantite = $Quantite;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?string
+    {
+        return $this->Commentaire;
+    }
+
+    public function setCommentaire(string $Commentaire): static
+    {
+        $this->Commentaire = $Commentaire;
 
         return $this;
     }
