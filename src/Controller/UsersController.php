@@ -22,7 +22,7 @@ class UsersController extends AbstractController
         ]);
     }
 
-// CREER
+    // CREER
 
     #[Route('/new', name: 'app_users_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -32,6 +32,15 @@ class UsersController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Hashage du mot de passe avant de persister l'utilisateur
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                $user->getPassword() // Assure-toi que ta classe Users a une méthode getPassword()
+            );
+            $user->setPassword($hashedPassword); // Et une méthode setPassword()
+
+
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -73,7 +82,7 @@ class UsersController extends AbstractController
     #[Route('/{id}', name: 'app_users_delete', methods: ['POST'])]
     public function delete(Request $request, Users $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }

@@ -55,7 +55,7 @@ class AppFixtures extends Fixture
 
             $user->setNom($faker->lastName)
                 ->setPrenom($faker->firstName)
-                ->setRole($randomRole) // Affecte le rôle aléatoirement
+                 // Affecte le rôle aléatoirement
                 ->setMdP(password_hash($faker->password, PASSWORD_DEFAULT)) // Hash du mot de passe
                 ->setDateNaissance($faker->dateTimeBetween('-100 years', '-18 years')) // Assure-toi que les utilisateurs sont majeurs
                 ->setTelephone($faker->phoneNumber) // Génère un numéro de téléphone
