@@ -1,7 +1,37 @@
 body {
-  background-color: rgb(163, 138, 113);
+  background-color: #f2f2f2;
 }
 
 h1 {
   text-align: center;
+}
+
+.navbar {
+  background-color: #003366 !important; /* ou toute autre couleur que tu souhaites */
+
+}
+#navbarNavDropdown {
+  display: flex;
+  flex-direction: row;
+ 
+}
+
+.nav-link {
+  border: 2px solid #fff; /* Bordure blanche, ajuste selon tes préférences */
+  border-radius: 15px; /* Arrondir les angles */
+  margin: 5px; /* Espacement autour des liens */
+  padding: 5px 10px; /* Espacement intérieur pour agrandir le lien */
+  transition: background-color 0.2s; /* Animation pour l'interaction */
+}
+
+/* Changement de couleur au survol */
+.nav-link:hover {
+  background-color: #ddd; /* Couleur de fond au survol, ajuste selon tes préférences */
+  color: #333; /* Couleur du texte au survol, ajuste selon tes préférences */
+}
+
+
+
+footer {
+  background-color: #003366 !important; /* Assure-toi que cela cible ton footer spécifiquement */
 }
