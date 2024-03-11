@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
+{# <nav class="navbar navbar-expand-lg navbar-dark bg-light">
 
 	<ul class="nav justify-content-center">
 
@@ -34,3 +34,48 @@
 		<a class="nav-link disabled" aria-disabled="true">Disabled</a>
 	</li>
 </ul></nav>
+ #}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+    <ul class="nav justify-content-center">
+
+        {% if app.user %}
+            <!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_users_index') }}">Utilisateurs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_commande_index') }}">Commandes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_livraison_index') }}">Livraison</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_paiement_commande_index') }}">Paiement des Commande</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_produit_index') }}">Produits</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_categorie_index') }}">Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+        {% else %}
+            <!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+            </li>
+        {% endif %}
+
+        <!-- Ce lien est toujours visible, tu peux choisir de le laisser ou de le retirer selon tes préférences -->
+        <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+</nav>
