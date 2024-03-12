@@ -49,9 +49,25 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $Pays = null;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private array $roles = [];
+
     public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        $roles = $this->roles;
+        // garantit que chaque utilisateur a au moins le rôle ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
     public function getUserIdentifier(): string
     {
@@ -122,10 +138,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     public function setPassword(string $password): self
-{
-    $this->MdP = $password;
-    return $this;
-}
+    {
+        $this->MdP = $password;
+        return $this;
+    }
 
 
     public function getDateNaissance(): ?\DateTimeInterface
