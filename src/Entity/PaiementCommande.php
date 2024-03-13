@@ -26,9 +26,11 @@ class PaiementCommande
     #[ORM\Column(length: 255)]
     private ?string $Date = null;
 
-    #[ORM\ManyToOne(inversedBy: 'paiementCommandes')]
+     /**
+     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="paiementCommandes")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private ?Commande $Commande = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -87,7 +89,7 @@ class PaiementCommande
         return $this->Commande;
     }
 
-    public function setCommande(?Commande $Commande): static
+    public function setCommande(?Commande $Commande): self
     {
         $this->Commande = $Commande;
 

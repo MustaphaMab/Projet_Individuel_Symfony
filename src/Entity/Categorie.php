@@ -21,7 +21,19 @@ class Categorie
     #[ORM\Column(length: 50)]
     private ?string $Nom = null;
 
-  
+    /**
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="Categorie")
+     */
+    private Collection $produits;
+
+    
+
+    public function __construct()
+    {
+        $this->produits = new ArrayCollection();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,5 +63,8 @@ class Categorie
         return $this;
     }
 
-
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
 }

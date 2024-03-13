@@ -31,10 +31,15 @@ class Produit
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $Prix = null;
 
-    #[ORM\ManyToOne(inversedBy: 'produits')]
-    private ?Categorie $Categorie = null;
+    #[ORM\ManyToMany(targetEntity: Commande::class, mappedBy: 'Produit')]
+    private Collection $commandes;
 
-   
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -100,18 +105,31 @@ class Produit
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommandes(): Collection
     {
-        return $this->Categorie;
+        return $this->commandes;
     }
 
-    public function setCategorie(?Categorie $Categorie): static
+    public function addCommande(Commande $commande): static
     {
-        $this->Categorie = $Categorie;
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->addProduit($this);
+        }
 
         return $this;
     }
 
-   
-  
+    public function removeCommande(Commande $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            $commande->removeProduit($this);
+        }
+
+        return $this;
+    }
+
 }

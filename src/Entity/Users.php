@@ -19,9 +19,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    // Implémente les méthodes requises par UserInterface
-
-
     #[ORM\Column(length: 50)]
     private ?string $Nom = null;
 
@@ -52,7 +49,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private array $roles = [];
+    private array $roles = ['ROLE_USER'];
 
     public function getRoles(): array
     {
@@ -63,12 +60,25 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
+
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
         return $this;
     }
+
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user")
+     */
+    private $commandes;
+
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+    }
+
     public function getUserIdentifier(): string
     {
         return $this->email;
@@ -213,5 +223,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->Pays = $Pays;
 
         return $this;
+    }
+
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
     }
 }

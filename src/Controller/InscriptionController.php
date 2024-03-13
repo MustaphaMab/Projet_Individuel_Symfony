@@ -25,12 +25,17 @@ public function register(Request $request, UserPasswordHasherInterface $password
         $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
         $user->setPassword($hashedPassword);
 
+        $user->setRoles(['ROLE_USER']);
+
+        error_log(print_r($user->getRoles(), true)); 
+
         $entityManager->persist($user);
         $entityManager->flush();
 
         // Rediriger vers la page de connexion ou de confirmation
         return $this->redirectToRoute('app_login');
     }
+
 
     return $this->render('inscription/index.html.twig', [
     'registrationForm' => $form->createView(),
