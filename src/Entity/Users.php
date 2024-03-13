@@ -68,17 +68,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
-    /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user")
-     */
-    private $commandes;
-
-    public function __construct()
-    {
-        $this->commandes = new ArrayCollection();
-    }
-
     public function getUserIdentifier(): string
     {
         return $this->email;
@@ -225,8 +214,5 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
+    
 }

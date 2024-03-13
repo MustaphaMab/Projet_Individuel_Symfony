@@ -20,12 +20,6 @@ class Commande
     #[ORM\Column(type: Types::BIGINT)]
     private ?string $Date = null;
 
-    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'commandes')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Users $user = null;
-
-
-
     public function __construct()
     {
       
@@ -47,6 +41,10 @@ class Commande
     #[ORM\ManyToMany(targetEntity: Produit::class, inversedBy: 'commandes')]
     private Collection $Produit;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?users $users = null;
+
 
     public function getId(): ?int
     {
@@ -67,18 +65,7 @@ class Commande
     }
 
 
-    public function getUser(): ?Users
-    {
-        return $this->user;
-    }
-
-    public function setUser(?Users $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
+    
     public function getCommentaire(): ?string
     {
         return $this->Commentaire;
@@ -138,6 +125,18 @@ class Commande
     public function removeProduit(Produit $produit): static
     {
         $this->Produit->removeElement($produit);
+
+        return $this;
+    }
+
+    public function getUsers(): ?users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(users $users): static
+    {
+        $this->users = $users;
 
         return $this;
     }
