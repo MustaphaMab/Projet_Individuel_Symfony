@@ -28,7 +28,7 @@ class Commande
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?users $users = null;
+    private ?Users $users = null;
 
     public function getId(): ?int
     {

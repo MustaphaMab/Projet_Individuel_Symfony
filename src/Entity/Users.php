@@ -44,10 +44,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $Pays = null;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private array $roles = [];
+    #[ORM\Column(type: "json")]
+private array $roles = [];
 
     public function getRoles(): array
     {
