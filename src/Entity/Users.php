@@ -49,7 +49,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private array $roles = ['ROLE_USER'];
+    private array $roles = [];
 
     public function getRoles(): array
     {

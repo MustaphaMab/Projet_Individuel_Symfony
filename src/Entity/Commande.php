@@ -22,10 +22,7 @@ class Commande
 
     public function __construct()
     {
-      
         $this->paiementCommandes = new ArrayCollection();
-        $this->Produit = new ArrayCollection();
-       
     }
 
     /**
@@ -38,19 +35,16 @@ class Commande
     #[ORM\Column(length: 255)]
     private ?string $Commentaire = null;
 
-    #[ORM\ManyToMany(targetEntity: Produit::class, inversedBy: 'commandes')]
-    private Collection $Produit;
+   
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?users $users = null;
 
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
 
     public function getDate(): ?string
     {
@@ -64,8 +58,6 @@ class Commande
         return $this;
     }
 
-
-    
     public function getCommentaire(): ?string
     {
         return $this->Commentaire;
@@ -101,30 +93,6 @@ class Commande
                 $paiementCommande->setCommande(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Produit>
-     */
-    public function getProduit(): Collection
-    {
-        return $this->Produit;
-    }
-
-    public function addProduit(Produit $produit): static
-    {
-        if (!$this->Produit->contains($produit)) {
-            $this->Produit->add($produit);
-        }
-
-        return $this;
-    }
-
-    public function removeProduit(Produit $produit): static
-    {
-        $this->Produit->removeElement($produit);
 
         return $this;
     }
