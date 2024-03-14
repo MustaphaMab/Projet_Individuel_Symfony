@@ -8,8 +8,6 @@ use App\Repository\UsersRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
@@ -100,7 +98,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Nom;
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $Nom): self
     {
         $this->Nom = $Nom;
 
@@ -112,7 +110,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Prenom;
     }
 
-    public function setPrenom(string $Prenom): static
+    public function setPrenom(string $Prenom): self
     {
         $this->Prenom = $Prenom;
 
@@ -124,7 +122,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->MdP;
     }
 
-    public function setMdP(string $MdP): static
+    public function setMdP(string $MdP): self
     {
         $this->MdP = $MdP;
 
@@ -148,7 +146,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Date_Naissance;
     }
 
-    public function setDateNaissance(\DateTimeInterface $Date_Naissance): static
+    public function setDateNaissance(\DateTimeInterface $Date_Naissance): self
     {
         $this->Date_Naissance = $Date_Naissance;
 
@@ -160,7 +158,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Telephone;
     }
 
-    public function setTelephone(string $Telephone): static
+    public function setTelephone(string $Telephone): self
     {
         $this->Telephone = $Telephone;
 
@@ -172,7 +170,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Adresse;
     }
 
-    public function setAdresse(string $Adresse): static
+    public function setAdresse(string $Adresse): self
     {
         $this->Adresse = $Adresse;
 
@@ -195,7 +193,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Code_Postale;
     }
 
-    public function setCodePostale(string $Code_Postale): static
+    public function setCodePostale(string $Code_Postale): self
     {
         $this->Code_Postale = $Code_Postale;
 
@@ -207,7 +205,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->Pays;
     }
 
-    public function setPays(string $Pays): static
+    public function setPays(string $Pays): self
     {
         $this->Pays = $Pays;
 

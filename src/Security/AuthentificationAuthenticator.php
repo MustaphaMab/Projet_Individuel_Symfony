@@ -44,14 +44,27 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        dump('onAuthenticationSuccess called');
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
+        // dump('onAuthenticationSuccess called');
+        // if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+        //     return new RedirectResponse($targetPath);
+        // }
+        $roles = $token->getRoleNames(); // Récupère les noms de rôles de l'utilisateur connecté
+
+        // Détermine la route de redirection en fonction des rôles de l'utilisateur
+        if (in_array('ROLE_SUPER_ADMIN', $roles)) {
+            $redirectRoute = 'app_acceuil_super_admin'; // Remplacer par la route du tableau de bord SUPER_ADMIN
+        } elseif (in_array('ROLE_ADMIN', $roles)) {
+            $redirectRoute = 'app_acceuil_admin'; // Remplacer par la route du tableau de bord ADMIN
+        } else {
+            // Par défaut, redirige les utilisateurs ayant le rôle USER (ou sans rôle spécifique) vers une page d'accueil pour les utilisateurs
+            $redirectRoute = 'app_accueil_user_connexion_ok'; // Remplacer par la route de la page d'accueil de l'utilisateur
         }
 
-        // For example:
-        return new RedirectResponse($this->urlGenerator->generate('app_accueil_connexion_ok'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate($redirectRoute));
+
+
+        // return new RedirectResponse($this->urlGenerator->generate('app_accueil_user_connexion_ok'));
+        // throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 
     protected function getLoginUrl(Request $request): string
