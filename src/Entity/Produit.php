@@ -31,6 +31,9 @@ class Produit
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $Prix = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Categorie $Produit = null;
+
    
     
     public function getId(): ?int
@@ -94,6 +97,18 @@ class Produit
     public function setPrix(string $Prix): static
     {
         $this->Prix = $Prix;
+
+        return $this;
+    }
+
+    public function getProduit(): ?Categorie
+    {
+        return $this->Produit;
+    }
+
+    public function setProduit(?Categorie $Produit): static
+    {
+        $this->Produit = $Produit;
 
         return $this;
     }

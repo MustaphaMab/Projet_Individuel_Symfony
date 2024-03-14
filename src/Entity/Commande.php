@@ -20,18 +20,7 @@ class Commande
     #[ORM\Column(type: Types::BIGINT)]
     private ?string $Date = null;
 
-    public function __construct()
-    {
-        $this->paiementCommandes = new ArrayCollection();
-    }
-
-    /**
-     * @ORM\OneToMany(targetEntity=PaiementCommande::class, mappedBy="Commande")
-     */
-    private Collection $paiementCommandes;
-
-    
-
+  
     #[ORM\Column(length: 255)]
     private ?string $Commentaire = null;
 
@@ -70,32 +59,6 @@ class Commande
         return $this;
     }
 
-    public function getPaiementCommandes(): Collection
-    {
-        return $this->paiementCommandes;
-    }
-
-    public function addPaiementCommande(PaiementCommande $paiementCommande): self
-    {
-        if (!$this->paiementCommandes->contains($paiementCommande)) {
-            $this->paiementCommandes[] = $paiementCommande;
-            $paiementCommande->setCommande($this);
-        }
-
-        return $this;
-    }
-
-    public function removePaiementCommande(PaiementCommande $paiementCommande): self
-    {
-        if ($this->paiementCommandes->removeElement($paiementCommande)) {
-            // Définit le côté inverse à null (sauf si déjà changé)
-            if ($paiementCommande->getCommande() === $this) {
-                $paiementCommande->setCommande(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getUsers(): ?users
     {
