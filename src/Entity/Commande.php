@@ -17,8 +17,8 @@ class Commande
     private ?int $id = null;
 
 
-    #[ORM\Column(type: Types::BIGINT)]
-    private ?string $Date = null;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+private ?\DateTimeInterface $date = null;
 
   
     #[ORM\Column(length: 255)]
@@ -37,13 +37,12 @@ class Commande
 
     public function getDate(): ?string
     {
-        return $this->Date;
+        return $this->date;
     }
 
-    public function setDate(string $Date): static
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->Date = $Date;
-
+        $this->date = $date;
         return $this;
     }
 

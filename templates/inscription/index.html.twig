@@ -7,6 +7,20 @@
 
 {{ form_start(registrationForm) }}
     {{ form_row(registrationForm.Nom) }}
+    {{ form_row(registrationForm.Prenom) }}
+    {{ form_row(registrationForm.MdP) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.Date_Naissance) }}
+    {{ form_row(registrationForm.Telephone) }}
+    {{ form_row(registrationForm.Adresse) }}
+    {{ form_row(registrationForm.Code_Postale) }}
+    {{ form_row(registrationForm.Pays) }}
+    <button type="submit" class="btn">S'inscrire</button>
+{{ form_end(registrationForm) }}
+
+{# 
+{{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.Nom) }}
     {{ form_row(registrationForm.email) }}
     {{ form_row(registrationForm.MdP) }}
      {{ form_row(registrationForm.Prenom) }}
@@ -16,5 +30,5 @@
     {{ form_row(registrationForm.Date_Naissance) }}
     {{ form_row(registrationForm.Pays) }}
     <button type="submit" class="btn">S'inscrire</button>
-{{ form_end(registrationForm) }}
+{{ form_end(registrationForm) }} #}
 {% endblock %}

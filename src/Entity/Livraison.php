@@ -18,7 +18,7 @@ class Livraison
     private ?string $Numero_Suivi = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $Frais_Livraison = null;
+    private ?float $Frais_Livraison = null;
 
     #[ORM\Column(length: 50)]
     private ?string $Transporteur = null;
@@ -42,24 +42,24 @@ class Livraison
         return $this->Numero_Suivi;
     }
 
-    public function setNumeroSuivi(string $Numero_Suivi): static
+    public function setNumeroSuivi(string $Numero_Suivi): self
     {
         $this->Numero_Suivi = $Numero_Suivi;
-
         return $this;
     }
 
-    public function getFraisLivraison(): ?string
+
+    public function getFrais_Livraison(): ?float
     {
         return $this->Frais_Livraison;
     }
 
-    public function setFraisLivraison(string $Frais_Livraison): static
+    public function setFrais_Livraison(float $Frais_Livraison): self
     {
         $this->Frais_Livraison = $Frais_Livraison;
-
         return $this;
     }
+
 
     public function getTransporteur(): ?string
     {
@@ -73,17 +73,18 @@ class Livraison
         return $this;
     }
 
-    public function getPodsEnGramme(): ?string
+
+    public function getPoids_En_Gramme(): ?int
     {
         return $this->Poids_En_Gramme;
     }
 
-    public function setPodsEnGramme(string $Poids_En_Gramme): static
+    public function setPoids_En_Gramme(int $Poids_En_Gramme): self
     {
-        $this->Poids_En_Gramme = $Poids_En_Gramme;  
-
+        $this->Poids_En_Gramme = $Poids_En_Gramme;
         return $this;
     }
+
 
     public function getCommande(): ?Commande
     {

@@ -6,6 +6,10 @@ use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class InscriptionType extends AbstractType
 {
@@ -14,12 +18,15 @@ class InscriptionType extends AbstractType
         $builder
             ->add('Nom')
             ->add('Prenom')
-            ->add('MdP')
-            ->add('Date_Naissance')
-            ->add('Telephone')
+            ->add('MdP', PasswordType::class)
+            ->add('Date_Naissance', DateType::class, [
+                'widget' => 'single_text', // pour utiliser un input de type date
+                // Autres options comme le format peuvent être définies ici.
+            ])
+            ->add('Telephone', TextType::class)
             ->add('Adresse')
-            ->add('email')
-            ->add('Code_Postale')
+            ->add('email', EmailType::class)
+            ->add('Code_Postale', TextType::class)
             ->add('Pays')
         ;
     }

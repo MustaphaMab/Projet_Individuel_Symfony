@@ -34,7 +34,6 @@ class Produit
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Categorie $Produit = null;
 
-   
     
     public function getId(): ?int
     {

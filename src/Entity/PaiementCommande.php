@@ -15,7 +15,7 @@ class PaiementCommande
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $Montant = null;
+    private ?float $Montant = null;
 
     #[ORM\Column(length: 50)]
     private ?string $Methode = null;
@@ -23,8 +23,8 @@ class PaiementCommande
     #[ORM\Column(length: 50)]
     private ?string $Statut = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Date = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)] 
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Commande $Commande = null;
@@ -66,15 +66,14 @@ class PaiementCommande
         return $this;
     }
 
-    public function getDate(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->Date;
+        return $this->date;
     }
 
-    public function setDate(string $Date): static
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->Date = $Date;
-
+        $this->date = $date;
         return $this;
     }
 
