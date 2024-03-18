@@ -53,15 +53,7 @@ class UserType extends AbstractType
             'label' => 'Pays',
             'choice_translation_domain' => false, // pour éviter la traduction automatique des noms de pays
         ])
-        ->add('Ville', ChoiceType::class, [
-                'choices' => [
-                    'Paris' => 'Paris',
-                    'New York' => 'New York',
-                    'Montréal' => 'Montréal',
-                    // Autres villes...
-                ],
-                'label' => 'Ville',
-            ]);
+       
 
             // ->add('roles', ChoiceType::class, [
             //     'choices' => [

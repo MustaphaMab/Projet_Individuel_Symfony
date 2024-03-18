@@ -11,7 +11,7 @@ class AccueilConnexionOkController extends AbstractController
     #[Route('/accueil/connexion/ok', name: 'app_accueil_user_connexion_ok')]
     public function index(): Response
     {
-        return $this->render('accueil_user_connexion_ok/index.html.twig', [
+        return $this->render('Users/accueil_user_connexion_ok/index.html.twig', [
             'controller_name' => 'AccueilConnexionOkController',
         ]);
     }

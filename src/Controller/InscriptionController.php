@@ -37,7 +37,7 @@ public function register(Request $request, UserPasswordHasherInterface $password
     }
 
 
-    return $this->render('inscription/index.html.twig', [
+    return $this->render('Users/inscription/index.html.twig', [
     'registrationForm' => $form->createView(),
 ]);
 }

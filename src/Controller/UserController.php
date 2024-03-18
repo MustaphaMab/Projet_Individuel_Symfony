@@ -19,7 +19,7 @@ class UserController extends AbstractController
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $usersRepository): Response
     {
-        return $this->render('user/index.html.twig', [
+        return $this->render('Admin/user/index.html.twig', [
             'users' => $usersRepository->findAll(),
         ]);
     }
@@ -30,7 +30,7 @@ class UserController extends AbstractController
     public function new(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $form = $this->createForm(UsersType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,7 +49,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('user/new.html.twig', [
+        return $this->render('Admin/user/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -58,7 +58,7 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_users_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
+        return $this->render('Admin/user/show.html.twig', [
             'user' => $user,
         ]);
     }
@@ -66,7 +66,7 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'app_users_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(UsersType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -75,7 +75,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('Admin/user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);

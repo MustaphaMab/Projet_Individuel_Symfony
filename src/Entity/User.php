@@ -47,8 +47,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "json")]
 private array $roles = [];
 
-    #[ORM\Column(length: 255)]
-    private ?string $Ville = null;
+ 
 
     public function getRoles(): array
     {
@@ -213,17 +212,7 @@ private array $roles = [];
         return $this;
     }
 
-    public function getVille(): ?string
-    {
-        return $this->Ville;
-    }
-
-    public function setVille(string $Ville): static
-    {
-        $this->Ville = $Ville;
-
-        return $this;
-    }
+  
 
     
 }

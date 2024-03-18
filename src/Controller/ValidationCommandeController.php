@@ -11,7 +11,7 @@ class ValidationCommandeController extends AbstractController
     #[Route('/validation/commande', name: 'app_validation_commande')]
     public function index(): Response
     {
-        return $this->render('validation_commande/index.html.twig', [
+        return $this->render('Users/validation_commande/index.html.twig', [
             'controller_name' => 'ValidationCommandeController',
         ]);
     }
