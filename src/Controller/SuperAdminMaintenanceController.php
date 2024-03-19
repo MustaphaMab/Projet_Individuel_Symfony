@@ -11,7 +11,7 @@ class SuperAdminMaintenanceController extends AbstractController
     #[Route('/super/admin/maintenance', name: 'app_super_admin_maintenance')]
     public function index(): Response
     {
-        return $this->render('super_admin_maintenance/index.html.twig', [
+        return $this->render('SuperAdmin/super_admin_maintenance/index.html.twig', [
             'controller_name' => 'SuperAdminMaintenanceController',
         ]);
     }

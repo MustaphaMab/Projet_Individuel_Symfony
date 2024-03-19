@@ -11,7 +11,7 @@ class AcceuilSuperAdminController extends AbstractController
     #[Route('/acceuil/super/admin', name: 'app_acceuil_super_admin')]
     public function index(): Response
     {
-        return $this->render('acceuil_super_admin/index.html.twig', [
+        return $this->render('SuperAdmin/acceuil_super_admin/index.html.twig', [
             'controller_name' => 'AcceuilSuperAdminController',
         ]);
     }

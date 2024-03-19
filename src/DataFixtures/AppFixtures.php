@@ -11,7 +11,7 @@ use App\Entity\LigneCommande;
 use App\Entity\Livraison;
 use App\Entity\PaiementCommande;
 use App\Entity\Produit;
-use App\Entity\Users;
+use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
@@ -48,7 +48,7 @@ class AppFixtures extends Fixture
         //USERS
 
         for ($i = 0; $i < 30; $i++) {
-            $user = new Users();
+            $user = new User();
 
             $roles = ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN'];
             $randomRole = $faker->randomElement($roles); // Sélectionne un rôle aléatoirement

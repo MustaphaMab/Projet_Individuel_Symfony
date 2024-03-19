@@ -11,7 +11,7 @@ class SuperAdminSecuriteeAvanceeController extends AbstractController
     #[Route('/super/admin/securitee/avancee', name: 'app_super_admin_securitee_avancee')]
     public function index(): Response
     {
-        return $this->render('super_admin_securitee_avancee/index.html.twig', [
+        return $this->render('SuperAdmin/super_admin_securitee_avancee/index.html.twig', [
             'controller_name' => 'SuperAdminSecuriteeAvanceeController',
         ]);
     }

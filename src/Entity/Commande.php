@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,7 +26,7 @@ private ?\DateTimeInterface $date = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $users = null;
+    private ?User $users = null;
 
     public function getId(): ?int
     {
@@ -59,12 +57,12 @@ private ?\DateTimeInterface $date = null;
     }
 
 
-    public function getUsers(): ?users
+    public function getUser(): ?User
     {
         return $this->users;
     }
 
-    public function setUsers(users $users): static
+    public function setUser(user $users): static
     {
         $this->users = $users;
 

@@ -17,7 +17,7 @@ class PaiementCommandeController extends AbstractController
     #[Route('/', name: 'app_paiement_commande_index', methods: ['GET'])]
     public function index(PaiementCommandeRepository $paiementCommandeRepository): Response
     {
-        return $this->render('paiement_commande/index.html.twig', [
+        return $this->render('Users/paiement_commande/index.html.twig', [
             'paiement_commandes' => $paiementCommandeRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class PaiementCommandeController extends AbstractController
             return $this->redirectToRoute('app_paiement_commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('paiement_commande/new.html.twig', [
+        return $this->render('Users/paiement_commande/new.html.twig', [
             'paiement_commande' => $paiementCommande,
             'form' => $form,
         ]);
@@ -45,7 +45,7 @@ class PaiementCommandeController extends AbstractController
     #[Route('/{id}', name: 'app_paiement_commande_show', methods: ['GET'])]
     public function show(PaiementCommande $paiementCommande): Response
     {
-        return $this->render('paiement_commande/show.html.twig', [
+        return $this->render('Users/paiement_commande/show.html.twig', [
             'paiement_commande' => $paiementCommande,
         ]);
     }
@@ -62,7 +62,7 @@ class PaiementCommandeController extends AbstractController
             return $this->redirectToRoute('app_paiement_commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('paiement_commande/edit.html.twig', [
+        return $this->render('Users/paiement_commande/edit.html.twig', [
             'paiement_commande' => $paiementCommande,
             'form' => $form,
         ]);

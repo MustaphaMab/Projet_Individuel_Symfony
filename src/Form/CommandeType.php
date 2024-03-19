@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Commande;
-use App\Entity\Users;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ class CommandeType extends AbstractType
             ->add('Date')
             ->add('Commentaire')
             ->add('user', EntityType::class, [
-                'class' => Users::class,
+                'class' => User::class,
 'choice_label' => 'id',
             ])
         ;

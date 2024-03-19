@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\Users;
-use App\Form\UsersType;
+use App\Entity\User;
+use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,8 +16,8 @@ class InscriptionController extends AbstractController
 #[Route('/register', name: 'app_register')]
 public function register(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager)
 {
-    $user = new Users();
-    $form = $this->createForm(UsersType::class, $user);
+    $user = new User();
+    $form = $this->createForm(UserType::class, $user);
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
@@ -37,7 +37,7 @@ public function register(Request $request, UserPasswordHasherInterface $password
     }
 
 
-    return $this->render('inscription/index.html.twig', [
+    return $this->render('Users/inscription/index.html.twig', [
     'registrationForm' => $form->createView(),
 ]);
 }

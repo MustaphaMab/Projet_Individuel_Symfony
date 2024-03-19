@@ -29,6 +29,10 @@ class PaiementCommande
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Commande $Commande = null;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getId(): ?int
     {
@@ -40,7 +44,7 @@ class PaiementCommande
         return $this->Montant;
     }
 
-    public function setMontant(string $Montant): static
+    public function setMontant(float $Montant): static
     {
         $this->Montant = $Montant;
 

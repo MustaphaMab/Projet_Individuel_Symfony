@@ -11,7 +11,7 @@ class MesCommandesController extends AbstractController
     #[Route('/mes/commandes', name: 'app_mes_commandes')]
     public function index(): Response
     {
-        return $this->render('mes_commandes/index.html.twig', [
+        return $this->render('Users/mes_commandes/index.html.twig', [
             'controller_name' => 'MesCommandesController',
         ]);
     }
