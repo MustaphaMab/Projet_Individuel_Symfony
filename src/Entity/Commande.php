@@ -11,7 +11,7 @@ class Commande
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name: "Id_Commande")]
     private ?int $id = null;
 
 
@@ -25,7 +25,7 @@ private ?\DateTimeInterface $date = null;
    
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: "Id_User", referencedColumnName: "Id_User",nullable: false)]
     private ?User $users = null;
 
     public function getId(): ?int

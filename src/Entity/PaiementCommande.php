@@ -26,13 +26,9 @@ class PaiementCommande
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)] 
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false, name:"Id_Commande", referencedColumnName: "Id_Commande")]
     private ?Commande $Commande = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getId(): ?int
     {
@@ -97,6 +93,8 @@ class PaiementCommande
 
         return $this;
     }
+
+
 
    
 }

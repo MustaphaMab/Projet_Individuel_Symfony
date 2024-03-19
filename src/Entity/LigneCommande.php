@@ -11,13 +11,15 @@ class LigneCommande
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name: "Id_Ligne_Commande")]
     private ?int $id = null;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(name: "Id_Commande", referencedColumnName: "Id_Commande",nullable: false)]
     private ?Commande $Commande = null;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(name: "Id_Produit", referencedColumnName: "Id_Produit",nullable: false)]
     private ?Produit $Produit = null;
 
     #[ORM\Column(type: Types::BIGINT)]
