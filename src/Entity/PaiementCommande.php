@@ -15,7 +15,7 @@ class PaiementCommande
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?float $Montant = null;
+    private ?string $Montant = null;
 
     #[ORM\Column(length: 50)]
     private ?string $Methode = null;
@@ -29,6 +29,11 @@ class PaiementCommande
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Commande $Commande = null;
 
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getMontant(): ?string
     {
