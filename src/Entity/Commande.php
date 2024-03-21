@@ -16,7 +16,7 @@ class Commande
 
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-private ?\DateTimeInterface $date = null;
+private ?\DateTimeInterface $dates = null;
 
   
     #[ORM\Column(length: 255)]
@@ -25,7 +25,7 @@ private ?\DateTimeInterface $date = null;
    
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(name: "Id_User", referencedColumnName: "Id_User",nullable: false)]
+    #[ORM\JoinColumn(name: "Id_User", referencedColumnName: "Id_user",nullable: false)]
     private ?User $users = null;
 
     public function getId(): ?int
@@ -35,12 +35,12 @@ private ?\DateTimeInterface $date = null;
 
     public function getDate(): ?string
     {
-        return $this->date;
+        return $this->dates;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $dates): self
     {
-        $this->date = $date;
+        $this->dates = $dates;
         return $this;
     }
 

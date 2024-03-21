@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class DeconnexionOkController extends AbstractController
+class CommandeAdminController extends AbstractController
 {
-    #[Route('/deconnexion/ok', name: 'app_deconnexion_ok')]
+    #[Route('/commande/admin', name: 'app_commande_admin')]
     public function index(): Response
     {
-        return $this->render('deconnexion_ok/index.html.twig', [
-            'controller_name' => 'DeconnexionOkController',
+        return $this->render('commande_admin/index.html.twig', [
+            'controller_name' => 'CommandeAdminController',
         ]);
     }
 }

@@ -11,7 +11,7 @@ class PaiementCommande
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name:"Id_Paiement_Commande")]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
@@ -24,7 +24,7 @@ class PaiementCommande
     private ?string $Statut = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)] 
-    private ?\DateTimeInterface $date = null;
+    private ?\DateTimeInterface $dates = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false, name:"Id_Commande", referencedColumnName: "Id_Commande")]
@@ -73,12 +73,12 @@ class PaiementCommande
 
     public function getDate(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->dates;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(\DateTimeInterface $dates): self
     {
-        $this->date = $date;
+        $this->dates = $dates;
         return $this;
     }
 

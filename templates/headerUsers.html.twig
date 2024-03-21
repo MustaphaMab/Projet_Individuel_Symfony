@@ -1,11 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
-	<div
-		class="container-fluid">
+	<div class="container-fluid">
 		<!-- Utilise container-fluid ici -->
+
+		<!-- logo navbar -->
+			<a class="navbar-brand"> <img src="/images/logo_header.jpg" alt="Logo Sasako" width="30" height="30">
+		</a>
+
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 
@@ -15,7 +18,7 @@
 					<!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
 
 					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_catalogue') }}">Catalogue</a>
+						<a class="nav-link" href="{{ path('app_mes_commandes') }}">Catalogue</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_panier') }}">Panier</a>

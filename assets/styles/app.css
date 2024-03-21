@@ -1,37 +1,62 @@
+/* Styles de base, appliqués sur mobile */
+
+
 body {
+  /* background-image: url('/images/image_de_fond1.jpg');
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;  */
+  
   background-color: #f2f2f2;
 }
-
 h1 {
   text-align: center;
 }
+/* ********************************************************************* NAVBAR ****************************************************************** */
 
 .navbar {
-  background-color: #003366 !important; /* ou toute autre couleur que tu souhaites */
-
-}
-#navbarNavDropdown {
-  display: flex;
-  flex-direction: row;
- 
+  background-color: #d3a819; /* Couleur par défaut pour les mobiles */
 }
 
 .nav-link {
-  border: 2px solid #fff; /* Bordure blanche, ajuste selon tes préférences */
-  border-radius: 15px; /* Arrondir les angles */
+  border: 2px solid #fff; /* Bordure blanche */
+  border-radius: 15px; /* Arrondi les angles */  
   margin: 5px; /* Espacement autour des liens */
   padding: 5px 10px; /* Espacement intérieur pour agrandir le lien */
   transition: background-color 0.2s; /* Animation pour l'interaction */
 }
 
-/* Changement de couleur au survol */
 .nav-link:hover {
-  background-color: #ddd; /* Couleur de fond au survol, ajuste selon tes préférences */
-  color: #333; /* Couleur du texte au survol, ajuste selon tes préférences */
+  background-color: #ddd; /* Couleur de fond au survol */
+  color: #333; /* Couleur du texte au survol */
 }
+
+.navbar {
+  background-color: #003366; 
+  width: 100%;
+  height: 100px !important;
+}
+
+/* ************************************************************ FIN NAVBAR *********************************************************************** */
 
 
 
 footer {
-  background-color: #003366 !important; /* Assure-toi que cela cible ton footer spécifiquement */
+  background-color: #003366; 
 }
+
+
+
+/******************************************* Media query pour les tablettes *************************/
+@media (min-width: 768px) {
+  
+
+}
+
+/*************************************************** Media query pour les desktops **********************************/
+@media (min-width: 992px) {
+  
+ 
+}
+
+

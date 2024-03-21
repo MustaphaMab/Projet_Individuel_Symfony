@@ -87,10 +87,6 @@ class Livraison
         return $this;
     }
 
-
-  
-   
-
     public function getCommande(): ?Commande
     {
         return $this->Commande;
