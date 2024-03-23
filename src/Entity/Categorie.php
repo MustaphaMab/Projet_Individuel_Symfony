@@ -19,6 +19,8 @@ class Categorie
     #[ORM\Column(length: 50)]
     private ?string $Nom = null;
 
+    
+
     public function __toString(): string
     {
         return $this->Nom; }

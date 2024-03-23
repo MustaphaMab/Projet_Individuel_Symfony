@@ -6,6 +6,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
+
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -47,7 +48,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "json")]
 private array $roles = [];
 
- 
+
+public function __toString(): string
+{
+    // Retourne l'email ou un autre attribut significatif
+    return $this->email;
+}
 
     public function getRoles(): array
     {
@@ -211,8 +217,6 @@ private array $roles = [];
 
         return $this;
     }
-
-  
 
     
 }

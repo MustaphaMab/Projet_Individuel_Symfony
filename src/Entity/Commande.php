@@ -16,29 +16,35 @@ class Commande
 
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
-private ?\DateTimeInterface $dates = null;
+    private ?\DateTimeInterface $dates = null;
 
-  
+
     #[ORM\Column(length: 255)]
     private ?string $Commentaire = null;
 
-   
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $quantite = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(name: "Id_User", referencedColumnName: "Id_user",nullable: false)]
+    #[ORM\JoinColumn(name: "Id_User", referencedColumnName: "Id_user", nullable: false)]
     private ?User $users = null;
+
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: LigneCommande::class, cascade: ['persist', 'remove'])]
+    private $ligneCommandes;
+
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDate(): ?string
+    public function getDates(): ?string
     {
         return $this->dates;
     }
 
-    public function setDate(\DateTimeInterface $dates): self
+    public function setDates(\DateTimeInterface $dates): self
     {
         $this->dates = $dates;
         return $this;
@@ -57,12 +63,12 @@ private ?\DateTimeInterface $dates = null;
     }
 
 
-    public function getUser(): ?User
+    public function getUsers(): ?User
     {
         return $this->users;
     }
 
-    public function setUser(user $users): static
+    public function setUsers(user $users): static
     {
         $this->users = $users;
 
@@ -70,4 +76,6 @@ private ?\DateTimeInterface $dates = null;
     }
 
    
+
+ 
 }
