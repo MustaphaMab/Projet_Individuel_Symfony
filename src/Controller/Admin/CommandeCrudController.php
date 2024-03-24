@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use App\Form\LigneCommandeType;
 
 class CommandeCrudController extends AbstractCrudController
 {
@@ -23,15 +24,15 @@ class CommandeCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            // IdField::new('id'),
             IntegerField::new('quantite', 'Quantité'),
             DateTimeField::new('dates', 'Date')
                 ->setFormat('dd/MM/yyyy HH:mm:ss'),
             TextEditorField::new('commentaire', 'Commentaire'),
             AssociationField::new('users', 'Utilisateur'),
-            CollectionField::new('ligneCommandes')
-    ->setEntryType(LigneCommandeType::class)
-    ->setFormTypeOptions(['by_reference' => false]),
+            CollectionField::new('ligneCommandes', 'Produits')
+                ->setEntryType(LigneCommandeType::class)
+                ->setFormTypeOptions(['by_reference' => false]),
 
         ];
     }

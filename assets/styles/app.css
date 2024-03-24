@@ -1,62 +1,189 @@
-/* Styles de base, appliqués sur mobile */
-
-
-body {
-  /* background-image: url('/images/image_de_fond1.jpg');
-  background-size: auto;
-  background-position: center;
-  background-repeat: no-repeat;  */
-  
-  background-color: #f2f2f2;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  background: #f4f4f4;
 }
-h1 {
-  text-align: center;
-}
-/* ********************************************************************* NAVBAR ****************************************************************** */
 
+/******************************************** NAVBAR *****************************************/
 .navbar {
-  background-color: #d3a819; /* Couleur par défaut pour les mobiles */
+  background-color: #0f5494; 
+  /* padding: 20px 0;  */
+}
+
+.menu-sandwich {
+  width: 120px;
+  height: 120px;
+}
+
+.logo_header {
+  width: 100px; 
+  height: 100px;
+  margin: 0 auto; 
+  border-radius: 50%;
 }
 
 .nav-link {
-  border: 2px solid #fff; /* Bordure blanche */
-  border-radius: 15px; /* Arrondi les angles */  
-  margin: 5px; /* Espacement autour des liens */
-  padding: 5px 10px; /* Espacement intérieur pour agrandir le lien */
-  transition: background-color 0.2s; /* Animation pour l'interaction */
+  color: #f2f2f2; 
+  margin: 0 30px;
+  transition: color 0.3s ease; /* Animation de couleur */
 }
 
-.nav-link:hover {
-  background-color: #ddd; /* Couleur de fond au survol */
-  color: #333; /* Couleur du texte au survol */
+.nav-link:hover,
+.nav-link:focus {
+  color: #c5c5c5; /* Changement de couleur au survol */
 }
 
-.navbar {
-  background-color: #003366; 
-  width: 100%;
-  height: 100px !important;
+.navbar-toggler {
+  border-color: #f2f2f2; /* Pour s'aligner avec la couleur des liens */
 }
 
-/* ************************************************************ FIN NAVBAR *********************************************************************** */
+/******************************************** FOOTER ************************************/
+.site-footer {
+  background-color:#0f5494;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#000000;
+}
+.site-footer hr {
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small {
+  margin:20px 0
+}
+.site-footer h6 {
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a {
+  color:#000000;
+}
+.site-footer a:hover {
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links {
+  padding-left: 0;
+  list-style: none
+}
+.footer-links li {
+  display:block
+}
+.footer-links a {
+  color: #000000
+}
+.footer-links a:active, .footer-links a:focus, .footer-links a:hover {
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li {
+  display: inline-block
+}
+.site-footer .social-icons {
+  text-align:right
+}
+.site-footer .social-icons a {
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+/* ************************************* FIN FOOTER  ******************************************************************/
 
-
-
-footer {
-  background-color: #003366; 
+@media (max-width:991px) {
+  .site-footer [class^=col-] {
+    margin-bottom:30px
+  }
 }
 
 
+@media (max-width: 992px) {
+  .logo_header {
+    width: 100px; /* Plus petit sur les appareils mobiles */
+    height: 100px;
+  }
 
-/******************************************* Media query pour les tablettes *************************/
-@media (min-width: 768px) {
-  
+  .navbar-toggler {
+    margin-right: 20px; 
+  }
 
+
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    /* padding: 20px; */
+    box-sizing: border-box;
 }
 
-/*************************************************** Media query pour les desktops **********************************/
-@media (min-width: 992px) {
-  
- 
+.hero-section {
+    flex-grow: 1;
+    width: 100%; 
+    text-align: center;
+    /* padding: 40px; */
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.sidebar-info {
+    width: 100%; 
+    padding: 20px;
+    background: #ffffff;
+    color: rgb(3, 3, 3);
+    
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
+.action-buttons {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #0A3B6C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+h1, h2, p {
+    margin: 0 0 20px 0;
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* .hero-section, .sidebar-info {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    } */
+}
+
+}

@@ -1,12 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
-	<div class="container-fluid">
-		<!-- Utilise container-fluid ici -->
+	<div class="container-fluid d-flex justify-content-between">
+		
 
 		<!-- logo navbar -->
-			<a class="navbar-brand"> <img src="/images/logo_header.jpg" alt="Logo Sasako" width="30" height="30">
-		</a>
+			<div class="mx-auto logo_header"> 
+			<img class="logo_header" src="/images/logo_header.jpg" alt="logo_header.jpg">
+			</div>
 
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
+		<button class="navbar-toggler menu-sandwich" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
@@ -33,7 +35,7 @@
 				{% else %}
 					<!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
 					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+						<a class="nav-link" href="{{ path('app_login') }}">ccConnexion</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>

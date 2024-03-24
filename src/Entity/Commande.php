@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use App\Repository\CommandeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -14,16 +16,13 @@ class Commande
     #[ORM\Column(name: "Id_Commande")]
     private ?int $id = null;
 
-
+    
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeInterface $dates = null;
 
 
     #[ORM\Column(length: 255)]
     private ?string $Commentaire = null;
-
-    #[ORM\Column(type: Types::INTEGER)]
-    private ?int $quantite = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: "Id_User", referencedColumnName: "Id_user", nullable: false)]
@@ -32,14 +31,57 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: LigneCommande::class, cascade: ['persist', 'remove'])]
     private $ligneCommandes;
 
+    /**
+     * @return Collection|LigneCommande[]
+     */
+    public function getLigneCommandes(): Collection
+    {
+        return $this->ligneCommandes;
+    }
 
+    public function __construct()
+    {
+        $this->ligneCommandes = new ArrayCollection();
+    }
+    public function addLigneCommande(LigneCommande $ligneCommande): self
+    {
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes[] = $ligneCommande;
+            $ligneCommande->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCommande(LigneCommande $ligneCommande): self
+    {
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
+            // set the owning side to null (unless already changed)
+            if ($ligneCommande->getCommande() === $this) {
+                $ligneCommande->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+    public function getQuantite(): int
+    {
+        $totalQuantite = 0;
+        foreach ($this->ligneCommandes as $ligneCommande) {
+            $totalQuantite += $ligneCommande->getQuantite();
+        }
+        return $totalQuantite;
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDates(): ?string
+    public function getDates(): ?\DateTimeInterface
     {
         return $this->dates;
     }
@@ -74,8 +116,4 @@ class Commande
 
         return $this;
     }
-
-   
-
- 
 }
