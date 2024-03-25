@@ -11,19 +11,21 @@ html {
 /******************************************** NAVBAR *****************************************/
 .navbar {
   background-color: #0f5494; 
-  /* padding: 20px 0;  */
+  height: 104px;
+  margin-bottom: 150px;
 }
 
 .menu-sandwich {
-  width: 120px;
-  height: 120px;
+  width: 40px;
+  height: 40px;
 }
 
 .logo_header {
-  width: 100px; 
-  height: 100px;
+  width: 200px; 
+  height: 200px;
   margin: 0 auto; 
   border-radius: 50%;
+  display: block; /* Assure que l'image du logo est centrée dans sa div */
 }
 
 .nav-link {
@@ -40,6 +42,13 @@ html {
 .navbar-toggler {
   border-color: #f2f2f2; /* Pour s'aligner avec la couleur des liens */
 }
+
+.nav-item {
+  font-size: 16px;
+}
+
+/******************************************** FIN NAVBAR *****************************************/
+
 
 /******************************************** FOOTER ************************************/
 .site-footer {
@@ -99,91 +108,45 @@ html {
   border-radius:100%;
   background-color:#33353d
 }
-/* ************************************* FIN FOOTER  ******************************************************************/
+/* ************************************* FIN FOOTER  ***************************************************************** */
 
-@media (max-width:991px) {
-  .site-footer [class^=col-] {
-    margin-bottom:30px
-  }
-}
+/* ************************************* MEDIA QUERY **************************************************************** */
 
-
-@media (max-width: 992px) {
+@media (max-width: 575.98px) {
   .logo_header {
-    width: 100px; /* Plus petit sur les appareils mobiles */
+    width: 100px; /* Plus petit sur x-small devices */
     height: 100px;
   }
-
-  .navbar-toggler {
-    margin-right: 20px; 
+  
+  .nav-link, .nav-item {
+    font-size: 14px; /* Texte plus petit pour s'adapter aux écrans étroits */
   }
-
-
-  .main-content {
-    display: flex;
-    justify-content: space-between;
-    /* padding: 20px; */
-    box-sizing: border-box;
 }
 
-.hero-section {
-    flex-grow: 1;
-    width: 100%; 
+@media (max-width: 767.98px) {
+ 
+}
+
+@media (max-width: 991.98px) {
+  .menu-sandwich {
+    width: 30px; 
+    height: 30px;
+  } 
+  h1 {
+    font-size: 40px;
     text-align: center;
-    /* padding: 40px; */
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   margin: 50px
+  }
+  h2 {
+    text-align: center;
+    margin: 30px;
+  }
 }
 
-.sidebar-info {
-    width: 100%; 
-    padding: 20px;
-    background: #ffffff;
-    color: rgb(3, 3, 3);
-    
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+@media (max-width: 1199.98px) {
+  
 }
 
-.action-buttons {
-    margin-top: 20px;
-}
-
-.btn-primary {
-    background-color: #0A3B6C;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-}
-
-h1, h2, p {
-    margin: 0 0 20px 0;
-}
-
-@media (max-width: 992px) {
-    .main-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* .hero-section, .sidebar-info {
-        max-width: 100%;
-        margin-right: 0;
-        margin-bottom: 20px;
-    } */
-}
-
+@media (max-width: 1399.98px) {
+   
 }
