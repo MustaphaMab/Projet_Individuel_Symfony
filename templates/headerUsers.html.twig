@@ -1,51 +1,57 @@
+	{#********************************************* NAVBAR ************************************#}
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
-	<div class="container-fluid d-flex justify-content-between">
-		
+	<div
+		class="container-fluid d-flex justify-content-between">
 
-		<!-- logo navbar -->
-			<div class="mx-auto logo_header"> 
-			<img class="logo_header" src="/images/logo_header.jpg" alt="logo_header.jpg">
+		<nav class="navbar navbar-dark bg-primary fixed-top ">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#"></a>
+				<img src="/images/logo_header.jpg" alt="Logo" class="logo_header" height="150">
+				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+					<div class="offcanvas-header">
+						<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+						<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">Connexion</a>
+							</li>
+							{% if app.user %}
+								<!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
+
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_mes_commandes') }}">Catalogue</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_panier') }}">Panier</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+								</li>
+
+							{% else %}
+								<!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
+
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+								</li>
+							{% endif %}
+
+						</ul>
+					</div>
+				</div>
 			</div>
-
-
-		<button class="navbar-toggler menu-sandwich" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-			<ul class="navbar-nav ms-auto">
-
-				{% if app.user %}
-					<!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
-
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_mes_commandes') }}">Catalogue</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_panier') }}">Panier</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
-					</li>
-
-				{% else %}
-					<!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_login') }}">ccConnexion</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
-					</li>
-				{% endif %}
-
-				
-			</ul>
-		</div>
+		</nav>
 	</nav>
+	{# ******************************************* FIN NAVBAR ********************************************************************************************** #}

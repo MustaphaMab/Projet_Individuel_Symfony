@@ -1,5 +1,5 @@
-body,
-html {
+/* Styles globaux */
+body, html {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -8,135 +8,74 @@ html {
   background: #f4f4f4;
 }
 
-/******************************************** NAVBAR *****************************************/
+/* Navbar */
 .navbar {
-  background-color: #0f5494; 
-  height: 104px;
-  margin-bottom: 150px;
+  height: 110px;
 }
 
-.menu-sandwich {
+.navbar-toggler-icon {
+  font-size: 40px;
+}
+
+.navbar-brand, .navbar-nav .nav-link, .navbar-toggler {
+  line-height: 50px;
+  padding: 0;
+  height: 100%;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #0f5494;
+  padding: 45px 0 20px;
+  color: #000;
+}
+
+.site-footer h6, .site-footer a {
+  color: #fff;
+}
+
+.site-footer a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+.footer-links, .footer-links li {
+  list-style: none;
+  padding-left: 0;
+}
+
+.site-footer .social-icons {
+  text-align: right;
+}
+
+.site-footer .social-icons a {
   width: 40px;
   height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  border-radius: 100%;
+  background-color: #33353d;
 }
 
-.logo_header {
-  width: 200px; 
-  height: 200px;
-  margin: 0 auto; 
-  border-radius: 50%;
-  display: block; /* Assure que l'image du logo est centrée dans sa div */
-}
-
-.nav-link {
-  color: #f2f2f2; 
-  margin: 0 30px;
-  transition: color 0.3s ease; /* Animation de couleur */
-}
-
-.nav-link:hover,
-.nav-link:focus {
-  color: #c5c5c5; /* Changement de couleur au survol */
-}
-
-.navbar-toggler {
-  border-color: #f2f2f2; /* Pour s'aligner avec la couleur des liens */
-}
-
-.nav-item {
-  font-size: 16px;
-}
-
-/******************************************** FIN NAVBAR *****************************************/
-
-
-/******************************************** FOOTER ************************************/
-.site-footer {
-  background-color:#0f5494;
-  padding:45px 0 20px;
-  font-size:15px;
-  line-height:24px;
-  color:#000000;
-}
-.site-footer hr {
-  border-top-color:#bbb;
-  opacity:0.5
-}
-.site-footer hr.small {
-  margin:20px 0
-}
-.site-footer h6 {
-  color:#fff;
-  font-size:16px;
-  text-transform:uppercase;
-  margin-top:5px;
-  letter-spacing:2px
-}
-.site-footer a {
-  color:#000000;
-}
-.site-footer a:hover {
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links {
-  padding-left: 0;
-  list-style: none
-}
-.footer-links li {
-  display:block
-}
-.footer-links a {
-  color: #000000
-}
-.footer-links a:active, .footer-links a:focus, .footer-links a:hover {
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links.inline li {
-  display: inline-block
-}
-.site-footer .social-icons {
-  text-align:right
-}
-.site-footer .social-icons a {
-  width:40px;
-  height:40px;
-  line-height:40px;
-  margin-left:6px;
-  margin-right:0;
-  border-radius:100%;
-  background-color:#33353d
-}
-/* ************************************* FIN FOOTER  ***************************************************************** */
-
-/* ************************************* MEDIA QUERY **************************************************************** */
-
+/************************************* Media Queries *******************************/
 @media (max-width: 575.98px) {
   .logo_header {
-    width: 100px; /* Plus petit sur x-small devices */
+    width: 100px;
     height: 100px;
   }
   
   .nav-link, .nav-item {
-    font-size: 14px; /* Texte plus petit pour s'adapter aux écrans étroits */
+    font-size: 14px;
   }
-}
-
-@media (max-width: 767.98px) {
- 
 }
 
 @media (max-width: 991.98px) {
-  .menu-sandwich {
-    width: 30px; 
-    height: 30px;
-  } 
   h1 {
     font-size: 40px;
     text-align: center;
-   margin: 50px
+    margin: 50px;
   }
+
   h2 {
     text-align: center;
     margin: 30px;
@@ -144,9 +83,11 @@ html {
 }
 
 @media (max-width: 1199.98px) {
-  
-}
-
-@media (max-width: 1399.98px) {
-   
+  .logo_header {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+  }
 }
