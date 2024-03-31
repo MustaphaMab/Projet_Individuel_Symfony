@@ -1,5 +1,6 @@
 /* Styles globaux */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -8,38 +9,25 @@ body, html {
   background: #f4f4f4;
 }
 
-/* Navbar */
-.navbar {
-  height: 110px;
-}
-
-.navbar-toggler-icon {
-  font-size: 40px;
-}
-
-.navbar-brand, .navbar-nav .nav-link, .navbar-toggler {
-  line-height: 50px;
-  padding: 0;
-  height: 100%;
-}
 
 /* Footer */
 .site-footer {
-  background-color: #0f5494;
   padding: 45px 0 20px;
   color: #000;
 }
 
-.site-footer h6, .site-footer a {
+.site-footer h6,
+.site-footer a {
   color: #fff;
 }
 
 .site-footer a:hover {
-  color: #3366cc;
+ 
   text-decoration: none;
 }
 
-.footer-links, .footer-links li {
+.footer-links,
+.footer-links li {
   list-style: none;
   padding-left: 0;
 }
@@ -55,7 +43,7 @@ body, html {
   margin-left: 6px;
   border-radius: 100%;
   background-color: #33353d;
-}
+/* } 
 
 /************************************* Media Queries *******************************/
 @media (max-width: 575.98px) {
@@ -63,8 +51,9 @@ body, html {
     width: 100px;
     height: 100px;
   }
-  
-  .nav-link, .nav-item {
+
+  .nav-link,
+  .nav-item {
     font-size: 14px;
   }
 }
@@ -90,4 +79,5 @@ body, html {
     border-radius: 50%;
     display: block;
   }
+}
 }

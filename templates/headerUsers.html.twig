@@ -1,57 +1,62 @@
-	{#********************************************* NAVBAR ************************************#}
+{#********************************************* NAVBAR ************************************#}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
-	<div
-		class="container-fluid d-flex justify-content-between">
-
-		<nav class="navbar navbar-dark bg-primary fixed-top ">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#"></a>
-				<img src="/images/logo_header.jpg" alt="Logo" class="logo_header" height="150">
-				<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-						<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-					<div class="offcanvas-body">
-						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">Connexion</a>
-							</li>
-							{% if app.user %}
-								<!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
-
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_mes_commandes') }}">Catalogue</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_panier') }}">Panier</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
-								</li>
-
-							{% else %}
-								<!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
-
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
-								</li>
-							{% endif %}
-
-						</ul>
-					</div>
-				</div>
+<nav class="navbar bg-body-tertiary fixed-top">
+	<div class="container-fluid">
+		<img src="/images/logo_header.jpg" alt="Logo" class="logo_header" height="150">
+		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas-header">
+				<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 			</div>
-		</nav>
-	</nav>
-	{# ******************************************* FIN NAVBAR ********************************************************************************************** #}
+			<div class="offcanvas-body">
+				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Menu
+						</a>
+						<ul class="dropdown-menu">
+
+
+							<a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">Connexion</a>
+						</li>
+
+						{% if app.user %}
+							<!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
+
+							<li>
+								<a class="nav-link" href="{{ path('app_mes_commandes') }}">Catalogue</a>
+							</li>
+							<li>
+								<a class="nav-link" href="{{ path('app_panier') }}">Panier</a>
+							</li>
+							<li>
+								<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+							</li>
+
+						{% else %}
+							<!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
+
+							<li>
+								<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+							</li>
+
+						{% endif %}
+
+						<hr class="dropdown-divider">
+					</li>
+					{# <li>
+																															<a class="dropdown-item" href="#">Something else here</a>
+																														</li> #}
+				</ul>
+			</li>
+		</ul>
+		<form class="d-flex mt-3" role="search">
+			<input class="form-control me-2" type="search" placeholder="" aria-label="Recherche">
+			<button class="btn btn-outline-success" type="submit">Rechercher</button>
+		</form>
+	</div>
+</div></div></nav></ul></div></div></div></nav></script>{# ******************************************* FIN NAVBAR ********************************************************************************************** #}
