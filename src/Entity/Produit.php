@@ -11,7 +11,7 @@ class Produit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name: "Id_Produit")]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
@@ -29,9 +29,9 @@ class Produit
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $Prix = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Categorie $Produit = null;
-
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false, name: "Id_Categorie", referencedColumnName:"Id_Categorie")]
+    private ?Categorie $Categorie = null;
     
     public function getId(): ?int
     {
@@ -98,14 +98,14 @@ class Produit
         return $this;
     }
 
-    public function getProduit(): ?Categorie
+    public function getCategorie(): ?Categorie
     {
-        return $this->Produit;
+        return $this->Categorie;
     }
 
-    public function setProduit(?Categorie $Produit): static
+    public function setCategorie(?Categorie $Categorie): static
     {
-        $this->Produit = $Produit;
+        $this->Categorie = $Categorie;
 
         return $this;
     }

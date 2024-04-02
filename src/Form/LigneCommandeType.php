@@ -15,18 +15,17 @@ class LigneCommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('ligne_commande')
-            ->add('prix_total')
-            ->add('Methode')
-            ->add('Quantite')
-            ->add('Commentaire')
+            ->add('quantite')
+            ->add('prixTotal')
+            ->add('commentaire')
+            
             ->add('commande', EntityType::class, [
                 'class' => Commande::class,
-'choice_label' => 'id',
+                'choice_label' => 'id', 
             ])
-            ->add('Produit', EntityType::class, [
+            ->add('produit', EntityType::class, [
                 'class' => Produit::class,
-'choice_label' => 'id',
+                'choice_label' => 'nom', // Utiliser le nom du produit pour le choix
             ])
         ;
     }

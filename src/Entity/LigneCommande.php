@@ -11,20 +11,22 @@ class LigneCommande
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name: "Id_Ligne_Commande")]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Commande::class, inversedBy: 'ligneCommandes')]
+    #[ORM\JoinColumn(name: "Id_Commande", referencedColumnName: "Id_Commande", nullable: false)]
     private ?Commande $Commande = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Produit::class)]
+    #[ORM\JoinColumn(name: "Id_Produit", referencedColumnName: "Id_Produit", nullable: false)]
     private ?Produit $Produit = null;
 
-    #[ORM\Column(type: Types::BIGINT)]
-    private ?string $Quantite = null;
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?int $Quantite = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
-    private ?string $Prix_Total = null;
+    private ?float $Prix_Total = null;
 
     public function getId(): ?int
     {
@@ -36,7 +38,7 @@ class LigneCommande
         return $this->Commande;
     }
 
-    public function setCommande(?Commande $Commande): static
+    public function setCommande(?Commande $Commande): self
     {
         $this->Commande = $Commande;
 
@@ -48,19 +50,19 @@ class LigneCommande
         return $this->Produit;
     }
 
-    public function setProduit(?Produit $Produit): static
+    public function setProduit(?Produit $Produit): self
     {
         $this->Produit = $Produit;
 
         return $this;
     }
 
-    public function getQuantite(): ?string
+    public function getQuantite(): ?int
     {
         return $this->Quantite;
     }
 
-    public function setQuantite(string $Quantite): static
+    public function setQuantite(int $Quantite): self
     {
         $this->Quantite = $Quantite;
 
@@ -72,7 +74,7 @@ class LigneCommande
         return $this->Prix_Total;
     }
 
-    public function setPrixTotal(string $Prix_Total): static
+    public function setPrixTotal(float $Prix_Total): self
     {
         $this->Prix_Total = $Prix_Total;
 

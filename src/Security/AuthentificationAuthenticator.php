@@ -54,7 +54,7 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
         if (in_array('ROLE_SUPER_ADMIN', $roles)) {
             $redirectRoute = 'app_acceuil_super_admin'; 
         } elseif (in_array('ROLE_ADMIN', $roles)) {
-            $redirectRoute = 'app_acceuil_admin'; 
+            $redirectRoute = 'admin'; 
         } else {
             // Par défaut, redirige les utilisateurs ayant le rôle USER (ou sans rôle spécifique) vers une page d'accueil pour les utilisateurs
             $redirectRoute = 'app_accueil_user_connexion_ok'; // Remplacer par la route de la page d'accueil de l'utilisateur
