@@ -1,6 +1,6 @@
 {#********************************************* NAVBAR ************************************#}
 
-<nav class="navbar bg-body-tertiary fixed-top">
+<nav class="navbar bg-body-tertiary fixed-top navbar-custom-padding">
 	<div class="container-fluid">
 		<img src="/images/logo_header.jpg" alt="Logo" class="logo_header" height="150">
 		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
 						<ul class="dropdown-menu">
 
 
-							<a class="nav-link active" aria-current="page" href="{{ path('app_register') }}">Connexion</a>
+							<a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
 						</li>
 
 						{% if app.user %}
@@ -49,8 +49,8 @@
 						<hr class="dropdown-divider">
 					</li>
 					{# <li>
-																															<a class="dropdown-item" href="#">Something else here</a>
-																														</li> #}
+																																				<a class="dropdown-item" href="#">Something else here</a>
+																																			</li> #}
 				</ul>
 			</li>
 		</ul>
