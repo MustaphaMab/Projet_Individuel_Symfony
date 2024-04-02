@@ -34,11 +34,7 @@ class PaiementCommande
         return $this->id;
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
+   
     public function getMontant(): ?string
     {
         return $this->Montant;
