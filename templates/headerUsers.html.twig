@@ -2,16 +2,17 @@
 
 <nav class="navbar bg-body-tertiary fixed-top navbar-custom-padding">
 	<div class="container-fluid">
-		<img src="/images/logo_header.jpg" alt="Logo" class="logo_header" height="150">
-		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+		<img src="/images/logo_header.jpg" alt="Logo" class="logo_header" >
+		<button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 			<div class="offcanvas-header">
-				<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+				
 				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 			</div>
-			<div class="offcanvas-body">
+
+			<div class="offcanvas-body open-burger">
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
 					<li class="nav-item dropdown">

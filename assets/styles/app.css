@@ -1,6 +1,5 @@
 /* Styles globaux */
-body,
-html {
+body, html {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -14,41 +13,47 @@ html {
   padding: 1%;
 }
 
-/**********/
-
-/* Main */
-
-
-.main-home {  /* espace entre le main et le header, a cause de bootstrap FIXED-TOP */
-  padding: 25%;
+.custom-toggler, .custom-toggler .navbar-toggler-icon { 
+  width: 100px;
+  height: 100px;
+  background-color: transparent; 
+  border: none; 
+  padding: 0;
 }
 
+.offcanvas {
+  width: 75% !important; 
+}
 
-/*************/
+.offcanvas-body .nav-link {
+  font-size: 4rem; /* Taille plus grande */
+  line-height: 1.5;   /* Espacement vertical ajusté */
+  /* font-weight: 500; Optionnel: rend le texte un peu plus gras si nécessaire */
+}
+
+.offcanvas-header {
+  font-size: 4rem; /* Taille plus grande */
+  line-height: 1.5;
+}
+
+/* Main */
+.main-home {  /* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
+  padding: 25%;
+}
 
 /* Footer */
 .site-footer {
   padding: 45px 0 20px;
-  color: #000;
-}
-
-.site-footer h6,
-.site-footer a {
-  color: #fff;
+  color: #fff; /* Couleur de texte unifiée pour le footer */
 }
 
 .site-footer a:hover {
- 
   text-decoration: none;
 }
 
-.footer-links,
-.footer-links li {
+.footer-links, .footer-links li, .site-footer .social-icons {
   list-style: none;
   padding-left: 0;
-}
-
-.site-footer .social-icons {
   text-align: right;
 }
 
@@ -58,36 +63,28 @@ html {
   line-height: 40px;
   margin-left: 6px;
   border-radius: 100%;
-
 }
 
-/************************************* Media Queries *******************************/
-
-/* Tablette */
+/* Media Queries */
 @media (min-width: 768px) {
   .logo_header {
     width: 100px;
     height: 100px;
   }
 
-  .nav-link,
-  .nav-item {
+  .nav-link, .nav-item {
     font-size: 14px;
   }
 }
 
-/*  */
 @media (max-width: 991.98px) {
-  h1 {
-    font-size: 40px;
+  h1, h2 {
     text-align: center;
-    margin: 50px;
+    margin: 30px; /* Uniformiser la marge */
   }
 
-  h2 {
-    text-align: center;
-    margin: 30px;
-  }
+  h1 { font-size: 40px; }
+
   .logo_header {
     width: 200px;
     height: 200px;
