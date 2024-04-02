@@ -11,14 +11,14 @@ class Livraison
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(name:"Id_Livraison")]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
     private ?string $Numero_Suivi = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?float $Frais_Livraison = null;
+    private ?string $Frais_Livraison = null;
 
     #[ORM\Column(length: 50)]
     private ?string $Transporteur = null;
@@ -26,11 +26,13 @@ class Livraison
     #[ORM\Column(type: Types::BIGINT)]
     private ?string $Poids_En_Gramme = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false, name: "Id_Commande", referencedColumnName:"Id_Commande")]
     private ?Commande $Commande = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?PaiementCommande $Paiement_Commande = null;
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false, name:"Id_Paiement_Commande", referencedColumnName:"Id_Paiement_Commande")]
+    private ?PaiementCommande $PaiementCommande = null;
 
     public function getId(): ?int
     {
@@ -85,7 +87,6 @@ class Livraison
         return $this;
     }
 
-
     public function getCommande(): ?Commande
     {
         return $this->Commande;
@@ -100,12 +101,12 @@ class Livraison
 
     public function getPaiementCommande(): ?PaiementCommande
     {
-        return $this->Paiement_Commande;
+        return $this->PaiementCommande;
     }
 
-    public function setPaiementCommande(?PaiementCommande $Paiement_Commande): static
+    public function setPaiementCommande(?PaiementCommande $PaiementCommande): static
     {
-        $this->Paiement_Commande = $Paiement_Commande;
+        $this->PaiementCommande = $PaiementCommande;
 
         return $this;
     }

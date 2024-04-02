@@ -22,7 +22,7 @@ security:
         success_handler: App\Security\LoginSuccessHandler
       logout:
         path: app_logout
-        target: app_deconnexion_ok
+        target: /home
       custom_authenticator: App\Security\AuthentificationAuthenticator
 
       remember_me:

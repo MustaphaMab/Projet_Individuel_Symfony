@@ -1,37 +1,98 @@
-body {
-  background-color: #f2f2f2;
+/* Styles globaux */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  background: #61AFC4;
 }
 
-h1 {
-  text-align: center;
+/* Header */
+.navbar-custom-padding {
+  padding: 1%;
 }
 
-.navbar {
-  background-color: #003366 !important; /* ou toute autre couleur que tu souhaites */
+/**********/
 
+/* Main */
+
+
+.main-home {  /* espace entre le main et le header, a cause de bootstrap FIXED-TOP */
+  padding: 25%;
 }
-#navbarNavDropdown {
-  display: flex;
-  flex-direction: row;
+
+
+/*************/
+
+/* Footer */
+.site-footer {
+  padding: 45px 0 20px;
+  color: #000;
+}
+
+.site-footer h6,
+.site-footer a {
+  color: #fff;
+}
+
+.site-footer a:hover {
  
+  text-decoration: none;
 }
 
-.nav-link {
-  border: 2px solid #fff; /* Bordure blanche, ajuste selon tes préférences */
-  border-radius: 15px; /* Arrondir les angles */
-  margin: 5px; /* Espacement autour des liens */
-  padding: 5px 10px; /* Espacement intérieur pour agrandir le lien */
-  transition: background-color 0.2s; /* Animation pour l'interaction */
+.footer-links,
+.footer-links li {
+  list-style: none;
+  padding-left: 0;
 }
 
-/* Changement de couleur au survol */
-.nav-link:hover {
-  background-color: #ddd; /* Couleur de fond au survol, ajuste selon tes préférences */
-  color: #333; /* Couleur du texte au survol, ajuste selon tes préférences */
+.site-footer .social-icons {
+  text-align: right;
 }
 
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  border-radius: 100%;
 
+}
 
-footer {
-  background-color: #003366 !important; /* Assure-toi que cela cible ton footer spécifiquement */
+/************************************* Media Queries *******************************/
+
+/* Tablette */
+@media (min-width: 768px) {
+  .logo_header {
+    width: 100px;
+    height: 100px;
+  }
+
+  .nav-link,
+  .nav-item {
+    font-size: 14px;
+  }
+}
+
+/*  */
+@media (max-width: 991.98px) {
+  h1 {
+    font-size: 40px;
+    text-align: center;
+    margin: 50px;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 30px;
+  }
+  .logo_header {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+  }
 }
