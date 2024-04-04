@@ -1,23 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription
+{% endblock %}
 
 {% block body %}
-<h1>Inscription</h1>
+	<h1 class="text-center">Vos informations personnelles</h1>
 
-<div class="formParent">
-{{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.Nom) }}
-    {{ form_row(registrationForm.Prenom) }}
-    {{ form_row(registrationForm.MdP) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.Date_Naissance) }}
-    {{ form_row(registrationForm.Telephone) }}
-    {{ form_row(registrationForm.Adresse) }}
-    {{ form_row(registrationForm.Code_Postale) }}
-    {{ form_row(registrationForm.Pays) }}
-    <button type="submit" class="btn">S'inscrire</button>
-{{ form_end(registrationForm) }}
-</div>
+	<div class="container">
+
+<div class="container form-container">
+		<div class="formParent">
+			{{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
+
+            <div class="form-row">
+                {{ form_label(registrationForm.Nom) }}
+                {{ form_widget(registrationForm.Nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+			<div class="form-row">
+                {{ form_label(registrationForm.Prenom) }}
+                {{ form_widget(registrationForm.Prenom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-row">
+                {{ form_label(registrationForm.MdP) }}
+                {{ form_widget(registrationForm.MdP, {'attr': {'class': 'form-control'}}) }}
+            </div>
+			<div class="form-row">
+                {{ form_label(registrationForm.email) }}
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-row">
+                {{ form_label(registrationForm.Date_Naissance) }}
+                {{ form_widget(registrationForm.Date_Naissance, {'attr': {'class': 'form-control'}}) }}
+            </div>
+			<div class="form-row">
+                {{ form_label(registrationForm.Telephone) }}
+                {{ form_widget(registrationForm.Telephone, {'attr': {'class': 'form-control'}}) }}
+            </div>
+			<div class="form-row">
+                {{ form_label(registrationForm.Adresse) }}
+                {{ form_widget(registrationForm.Adresse, {'attr': {'class': 'form-control'}}) }}
+            </div>
+			<div class="form-row">
+                {{ form_label(registrationForm.Code_Postale) }}
+                {{ form_widget(registrationForm.Code_Postale, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-row">
+                {{ form_label(registrationForm.Pays) }}
+                {{ form_widget(registrationForm.Pays, {'attr': {'class': 'form-control'}}) }}
+            </div>
+			
+            
+            <div class="form-row">
+			<button type="submit" class="btn btn-primary">S'inscrire</button>
+            </div>
+            
+			{{ form_end(registrationForm) }}
+            </div>
+		</div>
+	</div>
 
 {% endblock %}

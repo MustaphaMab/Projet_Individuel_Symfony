@@ -1,48 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil - Objets Personnalisés
-{% endblock %}
+{% block title %}Accueil - Objets Personnalisés{% endblock %}
 
 {% block body %}
-	<div class="main-content">
-		<section class="hero-section">
-			<div class="sidebar-info">
-			<h1> SA SA KDO </h1>
-				<h2>"Votre style, votre signature"</h2>
+<div class="main-content">
+    <section class="hero-section">
+        <div class="sidebar-info">
+            <h1>SA SA KDO</h1>
+            <h1>Spécialiste de la </h1>
+        </div>
 
-			</div>
-
-		<div class="cards">
-		<article class="card">
-		<header>
-		<h2> Mugs </h2>
-		</header>
-		<img src="/images/mug_exemple.jpg" alt="mugs">
-		</article>
-		
-		<div class="cards">
-		<article class="card">
-		<header>
-		<h2> Porte clés </h2>
-		<img src="/images/porte_cles.jpg" alt="porte clés">
-		<article>
-
-		<div class="cards">
-		<article class="card">
-		<header>
-		<h2> Porte clés </h2>
-		<img src="/images/marque_page.jpg" alt="porte clés">
-		<article>
-
-		<div class="cards">
-		<article class="card">
-		<header>
-		<h2> Porte clés </h2>
-		<img src="/images/t-shirt1.jpg" alt="porte clés">
-		<article>
-
-
-	</div>
-	
-
-		{% endblock %} 
+        <!-- Cards Section -->
+        <div class="cards">
+            <article class="card">
+                <header>
+                    <h2>Mugs</h2>
+                </header>
+                <img src="/images/mug_exemple.jpg" alt="mugs">
+            </article>
+            
+            <article class="card">
+                <header>
+                    <h2>Porte clés</h2>
+                </header>
+                <img src="/images/porte_cles.jpg" alt="porte clés">
+            </article>
+            
+            <article class="card">
+                <header>
+                    <h2>Marque Page</h2>
+                </header>
+                <img src="/images/marque_page.jpg" alt="marque page">
+            </article>
+            
+            <article class="card">
+                <header>
+                    <h2>T-Shirts</h2>
+                </header>
+                <img src="/images/t-shirt1.jpg" alt="t-shirts">
+            </article>
+        </div>
+    </section>
+</div>
+{% endblock %}
