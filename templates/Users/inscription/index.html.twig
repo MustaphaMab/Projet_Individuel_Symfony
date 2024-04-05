@@ -16,34 +16,42 @@
                 {{ form_label(registrationForm.Nom) }}
                 {{ form_widget(registrationForm.Nom, {'attr': {'class': 'form-control'}}) }}
             </div>
+
 			<div class="form-row">
                 {{ form_label(registrationForm.Prenom) }}
                 {{ form_widget(registrationForm.Prenom, {'attr': {'class': 'form-control'}}) }}
             </div>
+
             <div class="form-row">
                 {{ form_label(registrationForm.MdP) }}
                 {{ form_widget(registrationForm.MdP, {'attr': {'class': 'form-control'}}) }}
             </div>
+
 			<div class="form-row">
                 {{ form_label(registrationForm.email) }}
                 {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
             </div>
+
             <div class="form-row">
                 {{ form_label(registrationForm.Date_Naissance) }}
                 {{ form_widget(registrationForm.Date_Naissance, {'attr': {'class': 'form-control'}}) }}
             </div>
+
 			<div class="form-row">
                 {{ form_label(registrationForm.Telephone) }}
                 {{ form_widget(registrationForm.Telephone, {'attr': {'class': 'form-control'}}) }}
             </div>
+
 			<div class="form-row">
                 {{ form_label(registrationForm.Adresse) }}
                 {{ form_widget(registrationForm.Adresse, {'attr': {'class': 'form-control'}}) }}
             </div>
+
 			<div class="form-row">
                 {{ form_label(registrationForm.Code_Postale) }}
                 {{ form_widget(registrationForm.Code_Postale, {'attr': {'class': 'form-control'}}) }}
             </div>
+            
             <div class="form-row">
                 {{ form_label(registrationForm.Pays) }}
                 {{ form_widget(registrationForm.Pays, {'attr': {'class': 'form-control'}}) }}
@@ -53,7 +61,7 @@
             <div class="form-row">
 			<button type="submit" class="btn btn-primary">S'inscrire</button>
             </div>
-            
+
 			{{ form_end(registrationForm) }}
             </div>
 		</div>
