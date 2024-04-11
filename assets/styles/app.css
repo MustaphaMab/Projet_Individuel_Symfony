@@ -17,7 +17,7 @@ h1, h2, h3 {
 /********************************************************* Header ***************************************************/
 .bg-body-tertiary{
 
-  background-color: #efd7b5 !important;
+  background-color: #FFE39C !important;
   color: #FFFFFF;
 }
 
@@ -129,16 +129,16 @@ div .card {
 .btn-primary {
   width: 200px;
   height: 70px;
-  font-size: 40px;
+  font-size: 50px;
   padding: 10px 15px;
-  background: #f88c07;
-  color: #fff;
+  background: #FFE39C;
+  color: #000000;
   border-radius: 4px;
   cursor: pointer;
 }
 .btn-primary:hover { 
   
-  background: #0056b3; 
+  background: #6b00b3ab; 
 }
 
 
@@ -153,7 +153,7 @@ footer {
 
 .footer-basic {
   padding-top: 2%;
-  background-color:#efd7b5;
+  background-color:#FFE39C;
   color:#4b4c4d;
 }
 
