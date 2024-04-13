@@ -13,7 +13,6 @@ h1, h2, h3 {
   font-family: 'Montserrat', sans-serif; 
   font-weight: 700; 
 }
-
 /********************************************************* Header ***************************************************/
 .bg-body-tertiary{
 
@@ -41,20 +40,17 @@ h1, h2, h3 {
 .offcanvas-body .nav-link {
   font-size: 4rem; /* Taille plus grande */
   line-height: 1.5; /* Espacement vertical ajusté */
-  /* font-weight: 500; Optionnel: rend le texte un peu plus gras si nécessaire */
 }
 
 .offcanvas-header {
   font-size: 4rem; /* Taille plus grande */
   line-height: 1.5;
 }
-
 /*********************************************************************************************************************/
 
 /*************************************************** Main ************************************************************/
 .main-home {
-  /* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
-  padding-top: 25%;
+  padding-top: 25%;/* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
   background-color: #F5F5F5;
   color: #333333;
 }
@@ -66,13 +62,9 @@ h1, h2, h3 {
 .main-home p {
   font-size: 16px; /* Adapté pour le texte du corps */
 }
-
-
-
 /*********************************************************************************************************************/
 
 /*************************************************** Cards dans Home *************************************************/
-
 div .card {
   padding-top: 5%;
 }
@@ -80,12 +72,9 @@ div .card {
 .card-title {
   font-size: 300%;
 }
-
 /*********************************************************************************************************************/
 
 /*************************************************** Formaulaire Inscription *****************************************/
-
-
 .container { 
   display: flex; 
   justify-content: center; 
@@ -137,16 +126,12 @@ div .card {
   cursor: pointer;
 }
 .btn-primary:hover { 
-  
   background: #6b00b3ab; 
 }
-
-
 /*********************************************************************************************************************/
+
 /*************************************************** Footer **********************************************************/
-
 footer {
-
   padding-top: 10%;
   padding-bottom: 5%;
 }
@@ -209,8 +194,6 @@ footer {
   color:#aaa;
   margin-bottom:0;
 }
-
-
 /*********************************************************************************************************************/
 
 /****************************************************** Media Queries ************************************************/
@@ -245,7 +228,6 @@ footer {
     text-align: center;
     margin: 30px; /* Uniformiser la marge */
   }
-
 
   .logo_header {
     width: 200px;

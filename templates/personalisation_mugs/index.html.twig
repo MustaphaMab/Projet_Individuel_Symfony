@@ -1,20 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PersonalisationMugsController!{% endblock %}
+{% block title %}Hello PersonalisationMugsController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/ACER/Desktop/Projet individuel/Projet_Individuel_Symfony/src/Controller/PersonalisationMugsController.php</code></li>
-        <li>Your template at <code>C:/Users/ACER/Desktop/Projet individuel/Projet_Individuel_Symfony/templates/personalisation_mugs/index.html.twig</code></li>
-    </ul>
+	<div class="container mt-4"> <!-- Container pour le padding et le margin top -->
+    <div class="row"> <!-- Row pour un contrôle de ligne complet -->
+        <div class="col-12"> <!-- Col-12 pour utiliser toute la largeur de la row -->
+    <h2 class="text-center">Personnaliser le Mug</h2>
+	 </div>
+    </div>
+    <div class="card mb-3">
+        <img id="mugImage" src="/images/mug_blanc.jpg" alt="Mug Blanc" class="card-img-top">
+    </div>
+    <div class="d-flex flex-wrap justify-content-center">
+        <button class="btn m-2" onclick="changeColor('blanc')">
+            <img src="/images/mug_blanc.jpg" alt="Blanc" style="height: 20px; width: 20px;"> Blanc
+        </button>
+        <button class="btn m-2" onclick="changeColor('rouge')">
+            <img src="/images/mug_rouge.jpg" alt="Rouge" style="height: 20px; width: 20px;"> Rouge
+        </button>
+        <button class="btn m-2" onclick="changeColor('bleu')">
+            <img src="/images/mug_bleu.jpg" alt="Bleu" style="height: 20px; width: 20px;"> Bleu
+        </button>
+        <button class="btn m-2" onclick="changeColor('vert')">
+            <img src="/images/mug_vert.jpg" alt="Vert" style="height: 20px; width: 20px;"> Vert
+        </button>
+        <button class="btn m-2" onclick="changeColor('noir')">
+            <img src="/images/mug_noir.jpg" alt="Noir" style="height: 20px; width: 20px;"> Noir
+        </button>
+    </div>
 </div>
-{% endblock %}
+	<script>
+					function changeColor(color) {
+			var imageSrc = '/images/mug_' + color + '.jpg';
+			document.getElementById('mugImage').src = imageSrc;
+			}
+	</script>
+
+	<h2>{{ mug.getDescription }}</h2>
+
+	<div class="quantité"></div>
+
+	<div class="prix">
+		Prix :
+		{{ mug.getPrix }}
+		€
+	</div>
+
+</div></div>{% endblock %}

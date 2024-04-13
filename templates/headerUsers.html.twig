@@ -2,7 +2,7 @@
 
 <nav class="navbar bg-body-tertiary fixed-top navbar-custom-padding">
 	<div class="container-fluid">
-		<img src="/images/logo_header.gif" alt="Logo" class="logo_header">
+		<a class="nav-link" href="{{ path('app_home') }}"><img src="/images/logo_header.gif" alt="Logo" class="logo_header"></a>
 		<button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -20,9 +20,7 @@
 							Menu
 						</a>
 						<ul class="dropdown-menu">
-						<li>
-								<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
-							</li>
+							<li></li>
 							<li>
 								<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
 							</li>
@@ -50,16 +48,10 @@
 						{% endif %}
 
 						<hr class="dropdown-divider">
-					</li>
-					{# <li>
-																																									<a class="dropdown-item" href="#">Something else here</a>
-																																								</li> #}
-				</ul>
-			</li>
-		</ul>
-		<form class="d-flex mt-3" role="search">
-			<input class="form-control me-2" type="search" placeholder="" aria-label="Recherche">
-			<button class="btn btn-outline-success" type="submit">Rechercher</button>
-		</form>
-	</div>
-</div></div></nav></ul></div></div></div></nav></script>{# ******************************************* FIN NAVBAR ********************************************************************************************** #}
+					
+				
+			</ul>
+		</li>
+	</ul>
+	
+</div></div></div></nav>{# ******************************************* FIN NAVBAR ********************************************************************************************** #}
