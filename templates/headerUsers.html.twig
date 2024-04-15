@@ -1,57 +1,47 @@
 {#********************************************* NAVBAR ************************************#}
-
+<pre>
+    {{ dump() }}
+</pre>
 <nav class="navbar bg-body-tertiary fixed-top navbar-custom-padding">
-	<div class="container-fluid">
-		<a class="nav-link" href="{{ path('app_home') }}"><img src="/images/logo_header.gif" alt="Logo" class="logo_header"></a>
-		<button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-			<div class="offcanvas-header">
-
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-			</div>
-
-			<div class="offcanvas-body open-burger">
-				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Menu
-						</a>
-						<ul class="dropdown-menu">
-							<li></li>
-							<li>
-								<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-							</li>
-
-							<a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
-						</li>
-
-						{% if app.user %}
-							<!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
-
-							<li>
-								<a class="nav-link" href="{{ path('app_mes_commandes') }}">Catalogue</a>
-							</li>
-							<li>
-								<a class="nav-link" href="{{ path('app_panier') }}">Panier</a>
-							</li>
-							<li>
-								<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-							</li>
-
-							{% else %}
-							<!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
-
-
-						{% endif %}
-
-						<hr class="dropdown-divider">
-					
-				
-			</ul>
-		</li>
-	</ul>
-	
-</div></div></div></nav>{# ******************************************* FIN NAVBAR ********************************************************************************************** #}
+    <div class="container-fluid">
+        <a class="nav-link" href="{{ path('app_home') }}">
+            <img src="/images/logo_header.gif" alt="Logo" class="logo_header">
+        </a>
+       
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                   
+                    {% if app.user %}
+                        <!-- Les liens suivants sont visibles uniquement pour les utilisateurs connectés -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_mes_commandes') }}">Catalogue</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_panier') }}">Panier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <!-- Ces liens sont visibles uniquement pour les utilisateurs non connectés -->
+                         <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{# ******************************************* FIN NAVBAR ********************************************************************************************** #}
