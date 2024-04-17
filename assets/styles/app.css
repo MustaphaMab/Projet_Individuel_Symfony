@@ -18,6 +18,11 @@ h1, h2, h3 {
 }
 /********************************************************* Header ***************************************************/
 
+.navbar-toggler-icon {
+  width: 70px; 
+  height: 70px; 
+}
+
 .navbar-nav {
   display: flex !important;
   align-items: center !important;
