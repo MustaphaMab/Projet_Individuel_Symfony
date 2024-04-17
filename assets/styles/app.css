@@ -2,7 +2,7 @@
 body,
 html {
   margin: 0%;
-  padding: 2%;
+  padding: 0%;
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif;
@@ -12,45 +12,48 @@ html {
 h1, h2, h3 {
   font-family: 'Montserrat', sans-serif; 
   font-weight: 700; 
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 /********************************************************* Header ***************************************************/
+
+.navbar-nav {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.nav-item {
+  margin-right: 15px; 
+  font-size: 30px;
+}
+
+
+.nav-link {
+  padding: 5px 10px; 
+  color: #220101;
+  
+}
+
+.logo_header {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: block;
+}
+
 .bg-body-tertiary{
 
   background-color: #f3e7c9 !important;
   color: #FFFFFF;
 }
 
-.navbar-custom-padding {
-  padding: 1%;
-}
-
-.custom-toggler,
-.custom-toggler .navbar-toggler-icon {
-  width: 100px;
-  height: 100px;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
-
-.offcanvas {
-  width: 75% !important;
-}
-
-.offcanvas-body .nav-link {
-  font-size: 4rem; /* Taille plus grande */
-  line-height: 1.5; /* Espacement vertical ajusté */
-}
-
-.offcanvas-header {
-  font-size: 4rem; /* Taille plus grande */
-  line-height: 1.5;
-}
 /*********************************************************************************************************************/
 
 /*************************************************** Main ************************************************************/
 .main-home {
-  padding-top: 25%;/* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
+  padding-top: 18%;/* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
 
   color: #333333;
 }
@@ -65,13 +68,64 @@ h1, h2, h3 {
 /*********************************************************************************************************************/
 
 /*************************************************** Cards dans Home *************************************************/
-div .card {
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover; /* Assure que l'image couvre bien la zone sans être déformée */
+}
+
+.card-body {
+  background: #ffffff;
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.custom-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #0056b3;
+  text-decoration: none;
+}
+
+.btn-primary {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+
+/* div .card {
   padding-top: 5%;
 }
 
 .card-title {
   font-size: 300%;
-}
+} */
 /*********************************************************************************************************************/
 
 /*************************************************** Formaulaire Inscription *****************************************/
@@ -152,7 +206,7 @@ div .card {
 /*************************************************** Footer **********************************************************/
 footer {
   padding-top: 10%;
-  padding-bottom: 5%;
+  padding-bottom: 0;
 }
 
 .footer-basic {
@@ -216,44 +270,77 @@ footer {
 /*********************************************************************************************************************/
 
 /****************************************************** Media Queries ************************************************/
+/* Petits appareils (mobiles, moins de 426px) */
 @media (max-width: 426px) {
+  .nav-link, .nav-item {
+    font-size: 10px; 
+  }
+
+  h1, h2, h3, h4 {
+    font-size: 18px; 
+  }
+
   .logo_header {
     width: 100px;
     height: 100px;
   }
-
-  .nav-link,
-  .nav-item {
-    font-size: 10px;
-  }
-  h1,
-  h2 {
-    text-align: center;
-    margin: 10px; /* Uniformiser la marge */
-  }
 }
 
-@media (max-width: 769px) {
-  h1,
-  h2 {
-    text-align: center;
-    margin: 24px; /* Uniformiser la marge */
-}
-}
-
-@media (max-width: 991.98px) {
-  h1,
-  h2 {
-    text-align: center;
-    margin: 30px; /* Uniformiser la marge */
+/* Moyens appareils (tablets, moins de 768px) */
+@media (max-width: 768px) {
+  h1, h2, h3, h4 {
+    font-size: 24px; 
   }
 
   .logo_header {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    border-radius: 50%;
-    display: block;
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Grands appareils (laptops, moins de 992px) */
+@media (max-width: 992px) {
+  h1, h2, h3, h4 {
+    font-size: 30px; 
+  }
+
+  .logo_header {
+    width: 140px;
+    height: 140px;
+  }
+  @media (min-width: 993px) {
+    
+    .navbar-nav {
+      flex-direction: row !important;
+      justify-content: flex-end;
+    }
+  
+    h1, h2, h3, h4 {
+      font-size: 36px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  
+    
+    .logo_header {
+      width: 180px;
+      height: 180px; 
+    }
+  
+    .card {
+      margin: 20px; 
+    }
+  
+    .form-control {
+      height: 60px; 
+    }
+  
+    .btn-primary {
+      width: 250px;
+      height: 80px;
+      font-size: 24px;
+      padding: 15px 20px;
+    }
   }
 }
   /*********************************************************************************************************************/
