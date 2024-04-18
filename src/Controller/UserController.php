@@ -27,33 +27,29 @@ class UserController extends AbstractController
     // CREER
 
     #[Route('/new', name: 'app_users_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+public function new(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+{
+    $user = new User();
+    $form = $this->createForm(UserType::class, $user);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+    if ($form->isSubmitted() && $form->isValid()) {
+        $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
+        $user->setPassword($hashedPassword);
+        $entityManager->persist($user);
+        $entityManager->flush();
 
-            // Hashage du mot de passe avant de persister l'utilisateur
-            $hashedPassword = $passwordHasher->hashPassword(
-                $user,
-                $user->getPassword() // Assure-toi que ta classe Users a une méthode getPassword()
-            );
-            $user->setPassword($hashedPassword); // Et une méthode setPassword()
+        $this->addFlash('success', 'Utilisateur créé avec succès!');
 
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('Admin/user/new.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
+        return $this->redirectToRoute('app_user_index');
     }
+
+    return $this->render('Admin/user/new.html.twig', [
+        'user' => $user,
+        'form' => $form->createView(),
+    ]);
+}
+
 
     #[Route('/{id}', name: 'app_users_show', methods: ['GET'])]
     public function show(User $user): Response
@@ -64,31 +60,37 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_users_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+{
+    $form = $this->createForm(UserType::class, $user);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+    if ($form->isSubmitted() && $form->isValid()) {
+        $entityManager->flush();
 
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('Admin/user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_users_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($user);
-            $entityManager->flush();
-        }
+        $this->addFlash('success', 'Les modifications ont été enregistrées avec succès!');
 
         return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    return $this->render('Admin/user/edit.html.twig', [
+        'user' => $user,
+        'form' => $form,
+    ]);
+}
+
+
+#[Route('/{id}', name: 'app_users_delete', methods: ['POST'])]
+public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
+{
+    if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Utilisateur supprimé avec succès!');
+    }
+
+    return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+}
+
 }
