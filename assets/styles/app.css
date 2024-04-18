@@ -5,39 +5,57 @@ html {
   padding: 0%;
   width: 100%;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
-  
+  font-family: "Roboto", sans-serif;
 }
 
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif; 
-  font-weight: 700; 
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/********************************************************* Header ***************************************************/
+/************************************************************************************************************/
+/********************************************************* Header *******************************************/
+
+.logo_panier {
+  width: 70px;
+  height: auto;
+}
+
+.profil {
+  width: 70px;
+  height: auto;
+}
+.connexion {
+  width: 70px;
+  height: auto;
+}
+.deconnexion {
+  width: 40px;
+  height: auto;
+}
 
 .navbar-toggler-icon {
-  width: 70px; 
-  height: 70px; 
+  width: 70px;
+  height: 70px;
 }
 
 .navbar-nav {
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-end;
 }
 
 .nav-item {
-  margin-right: 15px; 
+  margin-right: 15px;
   font-size: 30px;
 }
 
-
 .nav-link {
-  padding: 5px 10px; 
+  padding: 5px 10px;
   color: #220101;
-  
 }
 
 .logo_header {
@@ -48,47 +66,46 @@ h1, h2, h3 {
   display: block;
 }
 
-.bg-body-tertiary{
-
+.bg-body-tertiary {
   background-color: #f3e7c9 !important;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-/*********************************************************************************************************************/
+/************************************************************************************************************/
 
-/*************************************************** Main ************************************************************/
+/*************************************************** Main ***************************************************/
 .main-home {
-  padding-top: 18%;/* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
+  padding-top: 18%; /* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
 
   color: #333333;
 }
 
 .main-home h1 {
-  font-size: 50px; /* Plus grand pour les titres principaux */
+  font-size: 50px;
 }
 
 .main-home p {
-  font-size: 16px; /* Adapté pour le texte du corps */
+  font-size: 16px;
 }
-/*********************************************************************************************************************/
+/************************************************************************************************************/
 
-/*************************************************** Cards dans Home *************************************************/
+/*************************************************** Cards dans Home ****************************************/
 
 .card {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card-img-top {
   height: 200px;
-  object-fit: cover; /* Assure que l'image couvre bien la zone sans être déformée */
+  object-fit: cover;
 }
 
 .card-body {
@@ -123,7 +140,6 @@ h1, h2, h3 {
   border-radius: 8px;
 }
 
-
 /* div .card {
   padding-top: 5%;
 }
@@ -131,19 +147,18 @@ h1, h2, h3 {
 .card-title {
   font-size: 300%;
 } */
-/*********************************************************************************************************************/
+/************************************************************************************************************/
 
-/*************************************************** Formaulaire Inscription *****************************************/
-.container { 
-  display: flex; 
-  justify-content: center; 
+/*************************************************** Formaulaire Inscription ********************************/
+.container {
+  display: flex;
+  justify-content: center;
 }
 
 .formParent {
   max-width: 800px;
   margin: 20px;
   padding: 20px;
-
 }
 
 .formParent div {
@@ -152,26 +167,26 @@ h1, h2, h3 {
   flex-direction: column;
 }
 
-.form-row { 
-  display: flex; 
-  margin-bottom: 10px; 
+.form-row {
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .form-row label {
-  font-size: 40px; /* Ajuste la taille de police ici */
+  font-size: 40px;
 }
 
-.label { 
-   margin-right: 30px; 
-   font-size: 100px;
-  }
+.label {
+  margin-right: 30px;
+  font-size: 100px;
+}
 
-.form-control { 
-  flex-grow: 1; 
+.form-control {
+  flex-grow: 1;
   width: 800px;
   height: 90px;
-  border: 1px solid #ccc; 
-  border-radius: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 .btn-primary {
@@ -179,36 +194,57 @@ h1, h2, h3 {
   height: 70px;
   font-size: 50px;
   padding: 10px 15px;
-  background: #FFE39C;
+  background: #ffe39c;
   color: #000000;
   border-radius: 4px;
   cursor: pointer;
 }
-.btn-primary:hover { 
-  background: #6b00b3ab; 
+.btn-primary:hover {
+  background: #6b00b3ab;
 }
 
-/*************************************************** Page personalisation Mugs ***************************************/
-.titre{
+/************************************************************************************************************/
+
+/*************************************************** Formulaire Login ***************************************/
+.gradient-custom-2 {
+  background: #fccb90;
+  background: -webkit-linear-gradient(
+    to right,
+    #ee7724,
+    #d8363a,
+    #dd3675,
+    #b44593
+  );
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+.connexion-title {
+  font-size: 60px !important;
+  justify-content: center;
+}
+.email-label,
+.password-label {
+  font-size: 40px;
+}
+
+/************************************************************************************************************/
+
+/*************************************************** Page personalisation Mugs ******************************/
+.titre {
   color: #70581b;
 }
 
 .prix {
   font-size: 50px;
 }
-.stars{
+.stars {
   font-size: 30px;
   display: flex;
-  justify-content:flex-start
+  justify-content: flex-start;
 }
 
+/************************************************************************************************************/
 
-
-
-
-/*********************************************************************************************************************/
-
-/*************************************************** Footer **********************************************************/
+/*************************************************** Footer *************************************************/
 footer {
   padding-top: 10%;
   padding-bottom: 0;
@@ -216,73 +252,76 @@ footer {
 
 .footer-basic {
   padding-top: 2%;
-  background-color:#f3e7c9;
-  color:#4b4c4d;
+  background-color: #f3e7c9;
+  color: #4b4c4d;
 }
 
 .footer-basic ul {
-  padding:0;
-  list-style:none;
-  text-align:center;
-  font-size:18px;
-  line-height:1.6;
-  margin-bottom:0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 
 .footer-basic li {
-  padding:0 10px;
+  padding: 0 10px;
 }
 
 .footer-basic ul a {
-  color:inherit;
-  text-decoration:none;
-  opacity:0.8;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
   font-size: 30px;
 }
 
 .footer-basic ul a:hover {
-  opacity:1;
+  opacity: 1;
 }
 
 .footer-basic .social {
-  text-align:center;
-  padding-bottom:25px;
+  text-align: center;
+  padding-bottom: 25px;
 }
 
 .footer-basic .social > a {
-  font-size:60px;
-  width:40px;
-  height:40px;
-  line-height:40px;
-  display:inline-block;
-  text-align:center;
-  margin:0 5%;
-  color:inherit;
-  opacity:0.75;
+  font-size: 60px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+  margin: 0 5%;
+  color: inherit;
+  opacity: 0.75;
 }
 
 .footer-basic .social > a:hover {
-  opacity:0.9;
+  opacity: 0.9;
 }
 
 .footer-basic .copyright {
-  margin-top:15px;
-  text-align:center;
-  font-size:25px;
-  color:#aaa;
-  margin-bottom:0;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 25px;
+  color: #aaa;
+  margin-bottom: 0;
 }
-/*********************************************************************************************************************/
-
-/****************************************************** Media Queries ************************************************/
+/************************************************************************************************************/
+/****************************************************** Media Queries ***************************************/
 /* Petits appareils (mobiles, moins de 426px) */
 @media (max-width: 426px) {
-  .nav-link, .nav-item {
-    font-size: 10px; 
+  .nav-link,
+  .nav-item {
+    font-size: 10px;
   }
 
-  h1, h2, h3, h4 {
-    font-size: 18px; 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 18px;
   }
 
   .logo_header {
@@ -293,8 +332,11 @@ footer {
 
 /* Moyens appareils (tablets, moins de 768px) */
 @media (max-width: 768px) {
-  h1, h2, h3, h4 {
-    font-size: 24px; 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 24px;
   }
 
   .logo_header {
@@ -305,8 +347,11 @@ footer {
 
 /* Grands appareils (laptops, moins de 992px) */
 @media (max-width: 992px) {
-  h1, h2, h3, h4 {
-    font-size: 30px; 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 30px;
   }
 
   .logo_header {
@@ -314,32 +359,33 @@ footer {
     height: 140px;
   }
   @media (min-width: 993px) {
-    
     .navbar-nav {
       flex-direction: row !important;
       justify-content: flex-end;
     }
-  
-    h1, h2, h3, h4 {
+
+    h1,
+    h2,
+    h3,
+    h4 {
       font-size: 36px;
       margin-top: 20px;
       margin-bottom: 20px;
     }
-  
-    
+
     .logo_header {
       width: 180px;
-      height: 180px; 
+      height: 180px;
     }
-  
+
     .card {
-      margin: 20px; 
+      margin: 20px;
     }
-  
+
     .form-control {
-      height: 60px; 
+      height: 60px;
     }
-  
+
     .btn-primary {
       width: 250px;
       height: 80px;
@@ -348,5 +394,4 @@ footer {
     }
   }
 }
-  /*********************************************************************************************************************/
-
+/************************************************************************************************************/
