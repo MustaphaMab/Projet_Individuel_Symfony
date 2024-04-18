@@ -55,9 +55,10 @@
             <div class="form-row">
                 {{ form_label(registrationForm.MdP) }}
                 {{ form_widget(registrationForm.MdP, {'attr': {'class': 'form-control', 'id': 'password-field'}}) }}
-                 <div class="input-group-append">
-            <button id="toggle-password" type="button" class="btn btn-light"><i class="fa fa-eye" aria-hidden="true"></i></button>
-        </div>
+                 <div class="col-md-6">
+              <input id="password-field" type="password" class="form-control" name="password" value="secret">
+              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            </div>
             </div>
 
             <div class="form-row">

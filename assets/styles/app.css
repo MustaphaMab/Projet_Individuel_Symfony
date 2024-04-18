@@ -150,6 +150,9 @@ h3 {
 /************************************************************************************************************/
 
 /*************************************************** Formaulaire Inscription ********************************/
+
+
+
 .container {
   display: flex;
   justify-content: center;
@@ -219,7 +222,7 @@ h3 {
 }
 .connexion-title {
   font-size: 60px !important;
-  justify-content: center;
+  justify-content:right;
 }
 .email-label,
 .password-label {
