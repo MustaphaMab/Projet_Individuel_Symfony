@@ -7,39 +7,48 @@
 	<div class="main-content">
 		<section class="hero-section">
 			<div class="sidebar-info">
-			<h1> SA SA KDO </h1>
-				<h2>"Votre style, votre signature"</h2>
 
+				<h1>Spécialiste de la personnalisation</h1>
 			</div>
 
-			{# <div class="action-buttons">
-										<a class="btn btn-primary" href="{{ path('app_login') }}">Connexion</a>
-										<a class="btn btn-secondary" href="{{ path('app_register') }}">Inscription</a>
-									</div> #}
-		</section>
+			<!-- Cards Section -->
 
 
-	</div>
+			<center> 
+            <div class="card mb-5" style="width: 80%;">
+				<img src="/images/mug_exemple.jpg" class="card-img-top" alt="mugs">
+				<div class="card-body">
+					<h3 class="card-title">Mugs</h3>
+					<a class="card-action" href="#"><i class="fa fa-heart"></i>j'aime</a>
+					<a href="{{ path('app_personalisation_mugs') }}" style="width: 100%; display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
+				</div>
+			</div>
 
-	
-  
-	<div>
-		<h3>Exemple de création</h3>
-		<img src="/images/mug_exemple.jpg" class="card-img-top" alt="marques_pages">
-	</div>
-	<div>
-		<div>
-			<a href="#" class="btn btn-primary">Mugs</a>
-		</div>
-		<div>
-			<a href="#" class="btn btn-primary">Marques_pages</a>
-		</div>
-		<div>
-			<a href="#" class="btn btn-primary">porte_clé</a> 
-		</div>
-		<div>
-			<a href="#" class="btn btn-primary">T-shirt</a>
-		</div>
-		<div>
+			<div class="card mb-5" style="width: 80%;">
+				<img src="/images/porte_cles.jpg" class="card-img-top" alt="porte clés">
+				<div class="card-body">
+					<h3 class="card-title">Porte clés</h3>
+					<a href="{{ path('app_personalisation_porte_cl_s') }}" style="width: 100%; display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
+				</div>
+			</div>
 
-		{% endblock %} 
+			<div class="card mb-5" style="width: 80%;">
+				<img src="/images/marque_page.jpg" class="card-img-top" alt="marques pages">
+				<div class="card-body">
+					<h3 class="card-title">Marques pages</h3>
+					<a href="{{ path('app_personalisation_marques_pages') }}" style="width: 100%;display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
+				</div>
+			</div>
+
+			<div class="card mb-5" style="width: 80%;">
+				<img src="/images/t-shirt1.jpg" class="card-img-top" alt="t-shirt">
+				<div class="card-body">
+					<h3 class="card-title">T-shirts</h3>
+					<a href="{{ path('app_personalisation_tshirt') }}" style="width: 100%;display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
+				</div>
+			</div>
+</section>
+
+		</div>
+	</section>
+</div>{% endblock %}
