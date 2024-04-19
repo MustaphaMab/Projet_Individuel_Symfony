@@ -33,7 +33,9 @@ class ProduitCrudController extends AbstractCrudController
                 ->setRequired(false),
             IntegerField::new('stock'),
             AssociationField::new('Categorie'),
-            MoneyField::new('prix')->setCurrency('EUR')
+            MoneyField::new('prix')->setCurrency('EUR'),
+            TextField::new('couleur'),
+
            
         ];
     }
