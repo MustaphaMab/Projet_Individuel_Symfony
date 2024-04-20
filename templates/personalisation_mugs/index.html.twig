@@ -1,97 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PersonalisationMugsController!
-{% endblock %}
+{% block title %}Mugs{% endblock %}
 
 {% block body %}
-
- <h1 class="titre">Personnalise ton Mug !</h1>
-	<div class="container mt-4">
+<h1>Mugs</h1>
+<div class="container">
     <div class="row">
-        <div class="col-12"> 
-   
-	 </div>
-    </div>
-   
-        <img id="mugImage" src="/images/mug_blanc.jpg" alt="Mug Blanc" style="height: auto; width: 600px;" class="card-img-top">
-    </div>
-
-   <div class="row">
-        <div class="">
-            <div class="card-body ml-5">
-                <div class="d-flex flex-wrap justify-content-center"  style="margin: 10px;">
-                    <button class="card" onclick="changeColor('blanc')">
-                        <img src="/images/mug_blanc.jpg" alt="Blanc" style="height: auto; width: 130px;"> Blanc
-                    </button>
-                    <button class="card" onclick="changeColor('rouge')"  style="margin: 10px;">
-                        <img src="/images/mug_rouge.jpg" alt="Rouge" style="height: auto; width: 130px;"> Rouge
-                    </button>
-                    <button class="card" onclick="changeColor('bleu')"  style="margin: 10px;">
-                        <img src="/images/mug_bleu.jpg" alt="Bleu" style="height: auto; width: 130px;"> Bleu
-                    </button>
-                    <button class="card" onclick="changeColor('vert')"  style="margin: 10px;">
-                        <img src="/images/mug_vert.jpg" alt="Vert" style="height: auto; width: 130px;"> Noir
-                    </button>
+        {% for mug in mugs %}
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ asset('images/' ~ mug.photo) }}" alt="Mug {{ mug.couleur }}">
+                <div class="card-body">
+                    <p class="card-text">{{ mug.description }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addToCart({{ mug.id }})">Ajouter au panier</button>
+                        </div>
+                        <small class="text-muted">{{ mug.prix }} €</small>
+                    </div>
                 </div>
             </div>
         </div>
-    
+        {% endfor %}
+    </div>
 </div>
-
-
-{# gestion de la selection des couleurs de mug #}
-
-	<script>
-					function changeColor(color) {
-			const imageSrc = '/images/mug_' + color + '.jpg';
-			document.getElementById('mugImage').src = imageSrc;
-			}
-	</script>
-
-	<h2>{{ mug.getDescription }}</h2>
-
-	<div class="quantité"></div>
-
-{# recupération du prix dans la base de donnée #}	
-
-</div>
- 
-<div class="prix" style="display: flex; align-items: center; justify-content: flex-start;"> 
-    {{ mug.getPrix }} € ttc
-    
-</div> 
-
-<h5>
-Exprimez votre créativité avec notre mug en céramique blanc !
-</h5>
-<h5>
-Simplicité et élégance : Notre mug en céramique blanc est le canevas idéal pour vos idées.
-Que ce soit pour un cadeau unique ou pour ajouter une touche personnelle à votre quotidien, 
-personnalisez ce mug avec la facilité d'un artiste. Ajoutez-y des images, des photos, des logos ou des textes de votre choix.
-</h5>
-<h5>
-Haute qualité garantie : Fabriqué avec soin, ce mug est non seulement élégant mais aussi robuste. 
-Grâce à une impression de haute qualité réalisée en France, il résiste aux lavages fréquents au lave-vaisselle ainsi qu'aux passages au micro-ondes.
-</h5>
-
-{#********************** ajout au panier *************************#}
-<a href="{{ path('mug_add_to_cart' , {'id': mug.id}) }}" style="width: 50%; display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Ajouter au panier</a>
-<hr>
-
-{#*********************** notation avis **************************#}
-<form class="stars" action="" method="post">
-  <fieldset class="rating">
-    <legend>Évaluez ce produit :</legend>
-    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">★</label>
-    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★★</label>
-    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★★★</label>
-    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★★★★</label>
-    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★★★★★</label>
-  </fieldset>
-  <button class="btn btn-success" type="submit" class="btn">Soumettre</button>
-</form>
-
-<hr>
-
-</div>
+<script>
+function addToCart(id) {
+    window.location.href = '{{ path('mug_add_to_cart', {'id': 'PLACEHOLDER'}) }}'.replace('PLACEHOLDER', id);
+}
+</script>
 {% endblock %}

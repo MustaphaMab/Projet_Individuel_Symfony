@@ -1,42 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre Panier
-{% endblock %}
+{% block title %}Votre Panier{% endblock %}
 
 {% block body %}
-	<h1 class="text-center my-4">Votre Panier</h1>
-	<div class="container mt-5">
-
-		<div class="table-responsive">
-			<table class="table table-striped shadow">
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">Produit</th>
-						<th scope="col">Quantité</th>
-						<th scope="col" class="text-center">Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for item in products %}
-						<tr>
-							<td>{{ item.product.nom }}</td>
-							<td class="text-center">{{ item.quantity }}</td>
-							<td class="text-center">
-								<a href="{{ path('cart_add', {'id': item.product.id}) }}" class="btn btn-outline-primary btn-sm">+</a>
-								<a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-outline-secondary btn-sm">-</a>
-								<a href="{{ path('cart_delete', {'id': item.product.id}) }}" class="btn btn-outline-danger btn-sm">Supprimer</a>
-								<a href="{{ path('cart_empty') }}" class="btn btn-outline-danger btn-sm">Vider le panier</a>
-							</td>
-						</tr>
-					{% else %}
-						<tr>
-							<td colspan="3" class="text-center">Votre panier est vide</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-
-
-	</div>
+<h1>Votre Panier</h1>
+<div class="container">
+    {% if products|length > 0 %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in products %}
+            <tr>
+                <td><img src="{{ asset('images/' ~ item.product.photo) }}" alt="..." class="img-thumbnail" style="width: 50px;"> {{ item.product.nom }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>
+                    <a href="{{ path('cart_add', {'id': item.product.id}) }}" class="btn btn-sm btn-primary">+</a>
+                    <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-sm btn-danger">-</a>
+                    <a href="{{ path('cart_delete', {'id': item.product.id}) }}" class="btn btn-sm btn-warning">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="{{ path('cart_empty') }}" class="btn btn-danger">Vider le panier</a>
+    </div>
+    {% else %}
+    <p>Votre panier est vide.</p>
+    {% endif %}
+</div>
 {% endblock %}

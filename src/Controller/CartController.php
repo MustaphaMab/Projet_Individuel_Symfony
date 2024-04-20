@@ -1,7 +1,5 @@
 <?php
 
-// src/Controller/CartController.php
-
 namespace App\Controller;
 
 use App\Repository\ProduitRepository;
@@ -12,20 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
-    #[Route('/cart/add/{id}', name: 'cart_add')]
-    public function add($id, SessionInterface $session, ProduitRepository $produitRepository): Response
-    {
-        $cart = $session->get('cart', []);
-        if (!empty($cart[$id])) {
-            $cart[$id]++;
-        } else {
-            $cart[$id] = 1;
-        }
-        $session->set('cart', $cart);
-        return $this->redirectToRoute('cart_show');
-    }
+    /**
+     * Affiche le panier et ses articles. */
+    #[Route("/cart", name: "cart_show")]
 
-    #[Route('/cart', name: 'cart_show')]
     public function show(SessionInterface $session, ProduitRepository $produitRepository): Response
     {
         $cart = $session->get('cart', []);
@@ -38,14 +26,20 @@ class CartController extends AbstractController
         }
         return $this->render('cart/show.html.twig', ['products' => $products]);
     }
-    #[Route('/cart/remove/{id}', name: 'cart_remove')]
-    public function remove($id, SessionInterface $session): Response
+
+    /**
+     * Ajoute un produit au panier ou augmente sa quantité, ou diminue la quantité ou supprime un produit du panier. */
+    #[Route("/cart/add/{id}", name: "cart_add")]
+    #[Route("/cart/remove/{id}", name: "cart_remove")]
+
+    public function updateCart(int $id, SessionInterface $session, string $_route, ProduitRepository $produitRepository): Response
     {
         $cart = $session->get('cart', []);
-        if (!empty($cart[$id])) {
-            if ($cart[$id] > 1) {
-                $cart[$id]--;
-            } else {
+        if ($_route === 'cart_add') {
+            $cart[$id] = ($cart[$id] ?? 0) + 1;
+        } elseif ($_route === 'cart_remove' && isset($cart[$id])) {
+            $cart[$id]--;
+            if ($cart[$id] <= 0) {
                 unset($cart[$id]);
             }
         }
@@ -53,8 +47,11 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show');
     }
 
-    #[Route('/cart/delete/{id}', name: 'cart_delete')]
-    public function delete($id, SessionInterface $session): Response
+    /**
+     * Supprime un article du panier. */
+    #[Route("/cart/delete/{id}", name: "cart_delete")]
+
+    public function delete(int $id, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
         unset($cart[$id]);
@@ -62,7 +59,10 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show');
     }
 
-    #[Route('/cart/empty', name: 'cart_empty')]
+    /**
+     * Vide complètement le panier. */
+    #[Route("/cart/empty", name: "cart_empty")]
+
     public function empty(SessionInterface $session): Response
     {
         $session->set('cart', []);
