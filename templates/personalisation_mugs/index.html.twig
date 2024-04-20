@@ -25,8 +25,38 @@
     </div>
 </div>
 <script>
+// Fonction pour ajouter un produit au panier
 function addToCart(id) {
-    window.location.href = '{{ path('mug_add_to_cart', {'id': 'PLACEHOLDER'}) }}'.replace('PLACEHOLDER', id);
+    // Envoie une requête POST à l'URL de l'API pour ajouter un produit au panier
+  fetch(`/cart/add/${id}`, { method: 'POST' })
+.then(response => {
+    if (!response.ok) { // Vérifie si le statut HTTP est une erreur
+        throw new Error('Réseau ou réponse du serveur non ok');
+    }
+    return response.json(); // Continuer à traiter la réponse si tout va bien
+})
+.then(data => {
+    if (data.success) {
+        alert('Produit ajouté avec succès!');
+        updateCartCount(data.cartCount);
+    } else {
+        alert('Erreur: ' + data.message);
+    }
+})
+.catch(error => {
+    console.error('Erreur:', error);
+    alert('Erreur lors de l\'ajout au panier. Veuillez réessayer.');
+});
+
+}
+
+// Fonction pour mettre à jour le compteur de produits dans le panier
+function updateCartCount(count) {
+    // Sélectionne l'icône du panier par sa classe
+    const cartIcon = document.querySelector('.logo_panier');
+    // Met à jour l'attribut data-count de l'icône du panier avec le nouveau nombre de produits
+    cartIcon.dataset.count = count; // Mettre à jour l'affichage du nombre d'articles dans le panier
 }
 </script>
+
 {% endblock %}

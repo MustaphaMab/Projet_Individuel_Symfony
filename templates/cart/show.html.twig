@@ -1,38 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre Panier{% endblock %}
+{% block title %}Votre Panier
+{% endblock %}
 
 {% block body %}
-<h1>Votre Panier</h1>
-<div class="container">
-    {% if products|length > 0 %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Produit</th>
-                <th>Quantité</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in products %}
-            <tr>
-                <td><img src="{{ asset('images/' ~ item.product.photo) }}" alt="..." class="img-thumbnail" style="width: 50px;"> {{ item.product.nom }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>
-                    <a href="{{ path('cart_add', {'id': item.product.id}) }}" class="btn btn-sm btn-primary">+</a>
-                    <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-sm btn-danger">-</a>
-                    <a href="{{ path('cart_delete', {'id': item.product.id}) }}" class="btn btn-sm btn-warning">Supprimer</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div>
-        <a href="{{ path('cart_empty') }}" class="btn btn-danger">Vider le panier</a>
-    </div>
-    {% else %}
-    <p>Votre panier est vide.</p>
-    {% endif %}
-</div>
+	<h1 class="text-center my-4">Votre Panier</h1>
+	<div class="container">
+		{% if products|length > 0 %}
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th>Produit</th>
+							<th>Quantité</th>
+							<th colspan="3">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in products %}
+							<tr>
+								<td>
+									<img src="{{ asset('images/' ~ item.product.photo) }}" alt="{{ item.product.nom }}" class="img-thumbnail" style="width: 50px;">
+									{{ item.product.nom }}
+								</td>
+								<td class="text-center">{{ item.quantity }}</td>
+								<td class="text-center">
+									<button onclick="updateCartItem('add', {{ item.product.id }})" class="btn btn-primary btn-sm">+</button>
+								</td>
+								<td class="text-center">
+									<button onclick="updateCartItem('remove', {{ item.product.id }})" class="btn btn-danger btn-sm">-</button>
+								</td>
+								<td class="text-center">
+									<button onclick="deleteCartItem({{ item.product.id }})" class="btn btn-warning btn-sm">
+										<i class="fa fa-trash" aria-hidden="true"></i>
+									</button>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="d-flex justify-content-end mt-4">
+				<button onclick="emptyCart()" class="btn btn-danger btn-lg">Vider le panier</button>
+			</div>
+		{% else %}
+			<p class="text-center">Votre panier est vide.</p>
+		{% endif %}
+	</div>
+	<script>
+		// Fonctions AJAX pour mettre à jour dynamiquement le panier
+function updateCartItem(action, id) {
+const url = action === 'add' ? `/cart/add/${id}` : `/cart/remove/${id}`;
+fetch(url, {method: 'POST'}).then(response => response.json()).then(data => {
+if (data.success) {
+location.reload();
+}
+});
+}
+
+function deleteCartItem(id) {
+fetch (`/cart/delete/${id}`, {method: 'POST'}).then(response => response.json()).then(data => {
+if (data.success) {
+location.reload();
+}
+});
+}
+
+function emptyCart() {
+fetch(`/cart/empty`, {method: 'POST'}).then(response => response.json()).then(data => {
+if (data.success) {
+location.reload();
+}
+});
+}
+	</script>
 {% endblock %}
