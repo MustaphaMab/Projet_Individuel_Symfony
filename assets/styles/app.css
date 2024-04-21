@@ -5,20 +5,27 @@ html {
   padding: 0%;
   width: 100%;
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: Garamond, Georgia, serif, sans-serif;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Montserrat", sans-serif;
+  font-family: Garamond, Georgia, serif;
   font-weight: 700;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+
 /************************************************************************************************************/
 /********************************************************* Header *******************************************/
+
+.container{
+  display: flex;
+  justify-content: space-around;
+}
 
 .logo_panier {
   width: 70px;
@@ -45,29 +52,31 @@ h3 {
 
 .navbar-nav {
   display: flex !important;
-  align-items: flex-end;
+  align-items: center; 
+  justify-content: center; 
 }
 
 .nav-item {
-  margin-right: 15px;
-  font-size: 30px;
+  margin-right: 15px; 
 }
 
 .nav-link {
-  padding: 5px 10px;
-  color: #220101;
+  padding: 5px 10px; 
+  color: #220101; 
+  display: flex;
+  align-items: center; 
 }
 
 .logo_header {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: auto;
   margin: 0 auto;
   border-radius: 50%;
   display: block;
 }
 
 .bg-body-tertiary {
-  background-color: #f3e7c9 !important;
+  background-color: #FFE39D !important;
   color: #ffffff;
 }
 
@@ -75,13 +84,14 @@ h3 {
 
 /*************************************************** Main ***************************************************/
 .main-home {
-  padding-top: 18%; /* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
+  padding-top: 12%; 
 
   color: #333333;
 }
 
 .main-home h1 {
-  font-size: 50px;
+  font-size: 60px;
+  padding-bottom: 4%;
 }
 
 .main-home p {
@@ -91,11 +101,28 @@ h3 {
 
 /*************************************************** Cards dans Home ****************************************/
 
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+
+.card-img-top {
+  width: 100%;
+  height: auto; 
+}
+
+
 .card {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
+  width: 100%; 
+  margin-bottom: 2rem;
 }
 
 .card:hover {
@@ -110,11 +137,11 @@ h3 {
 
 .card-body {
   background: #ffffff;
-  padding: 20px;
+  padding: 30px;
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: #333;
   margin-bottom: 15px;
@@ -140,13 +167,6 @@ h3 {
   border-radius: 8px;
 }
 
-/* div .card {
-  padding-top: 5%;
-}
-
-.card-title {
-  font-size: 300%;
-} */
 /************************************************************************************************************/
 
 /*************************************************** Formaulaire Inscription ********************************/
@@ -195,7 +215,7 @@ h3 {
 .btn-primary {
   width: 200px;
   height: 70px;
-  font-size: 50px;
+  font-size: 30px;
   padding: 10px 15px;
   background: #ffe39c;
   color: #000000;
@@ -272,7 +292,7 @@ footer {
 
 .footer-basic {
   padding-top: 2%;
-  background-color: #f3e7c9;
+  background-color: #FFE39D;
   color: #4b4c4d;
 }
 
