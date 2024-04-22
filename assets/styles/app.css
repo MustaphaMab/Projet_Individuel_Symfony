@@ -21,23 +21,29 @@ h3 {
 
 /************************************************************************************************************/
 /********************************************************* Header *******************************************/
-
+.logo_header {
+  width: 80px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: block;
+}
 .container{
   display: flex;
   justify-content: space-around;
 }
 
 .logo_panier {
-  width: 70px;
+  width: 40px;
   height: auto;
 }
 
 .profil {
-  width: 70px;
+  width: 40px;
   height: auto;
 }
 .connexion {
-  width: 70px;
+  width: 40px;
   height: auto;
 }
 .deconnexion {
@@ -46,7 +52,7 @@ h3 {
 }
 
 .navbar-toggler-icon {
-  width: 70px;
+  width: 40px;
   height: 70px;
 }
 
@@ -65,14 +71,6 @@ h3 {
   color: #220101; 
   display: flex;
   align-items: center; 
-}
-
-.logo_header {
-  width: 100px;
-  height: auto;
-  margin: 0 auto;
-  border-radius: 50%;
-  display: block;
 }
 
 .bg-body-tertiary {
@@ -285,6 +283,16 @@ h3 {
 /************************************************************************************************************/
 
 /*************************************************** Footer *************************************************/
+.logo_instagram{
+  width: 40px;
+  height: auto;
+}
+
+.logo_facebook{
+  width: 40px;
+  height: auto;
+}
+
 footer {
   padding-top: 10%;
   padding-bottom: 0;
