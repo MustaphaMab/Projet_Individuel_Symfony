@@ -6,6 +6,8 @@
 <h1>Mugs</h1>
 <div class="container">
     <div class="row">
+
+
         {% for mug in mugs %}
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
@@ -25,11 +27,15 @@
     </div>
 </div>
 <script>
+
+
 // Fonction pour ajouter un produit au panier
 function addToCart(id) {
+
     // Envoie une requête POST à l'URL de l'API pour ajouter un produit au panier
   fetch(`/cart/add/${id}`, { method: 'POST' })
 .then(response => {
+    
     if (!response.ok) { // Vérifie si le statut HTTP est une erreur
         throw new Error('Réseau ou réponse du serveur non ok');
     }
@@ -58,5 +64,7 @@ function updateCartCount(count) {
     cartIcon.dataset.count = count; // Mettre à jour l'affichage du nombre d'articles dans le panier
 }
 </script>
+
+
 
 {% endblock %}

@@ -204,8 +204,8 @@ h3 {
 
 .form-control {
   flex-grow: 1;
-  width: 800px;
-  height: 90px;
+  width: 100%;
+  height: auto;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
@@ -294,7 +294,7 @@ h3 {
 }
 
 footer {
-  padding-top: 10%;
+  padding-top: 5%;
   padding-bottom: 0;
 }
 
@@ -406,6 +406,8 @@ footer {
     width: 140px;
     height: 140px;
   }
+
+  /* Plus grands appareils (desktops) */
   @media (min-width: 993px) {
     .navbar-nav {
       flex-direction: row !important;
@@ -422,8 +424,8 @@ footer {
     }
 
     .logo_header {
-      width: 180px;
-      height: 180px;
+      width: 100%;
+      height: auto;
     }
 
     .card {

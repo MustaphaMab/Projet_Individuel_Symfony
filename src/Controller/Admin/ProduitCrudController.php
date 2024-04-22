@@ -25,7 +25,7 @@ class ProduitCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             ImageField::new('photo')
                 ->setBasePath('/images')
                 ->setUploadDir('public/images')
@@ -33,7 +33,11 @@ class ProduitCrudController extends AbstractCrudController
                 ->setRequired(false),
             IntegerField::new('stock'),
             AssociationField::new('Categorie'),
-            MoneyField::new('prix')->setCurrency('EUR'),
+            // MoneyField::new('prix')->setCurrency('EUR'),
+            MoneyField::new('prix', 'Prix en Euros')
+                ->setCurrency('EUR')
+                ->setStoredAsCents(true)
+                ->setCustomOption('storedAsCents', true),
             TextField::new('couleur'),
 
            
