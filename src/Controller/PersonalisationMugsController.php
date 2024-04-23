@@ -31,7 +31,7 @@ class PersonalisationMugsController extends AbstractController
     public function addToCart(int $id, SessionInterface $session, ProduitRepository $produitRepository): Response {
         // Trouve le mug spécifique par son ID
         $mug = $produitRepository->find($id);
-
+        
         // Si le mug n'existe pas, renvoie une réponse 404
         if (!$mug) {
             throw $this->createNotFoundException('Le mug demandé n\'existe pas.');

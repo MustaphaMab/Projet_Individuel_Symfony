@@ -51,7 +51,7 @@ function addToCart(id) {
 })
 .catch(error => {
     console.error('Erreur:', error);
-    alert('Erreur lors de l\'ajout au panier. Veuillez réessayer.');
+    alert('Erreur lors de l\'ajout au panier. Veuillez réessayer.Détails: ' + error.message);
 });
 
 }
