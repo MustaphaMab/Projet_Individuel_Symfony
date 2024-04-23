@@ -293,6 +293,13 @@ h3 {
   font-size: 12px;
 }
 
+.btn-panier {
+  padding: 10px 15px;
+  min-width: 50px; /* Au lieu de width: 50px; pour s'assurer que le contenu rentre bien */
+  /* ... autres propriétés ... */
+}
+
+
 
 /************************************************************************************************************/
 

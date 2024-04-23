@@ -1,64 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre Panier{% endblock %}
+{% block title %}Votre Panier
+{% endblock %}
 
 {% block body %}
-<h1 class="text-center my-4">Votre Panier</h1>
-<div class="container">
-    {% if products|length > 0 %}
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Produit</th>
-                        <th>Quantité</th>
-                        <th>Prix unitaire</th>
-                        <th>Sous-total</th>
-                        <th colspan="3">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% set totalPrice = 0 %}
-                    {% for item in products %}
-                        <tr>
-                            <td>
-                                <img src="{{ asset('images/' ~ item.product.photo) }}" alt="{{ item.product.nom }}" class="img-thumbnail" style="width: 50px;">
-                                {{ item.product.nom }}
-                            </td>
-                            <td class="text-center">{{ item.quantity }}</td>
-                            <td class="text-center">{{ item.price / 100 }} €</td>
-                            <td class="text-center">{{ item.subtotal / 100 }} €</td>
-                            <td class="text-center">
-                                <button onclick="updateCartItem('add', {{ item.product.id }})" class="btn btn-primary btn-sm">+</button>
-                            </td>
-                            <td class="text-center">
-                                <button onclick="updateCartItem('remove', {{ item.product.id }})" class="btn btn-danger btn-sm">-</button>
-                            </td>
-                            <td class="text-center">
-                                <button onclick="deleteCartItem({{ item.product.id }})" class="btn btn-warning btn-sm">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        {% set totalPrice = totalPrice + (item.subtotal / 100) %}
-                    {% endfor %}
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="3">Total</th>
-                        <th class="text-center">{{ totalPrice }} €</th>
-                        <th colspan="3"></th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <div class="d-flex justify-content-end mt-4">
-            <button onclick="emptyCart()" class="btn btn-danger btn-lg">Vider le panier</button>
-        </div>
-    {% else %}
-        <p class="text-center">Votre panier est vide.</p>
-    {% endif %}
-</div>
+	<h1 class="text-center my-4">Votre Panier</h1>
+
+	<div class="container">
+		{% if products|length > 0 %}
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead class="table">
+						<tr>
+							<th>Produit</th>
+							<th>Quantité</th>
+							<th>Prix unitaire</th>
+							<th>Sous-total</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						{% set totalPrice = 0 %}
+						{% for item in products %}
+							<tr>
+								<td>
+									<img src="{{ asset('images/' ~ item.product.photo) }}" alt="{{ item.product.nom }}" class="img-thumbnail" style="width: 50px;">
+									{{ item.product.nom }}
+								</td>
+								<td class="text-center">{{ item.quantity }}</td>
+								<td class="text-center">{{ item.price / 100 }}
+									€</td>
+								<td class="text-center">{{ item.subtotal / 100 }}
+									€</td>
+								<td class="text-center">
+									<button onclick="updateCartItem('add', {{ item.product.id }})" class="btn btn-danger btn-sm btn-panier">Ajouter</button>
+								</td>
+								<td class="text-center">
+									<button onclick="updateCartItem('remove', {{ item.product.id }})" class="btn btn-danger btn-sm btn-panier">Déduire</button>
+								</td>
+								<td class="text-center">
+									<button onclick="deleteCartItem({{ item.product.id }})" class="btn btn-warning btn-sm btn-panier">
+										<i class="fa fa-trash" aria-hidden="true"></i>
+									</button>
+								</td>
+							</tr>
+							{% set totalPrice = totalPrice + (item.subtotal / 100) %}
+						{% endfor %}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th colspan="3">Total</th>
+							<th class="text-center">{{ totalPrice }}
+								€</th>
+							<th colspan="3"></th>
+						</tr>
+
+					</tfoot>
+				</table>
+				<tr class="">
+					<button onclick="emptyCart()" class="btn btn-danger btn-lg">Vider le panier</button>
+				</tr>
+			</div>
+
+		{% else %}
+			<p class="text-center">Votre panier est vide.</p>
+		{% endif %}
+	</div>
 
 
 	<script>
