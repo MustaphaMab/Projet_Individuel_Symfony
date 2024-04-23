@@ -16,10 +16,20 @@ class CartController extends AbstractController
     public function show(SessionInterface $session, ProduitRepository $produitRepository): Response {
         $cart = $session->get('cart', []);
         $products = [];
+        $totalPrice = 0;
+
         foreach ($cart as $id => $quantity) {
             $product = $produitRepository->find($id);
-            if ($product) {
-                $products[] = ['product' => $product, 'quantity' => $quantity];
+
+            if($product) {
+                $productData = [
+                    'product' => $product,
+                    'quantity' => $quantity,
+                    'price' => $product->getPrix(),
+                    'subtotal' => $quantity * $product -> getPrix()
+                ];
+                $products[] = $productData;
+                $totalPrice +=$productData['subtotal'];
             }
         }
         return $this->render('cart/show.html.twig', ['products' => $products]);
