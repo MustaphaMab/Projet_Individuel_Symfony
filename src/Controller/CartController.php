@@ -67,7 +67,7 @@ class CartController extends AbstractController
         $cart = $session->get('cart', []);
         unset($cart[$id]);
         $session->set('cart', $cart);
-        return $this->redirectToRoute('cart_show');
+        return $this->json(['success' => true]);
     }
 
     #[Route("/cart/empty", name: "cart_empty", methods: ["POST"])]
