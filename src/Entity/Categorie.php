@@ -10,7 +10,9 @@ class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name: "Id_Categorie")]
+    #[ORM\Column(name: "Id_Categorie")] 
+    // #[ORM]Column siginifie que la propriété correspond à une colonne dans la base de donnée
+
     private ?int $id = null;
 
     #[ORM\Column(length: 300)]
@@ -22,6 +24,7 @@ class Categorie
     
 
     public function __toString(): string
+    // __toString est une methode dite magique, car elle permet de convertir un objet en chaine de caractère
     {
         return $this->Nom; }
 
@@ -56,3 +59,7 @@ class Categorie
     }
 
 }
+
+
+// les Getters permettent d'acceder et lire les valeurs sans modifications
+// les Setters permettent d'utiliser et modifier les valeurs des propriétés de l'objet

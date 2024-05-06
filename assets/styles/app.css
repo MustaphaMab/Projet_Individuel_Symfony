@@ -18,21 +18,20 @@ h3 {
   margin-bottom: 10px;
 }
 
-
 /************************************************************************************************************/
 /********************************************************* Header *******************************************/
-.navbar{
-  height: 18%;
+.navbar {
+  height: 10%;
 }
 
 .logo_header {
-  width: 130px;
+  width: 110px;
   height: auto;
   padding: 1%;
   border-radius: 50%;
   display: block;
 }
-.container{
+.container {
   display: flex;
   justify-content: space-around;
 }
@@ -62,39 +61,33 @@ h3 {
 
 .navbar-nav {
   display: flex !important;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-item {
-  margin-right: 15px; 
+  margin-right: 2%;
 }
 
 .nav-link {
-  padding: 5px 10px; 
-  color: #220101; 
+  font-size: 60%;
+  color: #220101;
   display: flex;
-  align-items: center; 
+  align-items: center;
   position: relative;
   display: inline-block;
 }
 
 .bg-body-tertiary {
-  background-color: #FFE39D !important;
+  background-color: #ffe39d !important;
   color: #ffffff;
 }
 
-#compteur-card{
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(0%, -20%);
-}
 /************************************************************************************************************/
 
 /*************************************************** Main ***************************************************/
 .main-home {
-  padding-top: 12%; 
+  padding-top: 15%;
 
   color: #333333;
 }
@@ -111,7 +104,6 @@ h3 {
 
 /*************************************************** Cards dans Home ****************************************/
 
-
 .cards-container {
   display: flex;
   flex-direction: column;
@@ -119,19 +111,17 @@ h3 {
   width: 100%;
 }
 
-
 .card-img-top {
   width: 100%;
-  height: auto; 
+  height: auto;
 }
-
 
 .card {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
-  width: 100%; 
+  width: 100%;
   margin-bottom: 2rem;
 }
 
@@ -180,8 +170,6 @@ h3 {
 /************************************************************************************************************/
 
 /*************************************************** Formaulaire Inscription ********************************/
-
-
 
 .container {
   display: flex;
@@ -252,7 +240,7 @@ h3 {
 }
 .connexion-title {
   font-size: 60px !important;
-  justify-content:right;
+  justify-content: right;
 }
 .email-label,
 .password-label {
@@ -281,6 +269,18 @@ h3 {
   text-align: center;
 }
 
+.voir_panier_mugs {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #ffe39d;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
 /************************************************************************************************************/
 
 /*************************************************** Confirmation ajout Mugs dans panier ********************/
@@ -303,29 +303,28 @@ h3 {
   /* ... autres propriétés ... */
 }
 
-
-
 /************************************************************************************************************/
 
 /*************************************************** Footer *************************************************/
-.logo_instagram{
+.logo_instagram {
   width: 40px;
   height: auto;
 }
 
-.logo_facebook{
+.logo_facebook {
   width: 40px;
   height: auto;
 }
 
 footer {
-  padding-top: 5%;
+  height: 10%;
+  padding-top: 1%;
   padding-bottom: 0;
 }
 
 .footer-basic {
   padding-top: 2%;
-  background-color: #FFE39D;
+  background-color: #ffe39d;
   color: #4b4c4d;
 }
 
@@ -468,7 +467,16 @@ footer {
       padding: 15px 20px;
     }
 
-    
+    .card-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    .detail_article {
+      flex-basis: 20%;
+      padding: 10px;
+    }
   }
 }
 /************************************************************************************************************/

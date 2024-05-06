@@ -1,83 +1,86 @@
 {# NavBar pour une application e-commerce sous Symfony #}
 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top navbar-custom-padding">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('app_home') }}">
-            <img src="/images/logo_header4.gif" alt="Logo" class="logo_header">
-        </a>
-        <button 
-        class="navbar-toggler" 
-        type="button" 
-        data-bs-toggle="collapse" 
-        data-bs-target="#navbarNavDropdown" 
-        aria-controls="navbarNavDropdown" 
-        aria-expanded="false" 
-        aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">
-
-
-                {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_mes_commandes') }}">
-                            <img src="/images/mon-profil.png" alt="Mon profil" class="profil">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('cart_show') }}">
-                            <img src="/images/ajouter-au-panier.png" alt="Logo Panier" class="logo_panier">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">
-                            <img src="/images/deconnexion.png" alt="Déconnexion" class="deconnexion">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_personalisation_mugs') }}">Mugs</a>
-                    </li>
-                    <li class="nav-item">	
-                        <a class="nav-link" href="{{ path('app_personalisation_porte_cl_s') }}">Porte-clés</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_personalisation_marques_pages') }}">Marques-pages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_personalisation_tshirt') }}">T-shirts</a>
-                    </li>
-
-
-                {% else %}
-                  
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_personalisation_mugs') }}">Mugs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_personalisation_porte_cl_s') }}">Porte-clés</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_personalisation_marques_pages') }}">Marques-pages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_personalisation_tshirt') }}">T-shirts</a>
-                    </li>
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{ path('app_home') }}">
+			<img src="/images/logo_header4.gif" alt="Logo" class="logo_header">
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			
+            
+{# +++++++++++++++++++++++++++++++++++++++++++++++ #}
+                {# Affichage du nom de l'user connecté #}
+				{% if app.user %}
+					Bonjour,
+					{{ app.user.prenom }}!
+				{% else %}
+					Bonjour, vous n'êtes pas connecté!
+				{% endif %}
+{# ++++++++++++++++++++++++++++++++++++++++++++++++ #}
+<ul class="navbar-nav ms-auto">
+				{% if app.user %}
+					{# <li class="nav-item">
+						<a class="nav-link" href="{{ path('app_mes_commandes') }}">
+							<img src="/images/mon-profil.png" alt="Mon profil" class="profil">
+						</a>
+					</li> #}		
 					<li class="nav-item">
-                        <a class="nav-link" href="{{ path('cart_show') }}">
-                        <span id="compteur-card" class="badge badge-light">0</span>
-                            <img src="/images/ajouter-au-panier.png" alt="Logo Panier" class="logo_panier">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_login') }}">
-                       
-                            <img src="/images/mon-profil.png" alt="Logo connexion" class="connexion">
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
+						<a class="nav-link" href="{{ path('app_personalisation_mugs') }}">Mugs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_personalisation_porte_cl_s') }}">Porte-clés</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_personalisation_marques_pages') }}">Marques-pages</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_personalisation_tshirt') }}">T-shirts</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('cart_show') }}">
+							<img src="/images/ajouter-au-panier.png" alt="Logo Panier" class="logo_panier">
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout') }}">
+							<img src="/images/deconnexion.png" alt="Déconnexion" class="deconnexion">
+						</a>
+					</li>
+			
+
+
+				{% else %}
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_personalisation_mugs') }}">Mugs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_personalisation_porte_cl_s') }}">Porte-clés</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_personalisation_marques_pages') }}">Marques-pages</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_personalisation_tshirt') }}">T-shirts</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('cart_show') }}">
+							<span id="compteur-card" class="badge badge-light">0</span>
+							<img src="/images/ajouter-au-panier.png" alt="Logo Panier" class="logo_panier">
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}">
+
+							<img src="/images/mon-profil.png" alt="Logo connexion" class="connexion">
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
 </nav>
 
 {# Fin NavBar #}
