@@ -21,16 +21,16 @@ h3 {
 /************************************************************************************************************/
 /********************************************************* Header *******************************************/
 .navbar {
-  height: 10%;
+  height: 12%;
 }
 
 .logo_header {
-  width: 110px;
+  max-width: 100%;
   height: auto;
-  padding: 1%;
-  border-radius: 50%;
   display: block;
+  border-radius: 50%;
 }
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -380,6 +380,7 @@ footer {
   color: #aaa;
   margin-bottom: 0;
 }
+
 /************************************************************************************************************/
 /****************************************************** Media Queries ***************************************/
 /* Petits appareils (mobiles, moins de 426px) */
@@ -395,11 +396,10 @@ footer {
   h4 {
     font-size: 18px;
   }
-
   .logo_header {
-    width: 100px;
-    height: 100px;
+    width: 50px; /* Taille plus petite pour les appareils mobiles */
   }
+  
 }
 
 /* Moyens appareils (tablets, moins de 768px) */
@@ -410,11 +410,10 @@ footer {
   h4 {
     font-size: 24px;
   }
-
   .logo_header {
-    width: 120px;
-    height: 120px;
+    width: 70px; /* Taille moyenne pour les tablettes */
   }
+  
 }
 
 /* Grands appareils (laptops, moins de 992px) */
@@ -425,11 +424,10 @@ footer {
   h4 {
     font-size: 30px;
   }
-
   .logo_header {
-    width: 140px;
-    height: 140px;
+    width: 100%; /* Taille légèrement plus grande pour les petits laptops */
   }
+  
 
   /* Plus grands appareils (desktops) */
   @media (min-width: 993px) {
@@ -446,10 +444,8 @@ footer {
       margin-top: 20px;
       margin-bottom: 20px;
     }
-
     .logo_header {
-      width: 100%;
-      height: auto;
+      width: 120px; /* Taille standard pour les desktops */
     }
 
     .card {
