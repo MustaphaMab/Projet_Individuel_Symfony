@@ -19,13 +19,16 @@ h3 {
 }
 
 /************************************************************************************************************/
+
+
+
 /********************************************************* Header *******************************************/
 .navbar {
   height: 12%;
 }
 
 .logo_header {
-  max-width: 100%;
+  max-width: 21%;
   height: auto;
   display: block;
   border-radius: 50%;
@@ -60,9 +63,9 @@ h3 {
 }
 
 .navbar-nav {
-  display: flex !important;
-  align-items: center;
+  display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .nav-item {
@@ -70,7 +73,7 @@ h3 {
 }
 
 .nav-link {
-  font-size: 60%;
+  font-size: 100%;
   color: #220101;
   display: flex;
   align-items: center;
@@ -226,7 +229,7 @@ h3 {
 
 /************************************************************************************************************/
 
-/*************************************************** Formulaire Login ***************************************/
+/*************************************************** Form Login ***************************************/
 .gradient-custom-2 {
   background: #fccb90;
   background: -webkit-linear-gradient(
@@ -387,46 +390,40 @@ footer {
 @media (max-width: 426px) {
   .nav-link,
   .nav-item {
-    font-size: 10px;
+    font-size: 12px; 
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-size: 18px;
+  h1, h2, h3, h4 {
+    font-size: 18px;  
   }
   .logo_header {
-    width: 50px; /* Taille plus petite pour les appareils mobiles */
+    max-width: 50px; 
   }
-  
 }
+
 
 /* Moyens appareils (tablets, moins de 768px) */
 @media (max-width: 768px) {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-size: 24px;
-  }
   .logo_header {
-    width: 70px; /* Taille moyenne pour les tablettes */
+    width: 70px;  
   }
-  
+  h1, h2, h3, h4 {
+    font-size: 14px; 
+  }
 }
 
 /* Grands appareils (laptops, moins de 992px) */
 @media (max-width: 992px) {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-size: 30px;
-  }
-  .logo_header {
-    width: 100%; /* Taille légèrement plus grande pour les petits laptops */
-  }
+  
+    .logo_header {
+      max-width: 110px; 
+    }
+    .nav-link, .nav-item {
+      font-size: 14px; /* Plus grand que précédemment pour la lisibilité */
+    }
+    h1, h2, h3, h4 {
+      font-size: 14px;
+    }
   
 
   /* Plus grands appareils (desktops) */
@@ -445,7 +442,7 @@ footer {
       margin-bottom: 20px;
     }
     .logo_header {
-      width: 120px; /* Taille standard pour les desktops */
+      width: 120px;
     }
 
     .card {
