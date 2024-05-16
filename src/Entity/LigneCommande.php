@@ -1,5 +1,7 @@
 <?php
 
+// src/Entity/LigneCommande.php
+
 namespace App\Entity;
 
 use App\Repository\LigneCommandeRepository;
@@ -26,7 +28,7 @@ class LigneCommande
     private ?int $Quantite = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
-    private ?float $Prix_Total = null;
+    private ?string $Prix_Total = null;
 
     public function getId(): ?int
     {
@@ -74,7 +76,7 @@ class LigneCommande
         return $this->Prix_Total;
     }
 
-    public function setPrixTotal(float $Prix_Total): self
+    public function setPrixTotal(string $Prix_Total): self
     {
         $this->Prix_Total = $Prix_Total;
 

@@ -74,7 +74,7 @@ h3 {
 
 .nav-link {
   font-size: 100%;
-  color: #220101;
+  color: #ffe39d;
   display: flex;
   align-items: center;
   position: relative;
@@ -82,7 +82,7 @@ h3 {
 }
 
 .bg-body-tertiary {
-  background-color: #ffe39d !important;
+  background-color: #e4aa18 !important;
   color: #ffffff;
 }
 
@@ -90,14 +90,14 @@ h3 {
 
 /*************************************************** Main ***************************************************/
 .main-home {
-  padding-top: 15%;
+  padding-top: 12%;
 
   color: #333333;
 }
 
 .main-home h1 {
-  font-size: 60px;
-  padding-bottom: 4%;
+  font-size: 45px;
+  padding: 20px;
 }
 
 .main-home p {
@@ -392,84 +392,89 @@ footer {
   .nav-item {
     font-size: 12px; 
   }
-
   h1, h2, h3, h4 {
     font-size: 18px;  
   }
+  .main-home h1 {
+    font-size: 40px;
+    padding: 25px;
+  }
   .logo_header {
-    max-width: 50px; 
+    max-width: 80px; 
   }
 }
 
-
-/* Moyens appareils (tablets, moins de 768px) */
-@media (max-width: 768px) {
+/* Moyens appareils (tablets, entre 427px et 768px) */
+@media (min-width: 427px) and (max-width: 768px) {
+  .card {
+    width: 45%;
+  }
   .logo_header {
-    width: 70px;  
+    width: 420px; 
+    padding: 5px; 
   }
   h1, h2, h3, h4 {
-    font-size: 14px; 
+    font-size: 20px; 
   }
+  .main-home h1 {
+    font-size: 50px;
+    padding: 10px;
+  }
+  
 }
 
 /* Grands appareils (laptops, moins de 992px) */
-@media (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 30%;
+  }
+  .logo_header {
+    max-width: 90px; 
+  }
+  .nav-link, .nav-item {
+    font-size: 14px; 
+  }
+  h1, h2, h3, h4 {
+    font-size: 14px;
+  }
   
-    .logo_header {
-      max-width: 110px; 
-    }
-    .nav-link, .nav-item {
-      font-size: 14px; /* Plus grand que précédemment pour la lisibilité */
-    }
-    h1, h2, h3, h4 {
-      font-size: 14px;
-    }
+}
+
+/* Plus grands appareils (desktops) */
+@media (min-width: 1025px) {
+  .card {
+    margin: 22%;
+  }
+  .navbar-nav {
+    flex-direction: row !important;
+    justify-content: flex-end;
+  }
+  h1, h2, h3, h4 {
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .logo_header {
+    width: 120px;
+  }
   
-
-  /* Plus grands appareils (desktops) */
-  @media (min-width: 993px) {
-    .navbar-nav {
-      flex-direction: row !important;
-      justify-content: flex-end;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-size: 36px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .logo_header {
-      width: 120px;
-    }
-
-    .card {
-      margin: 20px;
-    }
-
-    .form-control {
-      height: 60px;
-    }
-
-    .btn-primary {
-      width: 250px;
-      height: 80px;
-      font-size: 24px;
-      padding: 15px 20px;
-    }
-
-    .card-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-    }
-
-    .detail_article {
-      flex-basis: 20%;
-      padding: 10px;
-    }
+  .form-control {
+    height: 60px;
+  }
+  .btn-primary {
+    width: 250px;
+    height: 80px;
+    font-size: 24px;
+    padding: 15px 20px;
+  }
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+  .detail_article {
+    flex-basis: 20%;
+    padding: 10px;
   }
 }
 /************************************************************************************************************/

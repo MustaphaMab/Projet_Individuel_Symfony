@@ -70,7 +70,7 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
         return new RedirectResponse($this->urlGenerator->generate($redirectRoute));
 
 
-        // return new RedirectResponse($this->urlGenerator->generate('app_accueil_user_connexion_ok'));
+        
         // throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 
