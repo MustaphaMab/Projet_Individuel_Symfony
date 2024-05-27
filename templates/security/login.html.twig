@@ -82,19 +82,19 @@ const passwordError = document.getElementById('passwordError');
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 if (! emailPattern.test(emailInput.value)) {
 emailError.textContent = "S'il vous plaît, entrez une adresse email valide.";
-emailError.style.display = 'block'; // Montrer le message d'erreur
+emailError.style.display = 'block'; // Montre le message d'erreur
 isValid = false;
 } else {
-emailError.style.display = 'none'; // Cacher le message d'erreur si tout est correct
+emailError.style.display = 'none'; // Cache le message d'erreur si tout est correct
 }
 
 // Validation de la longueur du mot de passe
 if (passwordInput.value.length < 8) {
 passwordError.textContent = 'Votre mot de passe doit contenir au moins 8 caractères.';
-passwordError.style.display = 'block'; // Montrer le message d'erreur
+passwordError.style.display = 'block'; // Montre le message d'erreur
 isValid = false;
 } else {
-passwordError.style.display = 'none'; // Cacher le message d'erreur si tout est correct
+passwordError.style.display = 'none'; // Cache le message d'erreur si tout est correct
 }
 
 if (! isValid) {

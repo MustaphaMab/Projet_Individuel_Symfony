@@ -69,12 +69,14 @@ h3 {
 }
 
 .nav-item {
-  margin-right: 2%;
+  margin-right: 20px;
 }
 
 .nav-link {
-  font-size: 100%;
-  color: #ffe39d;
+  padding: 0 10px;
+  width: 200%;
+  font-size: 150%;
+  color: #533d05;
   display: flex;
   align-items: center;
   position: relative;
@@ -140,7 +142,7 @@ h3 {
 
 .card-body {
   background: #ffffff;
-  padding: 30px;
+  padding: 6%;
 }
 
 .card-title {
@@ -217,7 +219,7 @@ h3 {
   width: 200px;
   height: 70px;
   font-size: 30px;
-  padding: 10px 15px;
+  padding: 10px 5px;
   background: #ffe39c;
   color: #000000;
   border-radius: 4px;
@@ -390,12 +392,15 @@ footer {
 @media (max-width: 426px) {
   .nav-link,
   .nav-item {
-    font-size: 12px; 
+    background-color: #ffe39d;
+    color: #000000;
+    font-size: 120%; 
   }
   h1, h2, h3, h4 {
     font-size: 18px;  
   }
   .main-home h1 {
+    
     font-size: 40px;
     padding: 25px;
   }
@@ -407,10 +412,10 @@ footer {
 /* Moyens appareils (tablets, entre 427px et 768px) */
 @media (min-width: 427px) and (max-width: 768px) {
   .card {
-    width: 45%;
+    width: 90%;
   }
   .logo_header {
-    width: 420px; 
+    width: 15%; 
     padding: 5px; 
   }
   h1, h2, h3, h4 {
@@ -426,13 +431,13 @@ footer {
 /* Grands appareils (laptops, moins de 992px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .card {
-    width: 30%;
+    width: 90%;
   }
   .logo_header {
     max-width: 90px; 
   }
   .nav-link, .nav-item {
-    font-size: 14px; 
+    font-size: 120%; 
   }
   h1, h2, h3, h4 {
     font-size: 14px;
@@ -455,7 +460,7 @@ footer {
     margin-bottom: 20px;
   }
   .logo_header {
-    width: 120px;
+    width: 50%;
   }
   
   .form-control {
