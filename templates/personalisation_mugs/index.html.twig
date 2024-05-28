@@ -1,75 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mugs
-{% endblock %}
+{% block title %}Mugs{% endblock %}
 
 {% block body %}
-	<h1>Mugs</h1>
-	<div class="container">
-    
-		<div class="card_detail">
-			<div class="">
-
-				{% for mug in mugs %}
-					<div class="col-md-8">
-						<div class="card mb-11 box-shadow">
-							<img class="card-img" src="{{ asset('images/' ~ mug.photo) }}" alt="Mug {{ mug.couleur }}">
-							<div class="card-body">
-								<p class="card-text">{{ mug.description }}</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary" onclick="addToCart({{ mug.id }})">Ajouter au panier</button>
-									</div>
-									<small class="text-muted">{{ mug.prix / 100 }}
-										€</small>
-									<div class="stock_mugs">Il n'en reste que
-										{{ mug.stock }}</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				{% endfor %}
-
-			</div>
-		</div>
-
-		<ul class="detail_article">Détail de l'article :
-			<p>
-				Materiaux  : porcelaine</p>
-			<p>
-				Fait main</p>
-		</ul>
-	</div>
-</div>
-
-<a class="voir_panier_mugs" href="{{ path('cart_show') }}">Voir mon panier</a>
-<div align="right">
-	<script>
-
-
-		// ----------------------------------------------- Partie JAVASCRIPT ----------------------------------------------
-
-// Fonction pour ajouter un produit au panier
-function addToCart(id) { // Envoie une requête POST à l'URL de l'API pour ajouter un produit au panier
-fetch (`/cart/add/${id}`, {method: 'POST'}).then(response => {
-
-if (!response.ok) { // Vérifie si le statut HTTP est une erreur
-throw new Error('Réseau ou réponse du serveur non ok');
-}
-return response.json(); // Continuer à traiter la réponse si tout va bien
-}).then(data => {
-if (data.success) {
-alert('Produit ajouté avec succès!');
-updateCartCount(data.cartCount);
-} else {
-alert('Erreur: ' + data.message);
-}
-}).catch(error => {
-console.error('Erreur:', error);
-alert('Erreur lors de l\'ajout au panier. Veuillez réessayer.Détails: ' + error.message);
-});
-
-}
-
-	</script>
+    <h1>Mugs</h1>
+    <div class="container">
+        <div class="row">
+            {% for mug in mugs %}
+                <div class="col-md-3 mb-4">
+                    <div class="card box-shadow">
+                        <img class="card-img-top" src="{{ asset('images/' ~ mug.photo) }}" alt="Mug {{ mug.couleur }}">
+                        <div class="card-body">
+                            <p class="card-text">{{ mug.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addToCart({{ mug.id }})">Ajouter au panier</button>
+                                </div>
+                                <small class="text-muted">{{ mug.prix / 100 }} €</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <small class="text-muted">Stock : {{ mug.stock }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <ul class="detail_article">Détail de l'article :
+        <p>Matériaux : porcelaine</p>
+        <p>Fait main</p>
+    </ul>
+    <a class="voir_panier_mugs" href="{{ path('cart_show') }}">Voir mon panier</a>
+    <div align="right">
+        <script>
+            // ----------------------------------------------- Partie JAVASCRIPT ----------------------------------------------
+            // Fonction pour ajouter un produit au panier
+            function addToCart(id) { // Envoie une requête POST à l'URL de l'API pour ajouter un produit au panier
+                fetch(`/cart/add/${id}`, { method: 'POST' }).then(response => {
+                    if (!response.ok) { // Vérifie si le statut HTTP est une erreur
+                        throw new Error('Réseau ou réponse du serveur non ok');
+                    }
+                    return response.json(); // Continuer à traiter la réponse si tout va bien
+                }).then(data => {
+                    if (data.success) {
+                        alert('Produit ajouté avec succès!');
+                        updateCartCount(data.cartCount);
+                    } else {
+                        alert('Erreur: ' + data.message);
+                    }
+                }).catch(error => {
+                    console.error('Erreur:', error);
+                    alert('Erreur lors de l\'ajout au panier. Veuillez réessayer. Détails: ' + error.message);
+                });
+            }
+        </script>
+    </div>
 {% endblock %}
