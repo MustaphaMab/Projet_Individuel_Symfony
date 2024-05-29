@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +21,7 @@ class InscriptionType extends AbstractType
             ->add('MdP', PasswordType::class)
             ->add('Date_Naissance', DateType::class, [
                 'widget' => 'single_text', // pour utiliser un input de type date
-                // Autres options comme le format peuvent être définies ici.
+                
             ])
             ->add('Telephone', TextType::class)
             ->add('Adresse')

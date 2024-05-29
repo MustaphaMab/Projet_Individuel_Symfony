@@ -143,6 +143,7 @@ h3 {
 .card-body {
   background: #ffffff;
   padding: 6%;
+  margin: auto;
 }
 
 .card-title {
@@ -244,12 +245,12 @@ h3 {
   background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 .connexion-title {
-  font-size: 60px !important;
-  justify-content: right;
+  font-size: 300% !important;
+  justify-content: center;
 }
 .email-label,
 .password-label {
-  font-size: 40px;
+  font-size: 100%;
 }
 
 /************************************************************************************************************/
