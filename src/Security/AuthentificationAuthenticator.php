@@ -27,6 +27,8 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
     }
 
     public function authenticate(Request $request): Passport
+    // méthode Passport qui permet de créer et retourne un Passeport, 
+    // qui contient les information d'dentitfication de l'utilisateur
     {
         $email = $request->request->get('email', '');
 
@@ -34,15 +36,20 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
 
         return new Passport(
             new UserBadge($email),
+            // UserBadge identifie l'utilisateur par son mail 
             new PasswordCredentials($request->request->get('password', '')),
+            // PasswordCredentials gère la vérification du mot de pass 
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
+                // Assure la sécurité contre les attaques CSRF  en validant un token CSRF
                 new RememberMeBadge(),
+                // Active la fonctionnalité "se souvenir de moi" pour les sessions prolongées
             ]
         );
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
+    // onAuthenticationSuccess permet de gérer la redirection de l'utilisateur en fonction de son rôle 
     {
         // dump('onAuthenticationSuccess called');
         // if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
@@ -57,17 +64,18 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
             $redirectRoute = 'admin'; 
         } else {
             // Par défaut, redirige les utilisateurs ayant le rôle USER (ou sans rôle spécifique) vers une page d'accueil pour les utilisateurs
-            $redirectRoute = 'app_accueil_user_connexion_ok'; // Remplacer par la route de la page d'accueil de l'utilisateur
+            $redirectRoute = 'app_home'; // Remplacer par la route de la page d'accueil de l'utilisateur
         }
 
         return new RedirectResponse($this->urlGenerator->generate($redirectRoute));
 
 
-        // return new RedirectResponse($this->urlGenerator->generate('app_accueil_user_connexion_ok'));
+        
         // throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 
     protected function getLoginUrl(Request $request): string
+    // getLoginUrl redirige vers la page de connexion, ex: accés refusé
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }

@@ -5,32 +5,51 @@ html {
   padding: 0%;
   width: 100%;
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: Garamond, Georgia, serif, sans-serif;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Montserrat", sans-serif;
+  font-family: Garamond, Georgia, serif;
   font-weight: 700;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 /************************************************************************************************************/
+
+
+
 /********************************************************* Header *******************************************/
+.navbar {
+  height: 12%;
+}
+
+.logo_header {
+  max-width: 21%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
 
 .logo_panier {
-  width: 70px;
+  width: 40px;
   height: auto;
 }
 
 .profil {
-  width: 70px;
+  width: 40px;
   height: auto;
 }
 .connexion {
-  width: 70px;
+  width: 40px;
   height: auto;
 }
 .deconnexion {
@@ -39,35 +58,33 @@ h3 {
 }
 
 .navbar-toggler-icon {
-  width: 70px;
+  width: 40px;
   height: 70px;
 }
 
 .navbar-nav {
-  display: flex !important;
-  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .nav-item {
-  margin-right: 15px;
-  font-size: 30px;
+  margin-right: 20px;
 }
 
 .nav-link {
-  padding: 5px 10px;
-  color: #220101;
-}
-
-.logo_header {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto;
-  border-radius: 50%;
-  display: block;
+  padding: 0 10px;
+  width: 200%;
+  font-size: 150%;
+  color: #533d05;
+  display: flex;
+  align-items: center;
+  position: relative;
+  display: inline-block;
 }
 
 .bg-body-tertiary {
-  background-color: #f3e7c9 !important;
+  background-color: #e4aa18 !important;
   color: #ffffff;
 }
 
@@ -75,13 +92,14 @@ h3 {
 
 /*************************************************** Main ***************************************************/
 .main-home {
-  padding-top: 18%; /* Ajustement pour l'espace à cause de bootstrap FIXED-TOP */
+  padding-top: 12%;
 
   color: #333333;
 }
 
 .main-home h1 {
-  font-size: 50px;
+  font-size: 45px;
+  padding: 20px;
 }
 
 .main-home p {
@@ -91,11 +109,25 @@ h3 {
 
 /*************************************************** Cards dans Home ****************************************/
 
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
 .card {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 .card:hover {
@@ -110,11 +142,12 @@ h3 {
 
 .card-body {
   background: #ffffff;
-  padding: 20px;
+  padding: 6%;
+  margin: auto;
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: #333;
   margin-bottom: 15px;
@@ -140,16 +173,10 @@ h3 {
   border-radius: 8px;
 }
 
-/* div .card {
-  padding-top: 5%;
-}
-
-.card-title {
-  font-size: 300%;
-} */
 /************************************************************************************************************/
 
 /*************************************************** Formaulaire Inscription ********************************/
+
 .container {
   display: flex;
   justify-content: center;
@@ -183,8 +210,8 @@ h3 {
 
 .form-control {
   flex-grow: 1;
-  width: 800px;
-  height: 90px;
+  width: 100%;
+  height: auto;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
@@ -192,8 +219,8 @@ h3 {
 .btn-primary {
   width: 200px;
   height: 70px;
-  font-size: 50px;
-  padding: 10px 15px;
+  font-size: 30px;
+  padding: 10px 5px;
   background: #ffe39c;
   color: #000000;
   border-radius: 4px;
@@ -205,7 +232,7 @@ h3 {
 
 /************************************************************************************************************/
 
-/*************************************************** Formulaire Login ***************************************/
+/*************************************************** Form Login ***************************************/
 .gradient-custom-2 {
   background: #fccb90;
   background: -webkit-linear-gradient(
@@ -218,12 +245,12 @@ h3 {
   background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 .connexion-title {
-  font-size: 60px !important;
+  font-size: 300% !important;
   justify-content: center;
 }
 .email-label,
 .password-label {
-  font-size: 40px;
+  font-size: 100%;
 }
 
 /************************************************************************************************************/
@@ -242,17 +269,68 @@ h3 {
   justify-content: flex-start;
 }
 
+.card-text {
+  font-weight: bold;
+  font-size: 22px !important;
+  text-align: center;
+}
+
+.voir_panier_mugs {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #ffe39d;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/************************************************************************************************************/
+
+/*************************************************** Confirmation ajout Mugs dans panier ********************/
+
+.logo_panier::after {
+  content: attr(data-count);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.btn-panier {
+  padding: 10px 15px;
+  min-width: 50px; /* Au lieu de width: 50px; pour s'assurer que le contenu rentre bien */
+  /* ... autres propriétés ... */
+}
+
 /************************************************************************************************************/
 
 /*************************************************** Footer *************************************************/
+.logo_instagram {
+  width: 40px;
+  height: auto;
+}
+
+.logo_facebook {
+  width: 40px;
+  height: auto;
+}
+
 footer {
-  padding-top: 10%;
+  height: 10%;
+  padding-top: 1%;
   padding-bottom: 0;
 }
 
 .footer-basic {
   padding-top: 2%;
-  background-color: #f3e7c9;
+  background-color: #ffe39d;
   color: #4b4c4d;
 }
 
@@ -308,90 +386,101 @@ footer {
   color: #aaa;
   margin-bottom: 0;
 }
+
 /************************************************************************************************************/
 /****************************************************** Media Queries ***************************************/
 /* Petits appareils (mobiles, moins de 426px) */
 @media (max-width: 426px) {
   .nav-link,
   .nav-item {
-    font-size: 10px;
+    background-color: #ffe39d;
+    color: #000000;
+    font-size: 120%; 
   }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-size: 18px;
+  h1, h2, h3, h4 {
+    font-size: 18px;  
   }
-
+  .main-home h1 {
+    
+    font-size: 40px;
+    padding: 25px;
+  }
   .logo_header {
-    width: 100px;
-    height: 100px;
+    max-width: 80px; 
   }
 }
 
-/* Moyens appareils (tablets, moins de 768px) */
-@media (max-width: 768px) {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-size: 24px;
+/* Moyens appareils (tablets, entre 427px et 768px) */
+@media (min-width: 427px) and (max-width: 768px) {
+  .card {
+    width: 90%;
   }
-
   .logo_header {
-    width: 120px;
-    height: 120px;
+    width: 15%; 
+    padding: 5px; 
   }
+  h1, h2, h3, h4 {
+    font-size: 20px; 
+  }
+  .main-home h1 {
+    font-size: 50px;
+    padding: 10px;
+  }
+  
 }
 
 /* Grands appareils (laptops, moins de 992px) */
-@media (max-width: 992px) {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-size: 30px;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 90%;
   }
-
   .logo_header {
-    width: 140px;
-    height: 140px;
+    max-width: 90px; 
   }
-  @media (min-width: 993px) {
-    .navbar-nav {
-      flex-direction: row !important;
-      justify-content: flex-end;
-    }
+  .nav-link, .nav-item {
+    font-size: 120%; 
+  }
+  h1, h2, h3, h4 {
+    font-size: 14px;
+  }
+  
+}
 
-    h1,
-    h2,
-    h3,
-    h4 {
-      font-size: 36px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .logo_header {
-      width: 180px;
-      height: 180px;
-    }
-
-    .card {
-      margin: 20px;
-    }
-
-    .form-control {
-      height: 60px;
-    }
-
-    .btn-primary {
-      width: 250px;
-      height: 80px;
-      font-size: 24px;
-      padding: 15px 20px;
-    }
+/* Plus grands appareils (desktops) */
+@media (min-width: 1025px) {
+  .card {
+    margin: 22%;
+  }
+  .navbar-nav {
+    flex-direction: row !important;
+    justify-content: flex-end;
+  }
+  h1, h2, h3, h4 {
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .logo_header {
+    width: 50%;
+  }
+  
+  .form-control {
+    height: 60px;
+  }
+  .btn-primary {
+    width: 250px;
+    height: 80px;
+    font-size: 24px;
+    padding: 15px 20px;
+  }
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+  .detail_article {
+    flex-basis: 20%;
+    padding: 10px;
   }
 }
 /************************************************************************************************************/

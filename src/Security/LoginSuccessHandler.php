@@ -23,3 +23,4 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
         return new RedirectResponse('/user-page');
     }
 }
+ 

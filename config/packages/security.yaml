@@ -34,7 +34,7 @@ security:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_ADMIN,ROLE_USER]
   access_control:
-    # - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+ 
     - { path: ^/profile, roles: ROLE_USER }
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/superadmin, roles: ROLE_SUPER_ADMIN }

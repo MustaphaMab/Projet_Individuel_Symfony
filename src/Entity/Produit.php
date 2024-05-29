@@ -32,6 +32,9 @@ class Produit
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false, name: "Id_Categorie", referencedColumnName:"Id_Categorie")]
     private ?Categorie $Categorie = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $couleur = null;
     
     public function getId(): ?int
     {
@@ -106,6 +109,18 @@ class Produit
     public function setCategorie(?Categorie $Categorie): static
     {
         $this->Categorie = $Categorie;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(string $couleur): static
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }

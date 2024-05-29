@@ -1,54 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil - Objets Personnalisés
-{% endblock %}
+{% block title %}Accueil - Objets Personnalisés{% endblock %}
 
 {% block body %}
-	<div class="main-content">
-		<section class="hero-section">
-			<div class="sidebar-info">
+    <div class="main-content">
+        <section class="hero-section">
+            <div class="sidebar-info">
+                <h1 class="titre_accueil">Bienvenue !</h1>
+            </div>
 
-				<h1>Spécialiste de la personnalisation</h1>
-			</div>
-
-			<!-- Cards Section -->
-
-
-			<center> 
-            <div class="card mb-5" style="width: 80%;">
-				<img src="/images/mug_exemple.jpg" class="card-img-top" alt="mugs">
-				<div class="card-body">
-					<h3 class="card-title">Mugs</h3>
-					<a class="card-action" href="#"><i class="fa fa-heart"></i>j'aime</a>
-					<a href="{{ path('app_personalisation_mugs') }}" style="width: 100%; display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
-				</div>
-			</div>
-
-			<div class="card mb-5" style="width: 80%;">
-				<img src="/images/porte_cles.jpg" class="card-img-top" alt="porte clés">
-				<div class="card-body">
-					<h3 class="card-title">Porte clés</h3>
-					<a href="{{ path('app_personalisation_porte_cl_s') }}" style="width: 100%; display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
-				</div>
-			</div>
-
-			<div class="card mb-5" style="width: 80%;">
-				<img src="/images/marque_page.jpg" class="card-img-top" alt="marques pages">
-				<div class="card-body">
-					<h3 class="card-title">Marques pages</h3>
-					<a href="{{ path('app_personalisation_marques_pages') }}" style="width: 100%;display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
-				</div>
-			</div>
-
-			<div class="card mb-5" style="width: 80%;">
-				<img src="/images/t-shirt1.jpg" class="card-img-top" alt="t-shirt">
-				<div class="card-body">
-					<h3 class="card-title">T-shirts</h3>
-					<a href="{{ path('app_personalisation_tshirt') }}" style="width: 100%;display: flex; justify-content: center; align-items: center;" class="btn btn-primary text-center custom-btn">Je personalise!</a>
-				</div>
-			</div>
-</section>
-
-		</div>
-	</section>
-</div>{% endblock %}
+            <!-- Cards Section -->
+            <div class="cards-container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                        <div class="card h-100">
+                            <img src="/images/mug_exemple.jpg" class="card-img-top" alt="mugs">
+                            <div class="card-body">
+                                <a href="{{ path('app_personalisation_mugs') }}" 
+                                class="btn btn-primary text-center custom-btn" style="width: 100%;">
+                                    <span style="font-size: 90%;">Mugs</span>
+                                </a>
+                                <span style="font-size: 100%;">A partir de</span>
+                                <span style="font-size: 100%;">4.90 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                        <div class="card h-100">
+                            <img src="/images/porte_cles.jpg" class="card-img-top" alt="porte clés">
+                            <div class="card-body">
+                                <a href="{{ path('app_personalisation_porte_cl_s') }}" 
+                                class="btn btn-primary text-center custom-btn" style="width: 100%;">
+                                    <span style="font-size: 100%;">Porte clés</span>
+                                </a>
+                                <span style="font-size: 100%;">A partir de</span>
+                                <span style="font-size: 100%;">2.90 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                        <div class="card h-100">
+                            <img src="/images/marque_page.jpg" class="card-img-top" alt="marques pages">
+                            <div class="card-body">
+                                <a href="{{ path('app_personalisation_marques_pages') }}" class="btn btn-primary text-center custom-btn" style="width: 100%;">
+                                    <span style="font-size: 90%;">Marques pages</span>
+                                </a>
+                                <span style="font-size: 100%;">A partir de</span>
+                                <span style="font-size: 100%;">4.90 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                        <div class="card h-100">
+                            <img src="/images/t-shirt1.jpg" class="card-img-top" alt="t-shirt">
+                            <div class="card-body">
+                                <a href="{{ path('app_personalisation_tshirt') }}" class="btn btn-primary text-center custom-btn" style="width: 100%;">
+                                    <span style="font-size: 100%;">T-shirts</span>
+                                </a>
+                                <span style="font-size: 100%;">A partir de</span>
+                                <span style="font-size: 100%;">9.90 €</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

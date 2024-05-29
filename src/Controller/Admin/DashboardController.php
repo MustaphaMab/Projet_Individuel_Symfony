@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller\Admin;
-
+// importation des classes et entités
 use App\Entity\Categorie;
 use App\Entity\Commande;
 use App\Entity\LigneCommande;
@@ -18,9 +18,10 @@ use App\Entity\Comment;
 use App\Entity\Conference;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
-
+// le controller principal DashboardController etend/hérite AbstractDashboardController
 class DashboardController extends AbstractDashboardController
 {
+    //elle redirige l'utilisateur vers le contrôleur CRUD pour les produits dès qu'ils visitent '/admin
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -42,7 +43,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        // definit les liens vers les pages CRUD pour la gestion des entités
         yield MenuItem::linkToCrud('Produits', 'fas fa-box-open', Produit::class);
         yield MenuItem::linkToCrud('Commandes', 'fas fa-shopping-cart', Commande::class);
         yield MenuItem::linkToCrud('Lignes de Commande', 'fas fa-stream', LigneCommande::class);
