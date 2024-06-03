@@ -1,0 +1,55 @@
+{# templates/profile_utilisateur/edit.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon profil{% endblock %}
+
+{% block body %}
+<h1>Modifier mon profil</h1>
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-12 offset-lg-12">
+        <div class="card mb-4">
+          <div class="card-body">
+            {{ form_start(form) }}
+              <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.email) }}
+              </div>
+              <div class="form-group">
+                {{ form_label(form.Nom) }}
+                {{ form_widget(form.Nom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.Nom) }}
+              </div>
+              <div class="form-group">
+                {{ form_label(form.Prenom) }}
+                {{ form_widget(form.Prenom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.Prenom) }}
+              </div>
+              <div class="form-group">
+                {{ form_label(form.Telephone) }}
+                {{ form_widget(form.Telephone, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.Telephone) }}
+              </div>
+              <div class="form-group">
+                {{ form_label(form.Date_Naissance) }}
+                {{ form_widget(form.Date_Naissance, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.Date_Naissance) }}
+              </div>
+              <div class="form-group">
+                {{ form_label(form.Adresse) }}
+                {{ form_widget(form.Adresse, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.Adresse) }}
+              </div>
+            {{ form_end(form) }} 
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="{{ path('profile_show') }}" class="btn btn-secondary mt-3">Retour</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
