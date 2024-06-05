@@ -3,19 +3,29 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<main >
+    <header class="mb-4">
+        <h1 class="text-center">Nos Catégories</h1>
+    </header>
 
-<div class="example-wrapper">
-    <h1>Liste des Catégories</h1>
-
-    <ul>
-        {% for category in categories %}
-            <li>{{ category.nom }} : {{ category.description }}</li>
-        {% endfor %}
-    </ul>
-</div>
+    <section class="container-category">
+        <article>
+            <header>
+                <h2 class="text-center">Nos produit sont souvent mis à jours</h2>
+            </header>
+            <ul class="category-list">
+                {% for category in categories %}
+                    <li>
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ category.nom }}</h3>
+                                <p class="card-text">{{ category.description }}</p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </article>
+    </section>
+</main>
 {% endblock %}
-

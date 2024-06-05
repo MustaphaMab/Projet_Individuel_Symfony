@@ -20,15 +20,13 @@ h3 {
 
 /************************************************************************************************************/
 
-
-
 /********************************************************* Header *******************************************/
 .navbar {
-  height: 12%;
+  height: 15%;
 }
 
 .logo_header {
-  max-width: 21%;
+  max-width: 20%;
   height: auto;
   display: block;
   border-radius: 50%;
@@ -85,7 +83,7 @@ h3 {
 
 .bg-body-tertiary {
   background-color: #e4aa18 !important;
-  color: #ffffff;
+  color: #5f0707;
 }
 
 /************************************************************************************************************/
@@ -305,8 +303,26 @@ h3 {
 
 .btn-panier {
   padding: 10px 15px;
-  min-width: 50px; /* Au lieu de width: 50px; pour s'assurer que le contenu rentre bien */
-  /* ... autres propriétés ... */
+  min-width: 50px;
+}
+
+/************************************************************************************************************/
+
+/*************************************************** Catégorie *************************************************/
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.category-list .card {
+  margin-bottom: 15px;
 }
 
 /************************************************************************************************************/
@@ -330,7 +346,7 @@ footer {
 
 .footer-basic {
   padding-top: 2%;
-  background-color: #ffe39d;
+  background-color: #e4aa18;
   color: #4b4c4d;
 }
 
@@ -395,18 +411,20 @@ footer {
   .nav-item {
     background-color: #ffe39d;
     color: #000000;
-    font-size: 120%; 
+    font-size: 120%;
   }
-  h1, h2, h3, h4 {
-    font-size: 18px;  
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 18px;
   }
   .main-home h1 {
-    
     font-size: 40px;
     padding: 25px;
   }
   .logo_header {
-    max-width: 80px; 
+    max-width: 80px;
   }
 }
 
@@ -416,17 +434,19 @@ footer {
     width: 90%;
   }
   .logo_header {
-    width: 15%; 
-    padding: 5px; 
+    width: 15%;
+    padding: 5px;
   }
-  h1, h2, h3, h4 {
-    font-size: 20px; 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-size: 20px;
   }
   .main-home h1 {
     font-size: 50px;
     padding: 10px;
   }
-  
 }
 
 /* Grands appareils (laptops, moins de 992px) */
@@ -435,15 +455,18 @@ footer {
     width: 90%;
   }
   .logo_header {
-    max-width: 90px; 
+    max-width: 90px;
   }
-  .nav-link, .nav-item {
-    font-size: 120%; 
+  .nav-link,
+  .nav-item {
+    font-size: 120%;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-size: 14px;
   }
-  
 }
 
 /* Plus grands appareils (desktops) */
@@ -455,7 +478,10 @@ footer {
     flex-direction: row !important;
     justify-content: flex-end;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-size: 36px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -463,7 +489,7 @@ footer {
   .logo_header {
     width: 50%;
   }
-  
+
   .form-control {
     height: 60px;
   }

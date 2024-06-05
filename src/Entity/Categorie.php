@@ -11,7 +11,6 @@ class Categorie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(name: "Id_Categorie")] 
-    // #[ORM]Column siginifie que la propriété correspond à une colonne dans la base de donnée
 
     private ?int $id = null;
 

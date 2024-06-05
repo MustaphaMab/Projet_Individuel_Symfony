@@ -31,13 +31,9 @@ class UserType extends AbstractType
         ->add('Prenom', TextType::class, [
             'label' => 'Prénom'
         ])
-        ->add('MdP', PasswordType::class, [
-            'label' => 'Mot de passe'
-        ])
         ->add('Date_Naissance', DateType::class, [
             'label' => 'Date de naissance',
-            'widget' => 'single_text', // Permet à l'utilisateur de choisir une date via un calendrier
-            // Ajouter d'autres options comme 'format' si nécessaire
+            'widget' => 'single_text', 
         ])
         ->add('Telephone', TextType::class, [
             'label' => 'Téléphone'
