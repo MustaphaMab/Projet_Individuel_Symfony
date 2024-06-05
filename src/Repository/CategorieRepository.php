@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Categorie; 
-// nom de l'entité que gère ce dépot
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository; 
 // ServiceEntityRepository est la classe de base pour tout les dépot d'entité dans Doctrine, 
