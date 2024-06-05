@@ -1,0 +1,6 @@
+[build]
+  publish = "public"
+  command = "composer install && php bin/console cache:clear --env=prod"
+
+[build.environment]
+  PHP_VERSION = "8.2"
