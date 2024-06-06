@@ -1,6 +1,8 @@
 [build]
+  command = "yarn encore production && symfony build --no-cache"
   publish = "public"
-  command = "composer install && php bin/console cache:clear --env=prod"
 
 [build.environment]
+  NODE_VERSION = "14"
   PHP_VERSION = "8.2"
+  SYMFONY_ENV = "prod"
