@@ -35,7 +35,7 @@ class Produit
 
     #[ORM\Column(length: 255)]
     private ?string $couleur = null;
-    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -49,7 +49,6 @@ class Produit
     public function setNom(string $Nom): static
     {
         $this->Nom = $Nom;
-
         return $this;
     }
 
@@ -61,7 +60,6 @@ class Produit
     public function setStock(string $Stock): static
     {
         $this->Stock = $Stock;
-
         return $this;
     }
 
@@ -73,7 +71,6 @@ class Produit
     public function setDescription(string $Description): static
     {
         $this->Description = $Description;
-
         return $this;
     }
 
@@ -85,7 +82,6 @@ class Produit
     public function setPhoto(string $Photo): static
     {
         $this->Photo = $Photo;
-
         return $this;
     }
 
@@ -97,7 +93,6 @@ class Produit
     public function setPrix(string $Prix): static
     {
         $this->Prix = $Prix;
-
         return $this;
     }
 
@@ -109,7 +104,6 @@ class Produit
     public function setCategorie(?Categorie $Categorie): static
     {
         $this->Categorie = $Categorie;
-
         return $this;
     }
 
@@ -121,9 +115,6 @@ class Produit
     public function setCouleur(string $couleur): static
     {
         $this->couleur = $couleur;
-
         return $this;
     }
-
-    
 }

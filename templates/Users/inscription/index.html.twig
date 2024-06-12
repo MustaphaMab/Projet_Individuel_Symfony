@@ -1,76 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription
-{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-	<h1 class="text-center">Vos informations personnelles</h1>
+    <h1 class="text-center">Vos informations personnelles</h1>
 
-	<div class="container">
+    <div class="container">
+        <div class="container form-container">
+            <div class="formParent">
+                {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
 
-		<div class="container form-container">
-			<div class="formParent">
-				{{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
+                <div class="form-row">
+                    {{ form_label(registrationForm.Nom) }}
+                    {{ form_widget(registrationForm.Nom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.Nom) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.Nom) }}
-					{{ form_widget(registrationForm.Nom, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.Prenom) }}
+                    {{ form_widget(registrationForm.Prenom, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.Prenom) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.Prenom) }}
-					{{ form_widget(registrationForm.Prenom, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.email) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.email) }}
-					{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.Date_Naissance) }}
+                    {{ form_widget(registrationForm.Date_Naissance, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.Date_Naissance) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.Date_Naissance) }}
-					{{ form_widget(registrationForm.Date_Naissance, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.Telephone) }}
+                    {{ form_widget(registrationForm.Telephone, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.Telephone) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.Telephone) }}
-					{{ form_widget(registrationForm.Telephone, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.Adresse) }}
+                    {{ form_widget(registrationForm.Adresse, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.Adresse) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.Adresse) }}
-					{{ form_widget(registrationForm.Adresse, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.Code_Postale) }}
+                    {{ form_widget(registrationForm.Code_Postale, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.Code_Postale) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.Code_Postale) }}
-					{{ form_widget(registrationForm.Code_Postale, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.Pays) }}
+                    {{ form_widget(registrationForm.Pays, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(registrationForm.Pays) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.Pays) }}
-					{{ form_widget(registrationForm.Pays, {'attr': {'class': 'form-control'}}) }}
-				</div>
+                <div class="form-row">
+                    {{ form_label(registrationForm.MdP) }}
+                    {{ form_widget(registrationForm.MdP, {'attr': {'class': 'form-control', 'id': 'password-field'}}) }}
+                    {{ form_errors(registrationForm.MdP) }}
+                </div>
 
-				<div class="form-row">
-					{{ form_label(registrationForm.MdP) }}
-					{{ form_widget(registrationForm.MdP, {'attr': {'class': 'form-control', 'id': 'password-field'}}) }}
-					<div class="input-group-append">
-						
-							
-						</button>
-					</div>
-				</div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">S'inscrire</button>
+                </div>
 
-				<div class="d-flex justify-content-center">
-					<button type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">S'inscrire</button>
-				</div>
-
-			
-
-					{{ form_end(registrationForm) }}
-				</div>
-			</div>
-		</div>
-
-	{% endblock %}
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,7 +1,4 @@
 <?php
-
-// src/Entity/LigneCommande.php
-
 namespace App\Entity;
 
 use App\Repository\LigneCommandeRepository;
@@ -43,7 +40,6 @@ class LigneCommande
     public function setCommande(?Commande $Commande): self
     {
         $this->Commande = $Commande;
-
         return $this;
     }
 
@@ -55,7 +51,6 @@ class LigneCommande
     public function setProduit(?Produit $Produit): self
     {
         $this->Produit = $Produit;
-
         return $this;
     }
 
@@ -67,7 +62,6 @@ class LigneCommande
     public function setQuantite(int $Quantite): self
     {
         $this->Quantite = $Quantite;
-
         return $this;
     }
 
@@ -79,7 +73,6 @@ class LigneCommande
     public function setPrixTotal(string $Prix_Total): self
     {
         $this->Prix_Total = $Prix_Total;
-
         return $this;
     }
 }

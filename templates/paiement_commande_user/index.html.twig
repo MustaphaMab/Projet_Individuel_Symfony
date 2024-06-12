@@ -1,148 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PaiementCommandeUserController!{% endblock %}
+{% block title %}Paiement{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .payment-form {
+            max-width: 600px;
+            margin: auto;
+            padding: 15px;
+        }
+        .payment-form .form-group {
+            margin-bottom: 15px;
+        }
+        .payment-form .form-control {
+            height: 45px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .payment-form .btn {
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
-<section style="background-color: #eee;">
-  <div class="container py-5">
-    <div class="card">
-      <div class="card-body">
-        <div class="row d-flex justify-content-center pb-5">
-          <div class="col-md-7 col-xl-5 mb-4 mb-md-0">
-            <div class="py-4 d-flex flex-row">
-              <h5><span class="far fa-check-square pe-2"></span><b>ELIGIBLE</b> |</h5>
-              <span class="ps-2">Pay</span>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="payment-header">
+                <h2>Paiement</h2>
+                <p>Veuillez entrer les détails de votre carte pour procéder au paiement.</p>
             </div>
-            <h4 class="text-success">$85.00</h4>
-            <h4>Diabetes Pump & Supplies</h4>
-            <div class="d-flex pt-2">
-              <div>
-                <p>
-                  <b>Insurance Responsibility <span class="text-success">$71.76</span></b>
-                </p>
-              </div>
-              <div class="ms-auto">
-                <p class="text-primary">
-                  <i class="fas fa-plus-circle text-primary pe-1"></i>Add insurance card
-                </p>
-              </div>
-            </div>
-            <p>
-              Insurance claims and all necessary dependencies will be submitted to your
-              insurer for the coverred portion of this order
-            </p>
-            <div class="rounded d-flex bg-body-tertiary">
-              <div class="p-2">Aetna-Open Access</div>
-              <div class="ms-auto p-2">OAP</div>
-            </div>
-            <hr />
-            <div class="pt-2">
-              <div class="d-flex pb-2">
-                <div>
-                  <p>
-                    <b>Patient Balance <span class="text-success">$13.24</span></b>
-                  </p>
+            <form action="{{ path('payment_success') }}" method="POST" class="payment-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
-                <div class="ms-auto">
-                  <p class="text-primary">
-                    <i class="fas fa-plus-circle text-primary pe-1"></i>Add payment card
-                  </p>
+                <div class="form-group">
+                    <label for="cardNumber" class="form-label">Numéro de carte</label>
+                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
                 </div>
-              </div>
-              <p>
-                This is an estimate for the portion of your order (not covered by
-                insurance) due today . once insurance finalizes their review refunds
-                and/or balances will reconcile automatically.
-              </p>
-              <form class="pb-3">
-                <div class="d-flex flex-row pb-3">
-                  <div class="d-flex align-items-center pe-2">
-                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
-                      value="" aria-label="..." checked />
-                  </div>
-                  <div class="rounded border d-flex w-100 p-3 align-items-center">
-                    <p class="mb-0">
-                      <i class="fab fa-cc-visa fa-lg text-primary pe-2"></i>Visa Debit
-                      Card
-                    </p>
-                    <div class="ms-auto">************3456</div>
-                  </div>
+                <div class="form-group">
+                    <label for="cardExpiry" class="form-label">Date d'expiration</label>
+                    <input type="text" class="form-control" id="cardExpiry" name="cardExpiry" placeholder="MM/AA" required>
                 </div>
-
-                <div class="d-flex flex-row">
-                  <div class="d-flex align-items-center pe-2">
-                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
-                      value="" aria-label="..." />
-                  </div>
-                  <div class="rounded border d-flex w-100 p-3 align-items-center">
-                    <p class="mb-0">
-                      <i class="fab fa-cc-mastercard fa-lg text-bodu pe-2"></i>Mastercard
-                      Office
-                    </p>
-                    <div class="ms-auto">************1038</div>
-                  </div>
+                <div class="form-group">
+                    <label for="cardCVC" class="form-label">CVC</label>
+                    <input type="text" class="form-control" id="cardCVC" name="cardCVC" placeholder="123" required>
                 </div>
-              </form>
-              <input type="button" value="Proceed to payment" data-mdb-ripple-init class="btn btn-primary btn-block btn-lg" />
-            </div>
-          </div>
-
-          <div class="col-md-5 col-xl-4 offset-xl-1">
-            <div class="py-4 d-flex justify-content-end">
-              <h6><a href="{{ path('app_home') }}" class="" style="width: 100%;">Annuler et retourner à la page d'accueil</a></h6>
-            </div>
-            <div class="rounded d-flex flex-column p-2 bg-body-tertiary">
-              <div class="p-2 me-3">
-                <h4>Order Recap</h4>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">Contracted Price</div>
-                <div class="ms-auto">$186.76</div>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">Amount toward deductible</div>
-                <div class="ms-auto">$0.00</div>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">Coinsurance( 0% )</div>
-                <div class="ms-auto">+ $0.00</div>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">Copayment</div>
-                <div class="ms-auto">+ $40.00</div>
-              </div>
-              <div class="border-top px-2 mx-2"></div>
-              <div class="p-2 d-flex pt-3">
-                <div class="col-8">Total Deductible, Coinsurance, and Copay</div>
-                <div class="ms-auto">$40.00</div>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">
-                  Maximum out-of-pocket on Insurance Policy (not reached)
-                </div>
-                <div class="ms-auto">$6500.00</div>
-              </div>
-              <div class="border-top px-2 mx-2"></div>
-              <div class="p-2 d-flex pt-3">
-                <div class="col-8">Insurance Responsibility</div>
-                <div class="ms-auto"><b>$71.76</b></div>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">
-                  Patient Balance <span class="fa fa-question-circle text-dark"></span>
-                </div>
-                <div class="ms-auto"><b>$71.76</b></div>
-              </div>
-              <div class="border-top px-2 mx-2"></div>
-              <div class="p-2 d-flex pt-3">
-                <div class="col-8"><b>Total</b></div>
-                <div class="ms-auto"><b class="text-success">$85.00</b></div>
-              </div>
-            </div>
-          </div>
+                <button type="submit" class="btn btn-primary btn-lg mt-4">Payer</button>
+            </form>
         </div>
-      </div>
     </div>
-  </div>
-</section>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
 {% endblock %}

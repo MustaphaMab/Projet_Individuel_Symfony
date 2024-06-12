@@ -6,9 +6,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
-
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -25,6 +24,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $Prenom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 8, minMessage: "Le mot de passe doit comporter au moins {{ limit }} caractères.")]
+    #[Assert\Regex(
+        pattern: "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/",
+        message: "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule et un chiffre."
+    )]
     private ?string $MdP = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -46,29 +51,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $Pays = null;
 
     #[ORM\Column(type: "json")]
-private array $roles = [];
+    private array $roles = [];
 
-
-public function __toString(): string
-{
-    // Retourne l'email ou un autre attribut significatif
-    return $this->email;
-}
+    public function __toString(): string
+    {
+        return $this->email;
+    }
 
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // garantit que chaque utilisateur a au moins le rôle ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
 
-
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
 
@@ -79,19 +79,16 @@ public function __toString(): string
 
     public function getSalt(): ?string
     {
-        // Pas nécessaire pour les algorithmes modernes de hachage
         return null;
     }
 
     public function getUsername(): string
     {
-        // Utilise généralement le même champ que celui utilisé pour l'authentification, ici l'email
         return $this->email;
     }
 
     public function eraseCredentials(): void
     {
-        // Utile pour supprimer les données sensibles de l'entité
     }
 
     public function getId(): ?int
@@ -107,7 +104,6 @@ public function __toString(): string
     public function setNom(string $Nom): self
     {
         $this->Nom = $Nom;
-
         return $this;
     }
 
@@ -119,7 +115,6 @@ public function __toString(): string
     public function setPrenom(string $Prenom): self
     {
         $this->Prenom = $Prenom;
-
         return $this;
     }
 
@@ -131,7 +126,6 @@ public function __toString(): string
     public function setMdP(string $MdP): self
     {
         $this->MdP = $MdP;
-
         return $this;
     }
 
@@ -146,7 +140,6 @@ public function __toString(): string
         return $this;
     }
 
-
     public function getDateNaissance(): ?\DateTimeInterface
     {
         return $this->Date_Naissance;
@@ -155,7 +148,6 @@ public function __toString(): string
     public function setDateNaissance(\DateTimeInterface $Date_Naissance): self
     {
         $this->Date_Naissance = $Date_Naissance;
-
         return $this;
     }
 
@@ -167,7 +159,6 @@ public function __toString(): string
     public function setTelephone(string $Telephone): self
     {
         $this->Telephone = $Telephone;
-
         return $this;
     }
 
@@ -179,7 +170,6 @@ public function __toString(): string
     public function setAdresse(string $Adresse): self
     {
         $this->Adresse = $Adresse;
-
         return $this;
     }
 
@@ -202,7 +192,6 @@ public function __toString(): string
     public function setCodePostale(string $Code_Postale): self
     {
         $this->Code_Postale = $Code_Postale;
-
         return $this;
     }
 
@@ -214,9 +203,6 @@ public function __toString(): string
     public function setPays(string $Pays): self
     {
         $this->Pays = $Pays;
-
         return $this;
     }
-
-    
 }

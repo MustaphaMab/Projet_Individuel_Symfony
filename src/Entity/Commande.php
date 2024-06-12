@@ -1,7 +1,5 @@
 <?php
 
-// src/Entity/Commande.php
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -24,7 +22,7 @@ class Commande
     #[ORM\Column(length: 255)]
     private ?string $Commentaire = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(name: "Id_User", referencedColumnName: "Id_user", nullable: false)]
     private ?User $users = null;
 
@@ -95,7 +93,6 @@ class Commande
     public function removeLigneCommande(LigneCommande $ligneCommande): self
     {
         if ($this->ligneCommandes->removeElement($ligneCommande)) {
-            // set the owning side to null (unless already changed)
             if ($ligneCommande->getCommande() === $this) {
                 $ligneCommande->setCommande(null);
             }
@@ -103,14 +100,17 @@ class Commande
 
         return $this;
     }
-
-    public function getQuantite(): int
-    {
-        $totalQuantite = 0;
-        foreach ($this->ligneCommandes as $ligneCommande) {
-            $totalQuantite += $ligneCommande->getQuantite();
-        }
-        return $totalQuantite;
-    }
 }
+
+
+
+    // public function getQuantite(): int
+    // {
+    //     $totalQuantite = 0;
+    //     foreach ($this->ligneCommandes as $ligneCommande) {
+    //         $totalQuantite += $ligneCommande->getQuantite();
+    //     }
+    //     return $totalQuantite;
+    // }
+
 

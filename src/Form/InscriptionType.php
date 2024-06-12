@@ -16,19 +16,43 @@ class InscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Nom')
-            ->add('Prenom')
-            ->add('MdP', PasswordType::class)
-            ->add('Date_Naissance', DateType::class, [
-                'widget' => 'single_text', // pour utiliser un input de type date
-                
+            ->add('Nom', TextType::class, [
+                'label' => 'Nom',
+                'attr' => ['class' => 'form-control']
             ])
-            ->add('Telephone', TextType::class)
-            ->add('Adresse')
-            ->add('email', EmailType::class)
-            ->add('Code_Postale', TextType::class)
-            ->add('Pays')
-        ;
+            ->add('Prenom', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('MdP', PasswordType::class, [
+                'label' => 'Mot de passe',
+                'attr' => ['class' => 'form-control', 'id' => 'password-field']
+            ])
+            ->add('Date_Naissance', DateType::class, [
+                'widget' => 'single_text',
+                'label' => 'Date de Naissance',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('Telephone', TextType::class, [
+                'label' => 'Téléphone',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('Adresse', TextType::class, [
+                'label' => 'Adresse',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('Code_Postale', TextType::class, [
+                'label' => 'Code Postal',
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('Pays', TextType::class, [
+                'label' => 'Pays',
+                'attr' => ['class' => 'form-control']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
