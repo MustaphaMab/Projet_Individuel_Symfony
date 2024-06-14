@@ -24,8 +24,10 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Champ caché pour stocker l'ID du mug sélectionné -->
+                        <input type="hidden" id="selected-mug-id" value="{{ defaultMug.id }}">
                         <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="changeMugColor()">Changer de couleur</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="addToCart({{ defaultMug.id }})">Ajouter au panier</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="addToCart()">Ajouter au panier</button>
                     </div>
                 </div>
             </div>
@@ -47,6 +49,9 @@
                             document.getElementById('mug-name').innerText = mug.nom;
                             document.getElementById('mug-description').innerText = mug.description;
                             document.getElementById('mug-price').innerText = `${mug.prix / 100} €`;
+
+                            // Met à jour l'ID du mug sélectionné
+                            document.getElementById('selected-mug-id').value = mug.id;
                         } else {
                             alert('Erreur: ' + data.message);
                         }
@@ -58,7 +63,10 @@
             }
         }
 
-        function addToCart(mugId) {
+        function addToCart() {
+            // Récupère l'ID du mug sélectionné
+            const mugId = document.getElementById('selected-mug-id').value;
+
             fetch(`/cart/add/${mugId}`, {
                 method: 'POST',
                 headers: {
