@@ -1,0 +1,24 @@
+{# templates/paiement_commande_user/checkout.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block body %}
+<h1>Checkout</h1>
+
+<p>Merci pour votre commande !</p>
+<p>Commentaire : {{ commande.commentaire }}</p>
+<p>Date : {{ commande.dates|date('d/m/Y') }}</p>
+
+<h2>Produits commandés</h2>
+<ul>
+    {% for ligne in commande.ligneCommandes %}
+        <li>{{ ligne.produit.nom }} - Quantité : {{ ligne.quantite }} - Prix total : {{ ligne.prixTotal }}€</li>
+    {% endfor %}
+</ul>
+
+<p>Total : {{ commande.total }}€</p>
+
+<a href="{{ path('app_home') }}" class="btn btn-primary">Retour à l'accueil</a>
+{% endblock %}

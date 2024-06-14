@@ -32,7 +32,7 @@ class ProduitCrudController extends AbstractCrudController
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
             IntegerField::new('stock'),
-            AssociationField::new('Categorie'),
+            AssociationField::new('categorie'),
             // MoneyField::new('prix')->setCurrency('EUR'),
             MoneyField::new('prix', 'Prix en Euros')
                 ->setCurrency('EUR')

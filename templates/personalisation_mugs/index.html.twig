@@ -1,59 +1,83 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mugs{% endblock %}
+{% block title %}Personnalisation de Mug{% endblock %}
 
 {% block body %}
-    <h1>Mugs</h1>
+    <h1>Personnalisation de Mug</h1>
     <div class="container">
         <div class="row">
-            {% for mug in mugs %}
-                <div class="col-md-3 mb-4">
-                    <div class="card box-shadow">
-                        <img class="card-img-top" src="{{ asset('images/' ~ mug.photo) }}" alt="Mug {{ mug.couleur }}">
-                        <div class="card-body">
-                            <p class="card-text">{{ mug.description }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addToCart({{ mug.id }})">Ajouter au panier</button>
-                                </div>
-                                <small class="text-muted">{{ mug.prix / 100 }} €</small>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2">
-                                <small class="text-muted">Stock : {{ mug.stock }}</small>
+            <div class="col-md-12 mb-4">
+                <div class="card box-shadow">
+                    <img id="mug-image" class="card-img-top" src="{{ asset('images/' ~ defaultMug.photo) }}" alt="{{ defaultMug.nom }}">
+                    <div class="card-body">
+                        <h2 id="mug-name">{{ defaultMug.nom }}</h2>
+                        <p id="mug-description" class="card-text">{{ defaultMug.description }}</p>
+                        <p id="mug-price">{{ defaultMug.prix / 100 }} €</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <label for="color-select">Choisir une couleur :</label>
+                                <select id="color-select" class="form-control">
+                                    <option value="">Sélectionner</option>
+                                    {% for mug in mugs %}
+                                        <option value="{{ mug.id }}">{{ mug.couleur }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="changeMugColor()">Changer de couleur</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="addToCart({{ defaultMug.id }})">Ajouter au panier</button>
                     </div>
                 </div>
-            {% endfor %}
+            </div>
         </div>
     </div>
-    <ul class="detail_article">Détail de l'article :
-        <p>Matériaux : porcelaine</p>
-        <p>Fait main</p>
-    </ul>
-    <a class="voir_panier_mugs" href="{{ path('cart_show') }}">Voir mon panier</a>
-    <div align="right">
-        <script>
-            // ----------------------------------------------- Partie JAVASCRIPT ----------------------------------------------
-            // Fonction pour ajouter un produit au panier
-            function addToCart(id) { // Envoie une requête POST à l'URL de l'API pour ajouter un produit au panier
-                fetch(`/cart/add/${id}`, { method: 'POST' }).then(response => {
-                    if (!response.ok) { // Vérifie si le statut HTTP est une erreur
-                        throw new Error('Réseau ou réponse du serveur non ok');
-                    }
-                    return response.json(); // Continuer à traiter la réponse si tout va bien
-                }).then(data => {
+
+    <script>
+        function changeMugColor() {
+            const select = document.getElementById('color-select');
+            const mugId = select.value;
+
+            if (mugId) {
+                fetch(`/personalisation/mugs/get/${mugId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const mug = data.mug;
+                            document.getElementById('mug-image').src = `/images/${mug.photo}`;
+                            document.getElementById('mug-name').innerText = mug.nom;
+                            document.getElementById('mug-description').innerText = mug.description;
+                            document.getElementById('mug-price').innerText = `${mug.prix / 100} €`;
+                        } else {
+                            alert('Erreur: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        alert('Erreur lors du changement de couleur.');
+                    });
+            }
+        }
+
+        function addToCart(mugId) {
+            fetch(`/cart/add/${mugId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ color: document.getElementById('color-select').value })
+            })
+                .then(response => response.json())
+                .then(data => {
                     if (data.success) {
                         alert('Produit ajouté avec succès!');
-                        updateCartCount(data.cartCount);
                     } else {
                         alert('Erreur: ' + data.message);
                     }
-                }).catch(error => {
+                })
+                .catch(error => {
                     console.error('Erreur:', error);
-                    alert('Erreur lors de l\'ajout au panier. Veuillez réessayer. Détails: ' + error.message);
+                    alert('Erreur lors de l\'ajout au panier.');
                 });
-            }
-        </script>
-    </div>
+        }
+    </script>
 {% endblock %}

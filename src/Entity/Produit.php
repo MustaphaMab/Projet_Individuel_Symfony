@@ -11,29 +11,29 @@ class Produit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name: "Id_Produit")]
+    #[ORM\Column(name: "Id_Produit", type: "integer")]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $Nom = null;
+    #[ORM\Column(name: "nom", type: "string", length: 50)]
+    private ?string $nom = null;
 
-    #[ORM\Column(type: Types::BIGINT)]
-    private ?string $Stock = null;
+    #[ORM\Column(name: "stock", type: Types::BIGINT)]
+    private ?string $stock = null;
 
-    #[ORM\Column(length: 300)]
-    private ?string $Description = null;
+    #[ORM\Column(name: "description", type: "string", length: 300)]
+    private ?string $description = null;
 
-    #[ORM\Column(length: 300)]
-    private ?string $Photo = null;
+    #[ORM\Column(name: "photo", type: "string", length: 300)]
+    private ?string $photo = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $Prix = null;
+    #[ORM\Column(name: "prix", type: Types::DECIMAL, precision: 10, scale: 2)]
+    private ?string $prix = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false, name: "Id_Categorie", referencedColumnName:"Id_Categorie")]
-    private ?Categorie $Categorie = null;
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: "produits")]
+    #[ORM\JoinColumn(name: "Id_Categorie", referencedColumnName: "Id_Categorie", nullable: false)]
+    private ?Categorie $categorie = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name: "couleur", type: "string", length: 255)]
     private ?string $couleur = null;
 
     public function getId(): ?int
@@ -43,67 +43,67 @@ class Produit
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
         return $this;
     }
 
     public function getStock(): ?string
     {
-        return $this->Stock;
+        return $this->stock;
     }
 
-    public function setStock(string $Stock): static
+    public function setStock(string $stock): static
     {
-        $this->Stock = $Stock;
+        $this->stock = $stock;
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(string $Description): static
+    public function setDescription(string $description): static
     {
-        $this->Description = $Description;
+        $this->description = $description;
         return $this;
     }
 
     public function getPhoto(): ?string
     {
-        return $this->Photo;
+        return $this->photo;
     }
 
-    public function setPhoto(string $Photo): static
+    public function setPhoto(string $photo): static
     {
-        $this->Photo = $Photo;
+        $this->photo = $photo;
         return $this;
     }
 
     public function getPrix(): ?string
     {
-        return $this->Prix;
+        return $this->prix;
     }
 
-    public function setPrix(string $Prix): static
+    public function setPrix(string $prix): static
     {
-        $this->Prix = $Prix;
+        $this->prix = $prix;
         return $this;
     }
 
     public function getCategorie(): ?Categorie
     {
-        return $this->Categorie;
+        return $this->categorie;
     }
 
-    public function setCategorie(?Categorie $Categorie): static
+    public function setCategorie(?Categorie $categorie): static
     {
-        $this->Categorie = $Categorie;
+        $this->categorie = $categorie;
         return $this;
     }
 

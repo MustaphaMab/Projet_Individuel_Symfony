@@ -9,8 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
-
 
 class PaiementCommandeUserController extends AbstractController
 {
@@ -22,7 +20,7 @@ class PaiementCommandeUserController extends AbstractController
     }
 
     #[Route('/checkout', name: 'checkout')]
-    public function checkout(EntityManagerInterface $entityManager, Security $security): Response
+    public function checkout(EntityManagerInterface $entityManager): Response
     {
         $cart = $this->session->get('cart', []);
         if (empty($cart)) {
@@ -33,16 +31,16 @@ class PaiementCommandeUserController extends AbstractController
         $commande = new Commande();
         $commande->setDates(new \DateTimeImmutable());
         $commande->setCommentaire('Commande fictive pour démonstration');
-        $commande->setUsers($security->getUser());
+        $commande->setUsers($this->getUser());
 
         // Ajouter les produits du panier à la commande
-        foreach ($cart as $id => $quantity) {
+        foreach ($cart as $id => $details) {
             $produit = $entityManager->getRepository(Produit::class)->find($id);
             if ($produit) {
                 $ligneCommande = new LigneCommande();
                 $ligneCommande->setProduit($produit);
-                $ligneCommande->setQuantite($quantity);
-                $ligneCommande->setPrixTotal($produit->getPrix() * $quantity);
+                $ligneCommande->setQuantite($details['quantity']); // Extraire la quantité depuis les détails
+                $ligneCommande->setPrixTotal($produit->getPrix() * $details['quantity']);
                 $ligneCommande->setCommande($commande);
 
                 $commande->addLigneCommande($ligneCommande);
@@ -56,9 +54,10 @@ class PaiementCommandeUserController extends AbstractController
         // Vider le panier après la commande
         $this->session->set('cart', []);
 
-        return $this->render('payment/checkout.html.twig', [
+        return $this->render('paiement_commande_user/checkout.html.twig', [
             'commande' => $commande,
         ]);
+        
     }
 
     #[Route('/payment/success', name: 'payment_success')]

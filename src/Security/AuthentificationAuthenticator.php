@@ -27,56 +27,41 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
     }
 
     public function authenticate(Request $request): Passport
-    // méthode Passport qui permet de créer et retourne un Passeport, 
-    // qui contient les information d'dentitfication de l'utilisateur
     {
         $email = $request->request->get('email', '');
-
         $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
         return new Passport(
             new UserBadge($email),
-            // UserBadge identifie l'utilisateur par son mail 
             new PasswordCredentials($request->request->get('password', '')),
-            // PasswordCredentials gère la vérification du mot de pass 
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
-                // Assure la sécurité contre les attaques CSRF  en validant un token CSRF
                 new RememberMeBadge(),
-                // Active la fonctionnalité "se souvenir de moi" pour les sessions prolongées
             ]
         );
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
-    // onAuthenticationSuccess permet de gérer la redirection de l'utilisateur en fonction de son rôle 
     {
+        // Décommenter pour déboguer si nécessaire
         // dump('onAuthenticationSuccess called');
-        // if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-        //     return new RedirectResponse($targetPath);
-        // }
-        $roles = $token->getRoleNames(); // Récupère les noms de rôles de l'utilisateur connecté
 
-        // Détermine la route de redirection en fonction des rôles de l'utilisateur
+        // Gérer la redirection en fonction des rôles de l'utilisateur
+        $roles = $token->getRoleNames();
         if (in_array('ROLE_SUPER_ADMIN', $roles)) {
-            $redirectRoute = 'app_acceuil_super_admin'; 
+            $redirectRoute = 'app_acceuil_super_admin';
         } elseif (in_array('ROLE_ADMIN', $roles)) {
-            $redirectRoute = 'admin'; 
+            $redirectRoute = 'admin';
         } else {
-            // Par défaut, redirige les utilisateurs ayant le rôle USER (ou sans rôle spécifique)
-            // vers une page d'accueil pour les utilisateurs
-            $redirectRoute = 'app_home'; // Remplacer par la route de la page d'accueil de l'utilisateur
+            $redirectRoute = 'app_home';
         }
 
         return new RedirectResponse($this->urlGenerator->generate($redirectRoute));
 
-
-        
         // throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 
     protected function getLoginUrl(Request $request): string
-    // getLoginUrl redirige vers la page de connexion, ex: accés refusé
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }

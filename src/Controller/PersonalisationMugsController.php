@@ -2,51 +2,47 @@
 
 namespace App\Controller;
 
-use App\Repository\CategorieRepository;
 use App\Repository\ProduitRepository;
-use Symfony\Component\HttpFoundation\Session\SessionInterface; 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PersonalisationMugsController extends AbstractController
 {
     #[Route('/personalisation/mugs', name: 'app_personalisation_mugs')]
-    /** Affiche les mugs disponibles pour la personnalisation. */
-    public function index(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
-{
-    $categorieMugs = $categorieRepository->findOneBy(['Nom' => 'Mugs']);
-    if (!$categorieMugs) {
-        throw $this->createNotFoundException('Catégorie Mugs non trouvée.');
-    }
-    $mugs = $produitRepository->findBy(['Categorie' => $categorieMugs]);
-
-    // Assurez-vous de passer 'id' si nécessaire
-    return $this->render('personalisation_mugs/index.html.twig', ['mugs' => $mugs, 'id' => 'some_id_if_needed']);
-}
-
-
-#[Route("/personalisation/mugs/add/{id}", name: "mug_add_to_cart")]
-    /** Ajoute un mug au panier. */
-    public function addToCart(int $id, SessionInterface $session, ProduitRepository $produitRepository): Response {
-        // Trouve le mug spécifique par son ID
-        $mug = $produitRepository->find($id);
+    public function index(ProduitRepository $produitRepository): Response {
+        $defaultMug = $produitRepository->findOneBy(['nom' => 'Mugs_blanc']);
         
-        // Si le mug n'existe pas, renvoie une réponse 404
-        if (!$mug) {
-            throw $this->createNotFoundException('Le mug demandé n\'existe pas.');
+        if (!$defaultMug) {
+            throw $this->createNotFoundException('Mug par défaut non trouvé.');
         }
 
-        // Récupère le panier depuis la session, ou initialise un nouveau si aucun panier n'existe
-        $cart = $session->get('cart', []);
+        $mugs = $produitRepository->findBy(['categorie' => $defaultMug->getCategorie()]);
 
-        // Ajoute ou incrémente la quantité du mug spécifié dans le panier
-        $cart[$id] = ($cart[$id] ?? 0) + 1;
+        return $this->render('personalisation_mugs/index.html.twig', [
+            'defaultMug' => $defaultMug,
+            'mugs' => $mugs
+        ]);
+    }
 
-        // Enregistre le panier mis à jour dans la session
-        $session->set('cart', $cart);
+    #[Route('/personalisation/mugs/get/{id}', name: 'app_personalisation_mugs_get', methods: ['GET'])]
+    public function getMugById(int $id, ProduitRepository $produitRepository): JsonResponse {
+        $mug = $produitRepository->find($id);
 
-        // Redirige l'utilisateur vers l'affichage du panier
-        return $this->redirectToRoute('cart_show');
+        if (!$mug) {
+            return new JsonResponse(['success' => false, 'message' => 'Aucun mug trouvé.'], Response::HTTP_NOT_FOUND);
+        }
+
+        return new JsonResponse(['success' => true, 'mug' => [
+            'id' => $mug->getId(),
+            'nom' => $mug->getNom(),
+            'description' => $mug->getDescription(),
+            'photo' => $mug->getPhoto(),
+            'prix' => $mug->getPrix(),
+            'couleur' => $mug->getCouleur()
+        ]]);
     }
 }
+
+

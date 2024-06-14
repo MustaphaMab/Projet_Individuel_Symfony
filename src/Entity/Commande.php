@@ -100,17 +100,13 @@ class Commande
 
         return $this;
     }
+
+    public function getTotal(): float
+    {
+        $total = 0;
+        foreach ($this->ligneCommandes as $ligneCommande) {
+            $total += $ligneCommande->getPrixTotal();
+        }
+        return $total;
+    }
 }
-
-
-
-    // public function getQuantite(): int
-    // {
-    //     $totalQuantite = 0;
-    //     foreach ($this->ligneCommandes as $ligneCommande) {
-    //         $totalQuantite += $ligneCommande->getQuantite();
-    //     }
-    //     return $totalQuantite;
-    // }
-
-

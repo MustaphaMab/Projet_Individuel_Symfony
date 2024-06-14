@@ -90,7 +90,7 @@ h3 {
 
 /*************************************************** Main ***************************************************/
 .main-home {
-  padding-top: 12%;
+  padding-top: 5%;
 
   color: #333333;
 }
@@ -311,18 +311,33 @@ h3 {
 /*************************************************** Catégorie *************************************************/
 
 .category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
   padding: 0;
+  margin: 0;
+  
+}
+.container-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .category-list li {
-  width: 100%;
+  
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .category-list .card {
   margin-bottom: 15px;
+  margin: 5px;
+  width:200px;
+  height: 200px;
 }
 
 /************************************************************************************************************/
@@ -450,7 +465,7 @@ footer {
 }
 
 /* Grands appareils (laptops, moins de 992px) */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1025px) {
   .card {
     width: 90%;
   }
@@ -470,10 +485,11 @@ footer {
 }
 
 /* Plus grands appareils (desktops) */
-@media (min-width: 1025px) {
+@media (min-width: 1026px) {
   .card {
-    margin: 22%;
+    margin: 2%;
   }
+
   .navbar-nav {
     flex-direction: row !important;
     justify-content: flex-end;

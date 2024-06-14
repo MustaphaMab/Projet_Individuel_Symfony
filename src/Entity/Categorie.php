@@ -4,29 +4,35 @@ namespace App\Entity;
 
 use App\Repository\CategorieRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(name: "Id_Categorie")] 
-
+    #[ORM\Column(name: "Id_Categorie", type: "integer")]
     private ?int $id = null;
 
-    #[ORM\Column(length: 300)]
-    private ?string $Description = null;
+    #[ORM\Column(name: "description", type: "string", length: 300)]
+    private ?string $description = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $Nom = null;
+    #[ORM\Column(name: "nom", type: "string", length: 50)]
+    private ?string $nom = null;
 
-    
+    #[ORM\OneToMany(mappedBy: "categorie", targetEntity: Produit::class)]
+    private Collection $produits;
+
+    public function __construct()
+    {
+        $this->produits = new ArrayCollection();
+    }
 
     public function __toString(): string
-    // __toString est une methode dite magique, car elle permet de convertir un objet en chaine de caractère
     {
-        return $this->Nom; }
-
+        return $this->nom;
+    }
 
     public function getId(): ?int
     {
@@ -35,30 +41,49 @@ class Categorie
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(string $Description): static
+    public function setDescription(string $description): self
     {
-        $this->Description = $Description;
-
+        $this->description = $description;
         return $this;
     }
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $nom): self
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produit $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+            $produit->setCategorie($this);
+        }
 
         return $this;
     }
 
+    public function removeProduit(Produit $produit): self
+    {
+        if ($this->produits->removeElement($produit)) {
+            if ($produit->getCategorie() === $this) {
+                $produit->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
 }
-
-
-// les Getters permettent d'acceder et lire les valeurs sans modifications
-// les Setters permettent d'utiliser et modifier les valeurs des propriétés de l'objet
