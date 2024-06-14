@@ -3,29 +3,77 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-<main >
+<main>
+    <!-- section principale avec un titre centré -->
     <header class="mb-4">
         <h1 class="text-center">Nos Catégories</h1>
     </header>
 
-    <section >
-        <article class="container-category">
-            <header>
-                <h2 class="text-center">Nos catégories</h2>
-            </header>
-            <ul class="category-list">
-                {% for category in categories %}
-                    <li>
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ category.nom }}</h3>
-                                <p class="card-text">{{ category.description }}</p>
-                            </div>
+    <section>
+        <!-- Liste des catégories -->
+        <ul class="category-list">
+            {% for category in categories %}
+                <li>
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Affichage du nom de la catégorie -->
+                            <h3 class="card-title">{{ category.nom }}</h3>
+                           
+                            <!-- Bouton pour ouvrir le modal avec les détails de la catégorie -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoryModal" data-id="{{ category.id }}">
+                                Détails
+                            </button>
                         </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </article>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </section>
 </main>
+
+<!-- Modal pour afficher les détails de la catégorie -->
+<div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Titre du modal, sera mis à jour dynamiquement -->
+                <h5 class="modal-title" id="categoryModalLabel"></h5>
+                <!-- Bouton pour fermer le modal -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Description de la catégorie, sera mise à jour dynamiquement -->
+                <p id="categoryDescription"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sélectionne l'élément du modal
+            const modalElement = document.getElementById('categoryModal');
+            modalElement.addEventListener('show.bs.modal', (event) => {
+                const button = event.relatedTarget;
+                const categoryId = button.getAttribute('data-id');
+                fetch(`/categorie/${categoryId}`)
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('categoryModalLabel').innerText = data.nom;
+                        document.getElementById('categoryDescription').innerText = data.description;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching category data:', error);
+                    });
+            });
+        });
+    </script>
 {% endblock %}
