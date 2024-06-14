@@ -5,40 +5,29 @@
 {% block body %}
     <h1>Personnalisation de Mug</h1>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-4">
-                <div class="card box-shadow">
-                    <img id="mug-image" class="card-img-top" src="{{ asset('images/' ~ defaultMug.photo) }}" alt="{{ defaultMug.nom }}">
-                    <div class="card-body">
-                        <h2 id="mug-name">{{ defaultMug.nom }}</h2>
-                        <p id="mug-description" class="card-text">{{ defaultMug.description }}</p>
-                        <p id="mug-price">{{ defaultMug.prix / 100 }} €</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <label for="color-select">Choisir une couleur :</label>
-                                <select id="color-select" class="form-control">
-                                    <option value="">Sélectionner</option>
-                                    {% for mug in mugs %}
-                                        <option value="{{ mug.id }}">{{ mug.couleur }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Champ caché pour stocker l'ID du mug sélectionné -->
-                        <input type="hidden" id="selected-mug-id" value="{{ defaultMug.id }}">
-                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="changeMugColor()">Changer de couleur</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary mt-3" onclick="addToCart()">Ajouter au panier</button>
-                    </div>
-                </div>
+        <div class="card box-shadow">
+            <img id="mug-image" class="card-img-top" src="{{ asset('images/' ~ defaultMug.photo) }}" alt="{{ defaultMug.nom }}">
+            <div class="card-body">
+                <h2 id="mug-name">{{ defaultMug.nom }}</h2>
+                <p id="mug-description" class="card-text">{{ defaultMug.description }}</p>
+                <p id="mug-price">{{ defaultMug.prix / 100 }} €</p>
+                <label for="color-select">Choisir une couleur :</label>
+                <select id="color-select" class="form-control">
+                    <option value="">Sélectionner</option>
+                    {% for mug in mugs %}
+                        <option value="{{ mug.id }}">{{ mug.couleur }}</option>
+                    {% endfor %}
+                </select>
+                <input type="hidden" id="selected-mug-id" value="{{ defaultMug.id }}">
+                <button class="btn btn-outline-secondary mt-3" onclick="changeMugColor()">Changer de couleur</button>
+                <button class="btn btn-outline-secondary mt-3" onclick="addToCart()">Ajouter au panier</button>
             </div>
         </div>
     </div>
 
     <script>
         function changeMugColor() {
-            const select = document.getElementById('color-select');
-            const mugId = select.value;
-
+            const mugId = document.getElementById('color-select').value;
             if (mugId) {
                 fetch(`/personalisation/mugs/get/${mugId}`)
                     .then(response => response.json())
@@ -49,24 +38,17 @@
                             document.getElementById('mug-name').innerText = mug.nom;
                             document.getElementById('mug-description').innerText = mug.description;
                             document.getElementById('mug-price').innerText = `${mug.prix / 100} €`;
-
-                            // Met à jour l'ID du mug sélectionné
                             document.getElementById('selected-mug-id').value = mug.id;
                         } else {
                             alert('Erreur: ' + data.message);
                         }
                     })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        alert('Erreur lors du changement de couleur.');
-                    });
+                    .catch(() => alert('Erreur lors du changement de couleur.'));
             }
         }
 
         function addToCart() {
-            // Récupère l'ID du mug sélectionné
             const mugId = document.getElementById('selected-mug-id').value;
-
             fetch(`/cart/add/${mugId}`, {
                 method: 'POST',
                 headers: {
@@ -82,10 +64,7 @@
                         alert('Erreur: ' + data.message);
                     }
                 })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    alert('Erreur lors de l\'ajout au panier.');
-                });
+                .catch(() => alert('Erreur lors de l\'ajout au panier.'));
         }
     </script>
 {% endblock %}
